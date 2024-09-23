@@ -14,7 +14,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            With 💙 by Ismael Francisco {process.env.ENV_VAR}
+            With 💙 by Ismael Francisco 🤖 {process.env.ENV_VAR}
           </a>
         </div>
       </div>
