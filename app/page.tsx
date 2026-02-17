@@ -13,6 +13,7 @@ export default function Home() {
     'Builds end-to-end features across frontend, backend, and cloud infrastructure.',
     'Focuses on production reliability, maintainability, and clear engineering standards.',
     'Collaborates effectively with distributed teams through planning and code reviews.',
+    'Currently learning Python, Java, and AI, with a primary focus on Retrieval-Augmented Generation (RAG).',
   ];
 
   return (

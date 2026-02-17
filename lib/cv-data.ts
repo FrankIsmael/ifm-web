@@ -8,7 +8,7 @@ export const cvData = {
   github: 'https://github.com/FrankIsmael',
 
   summary:
-    'Full Stack Software Engineer with 6+ years of professional experience delivering production-ready web applications using React, TypeScript, Node.js, and AWS. Experienced in designing scalable backend services, deploying cloud-native infrastructure, and owning features end-to-end in distributed systems environments. Strong focus on code quality, system design, and production reliability.',
+    'Full Stack Software Engineer with 6+ years of professional experience delivering production-ready web applications using React, TypeScript, Node.js, and AWS. Experienced in designing scalable backend services, deploying cloud-native infrastructure, and owning features end-to-end in distributed systems environments. Strong focus on code quality, system design, and production reliability. Currently expanding my skills in Python, Java, and AI, with a primary focus on Retrieval-Augmented Generation (RAG).',
 
   skills: [
     'React',

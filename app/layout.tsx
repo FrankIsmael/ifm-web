@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: 'Ismael Francisco Moreno | Full Stack Software Engineer',
   description:
     'Full Stack Software Engineer with 6+ years of experience. React, TypeScript, Node.js, AWS. Based in Mexico City.',
+  icons: {
+    icon: '/icon.png?v=3',
+    shortcut: '/favicon.ico?v=3',
+  },
 };
 
 export default function RootLayout({
