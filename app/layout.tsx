@@ -6,8 +6,9 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Ismael Fco Profile',
-  description: 'Portfolio of Ismael Fco',
+  title: 'Ismael Francisco Moreno | Full Stack Software Engineer',
+  description:
+    'Full Stack Software Engineer with 6+ years of experience. React, TypeScript, Node.js, AWS. Based in Mexico City.',
 };
 
 export default function RootLayout({
