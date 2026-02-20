@@ -8,7 +8,10 @@ export const cvData = {
   github: 'https://github.com/FrankIsmael',
 
   summary:
-    'Full Stack Software Engineer with 6+ years of professional experience delivering production-ready web applications using React, TypeScript, Node.js, and AWS. Experienced in designing scalable backend services, deploying cloud-native infrastructure, and owning features end-to-end in distributed systems environments. Strong focus on code quality, system design, and production reliability. Currently expanding my skills in Python, Java, and AI, with a primary focus on Retrieval-Augmented Generation (RAG).',
+    "I'm a Full Stack Developer at ZirconTech, where I build end-to-end web applications — from React and TypeScript interfaces to Node.js APIs and PostgreSQL databases. I enjoy owning features across the full stack, collaborating with distributed teams, and moving fast in Agile environments.",
+
+  summaryExtra:
+    "Holding a Bachelor's degree in Mechatronics from Unidad Profesional Interdisciplinaria en Ingeniería y Tecnologías Avanzadas, I am committed to technological innovation and interdisciplinary collaboration. My academic foundation and diverse experience drive me to continuously enhance my technical skills and contribute to impactful projects.",
 
   skills: [
     'React',
@@ -83,6 +86,25 @@ export const cvData = {
       impact:
         'Contributed to peer reviews, release readiness, and cross-team planning to keep quality high across environments.',
       stack: ['CI/CD', 'Code Reviews', 'System Design'],
+    },
+  ],
+
+  projects: [
+    {
+      name: 'Repose Funeral Home Marketplace',
+      icon: '⚰️',
+      description:
+        'A free resource for making arrangements with nearby funeral homes.',
+      tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS'],
+      url: 'https://repose.io',
+    },
+    {
+      name: 'Scene Hunters',
+      icon: '🎬',
+      description:
+        'The ultimate visual movie game for cinema lovers. 🎬',
+      tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS'],
+      url: 'https://scenehunters.com',
     },
   ],
 };
