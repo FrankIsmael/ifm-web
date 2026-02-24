@@ -11,7 +11,7 @@ export const cvData = {
     "I'm a Full Stack Developer at ZirconTech, where I build end-to-end web applications — from React and TypeScript interfaces to Node.js APIs and PostgreSQL databases. I enjoy owning features across the full stack, collaborating with distributed teams, and moving fast in Agile environments.",
 
   summaryExtra:
-    "Holding a Bachelor's degree in Mechatronics from Unidad Profesional Interdisciplinaria en Ingeniería y Tecnologías Avanzadas, I am committed to technological innovation and interdisciplinary collaboration. My academic foundation and diverse experience drive me to continuously enhance my technical skills and contribute to impactful projects.",
+    "Holding a Bachelor's degree in Mechatronics from National Polytechnic Institute (Instituto Politécnico Nacional, IPN), I am committed to technological innovation and interdisciplinary collaboration. My academic foundation and diverse experience drive me to continuously enhance my technical skills and contribute to impactful projects.",
 
   skills: [
     'React',
