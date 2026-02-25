@@ -58,16 +58,16 @@ export function buildDeskGeometry(
     color: 0x3a2008,
     roughness: 0.9,
   });
-  // Headphones
+  // Headphones — warm cream/ivory like the reference image
   const headphoneMat = new THREE.MeshStandardMaterial({
-    color: 0x1e2030,
-    roughness: 0.3,
-    metalness: 0.6,
+    color: 0xedeade,  // warm off-white cream
+    roughness: 0.50,
+    metalness: 0.02,
   });
   const headphonePadMat = new THREE.MeshStandardMaterial({
-    color: 0x2a2a3a,
-    roughness: 0.8,
-    metalness: 0.1,
+    color: 0xe0dbd0,  // slightly warmer/darker cream for cushion foam
+    roughness: 0.80,
+    metalness: 0.0,
   });
   // Phone
   const phoneMat = new THREE.MeshStandardMaterial({
@@ -237,42 +237,50 @@ export function buildDeskGeometry(
   // ── Headphones ────────────────────────────────────────────────────────────
   const headphones = new THREE.Group();
 
-  // Headband (torus arc)
+  // Headband — smooth arch via TubeGeometry along a quadratic bezier
+  const bandCurve = new THREE.QuadraticBezierCurve3(
+    new THREE.Vector3(-0.24, 0, 0),
+    new THREE.Vector3(0,     0.32, 0),
+    new THREE.Vector3( 0.24, 0, 0),
+  );
   const headband = new THREE.Mesh(
-    new THREE.TorusGeometry(0.22, 0.02, 8, 24, Math.PI),
+    new THREE.TubeGeometry(bandCurve, 28, 0.024, 12, false),
     headphoneMat,
   );
-  headband.rotation.z = Math.PI;
-  headband.position.y = 0.22;
+  headband.castShadow = true;
 
-  // Left ear cup
-  const earCupGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.06, 20);
-  const leftCup = new THREE.Mesh(earCupGeo, headphoneMat);
+  // Arm connectors — short vertical stubs linking headband ends to ear cups
+  const armGeo = new THREE.CylinderGeometry(0.018, 0.018, 0.10, 10);
+  const leftArm = new THREE.Mesh(armGeo, headphoneMat);
+  leftArm.position.set(-0.24, 0.04, 0);
+  const rightArm = new THREE.Mesh(armGeo, headphoneMat);
+  rightArm.position.set(0.24, 0.04, 0);
+
+  // Ear cups — large over-ear cylinders, axis along X (rotation.z = PI/2)
+  const cupGeo = new THREE.CylinderGeometry(0.135, 0.135, 0.10, 28);
+  const leftCup = new THREE.Mesh(cupGeo, headphoneMat);
   leftCup.rotation.z = Math.PI / 2;
-  leftCup.position.set(-0.22, 0, 0);
+  leftCup.position.set(-0.24, -0.04, 0);
+  leftCup.castShadow = true;
 
-  const leftPad = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.09, 0.09, 0.03, 20),
-    headphonePadMat,
-  );
-  leftPad.rotation.z = Math.PI / 2;
-  leftPad.position.set(-0.25, 0, 0);
-
-  // Right ear cup
-  const rightCup = new THREE.Mesh(earCupGeo, headphoneMat);
+  const rightCup = new THREE.Mesh(cupGeo, headphoneMat);
   rightCup.rotation.z = Math.PI / 2;
-  rightCup.position.set(0.22, 0, 0);
+  rightCup.position.set(0.24, -0.04, 0);
+  rightCup.castShadow = true;
 
-  const rightPad = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.09, 0.09, 0.03, 20),
-    headphonePadMat,
-  );
-  rightPad.rotation.z = Math.PI / 2;
-  rightPad.position.set(0.25, 0, 0);
+  // Cushion rings — torus wrapping outer edge of each cup, oriented to face outward
+  const cushionGeo = new THREE.TorusGeometry(0.118, 0.030, 12, 30);
+  const leftCushion = new THREE.Mesh(cushionGeo, headphonePadMat);
+  leftCushion.rotation.y = Math.PI / 2;  // ring faces along X axis
+  leftCushion.position.set(-0.275, -0.04, 0);
 
-  headphones.add(headband, leftCup, leftPad, rightCup, rightPad);
-  headphones.position.set(1.2, TOP + 0.1, 0.3);
-  headphones.rotation.y = -0.4;
+  const rightCushion = new THREE.Mesh(cushionGeo, headphonePadMat);
+  rightCushion.rotation.y = Math.PI / 2;
+  rightCushion.position.set(0.275, -0.04, 0);
+
+  headphones.add(headband, leftArm, rightArm, leftCup, rightCup, leftCushion, rightCushion);
+  headphones.position.set(1.2, TOP + 0.195, 0.1);
+  headphones.rotation.y = 0.5;
 
   // ── Phone ─────────────────────────────────────────────────────────────────
   const phone = new THREE.Mesh(
