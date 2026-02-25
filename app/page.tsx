@@ -94,6 +94,12 @@ export default function Home() {
               >
                 Get in touch
               </a>
+              <a
+                href="/3d-view"
+                className="rounded-full border border-violet-300 bg-white px-5 py-2.5 font-medium text-violet-600 transition hover:border-violet-400 hover:text-violet-700 dark:border-violet-800 dark:bg-neutral-900 dark:text-violet-400 dark:hover:border-violet-600 dark:hover:text-violet-300"
+              >
+                3D View
+              </a>
             </motion.div>
           </div>
 
