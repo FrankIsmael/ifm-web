@@ -31,11 +31,22 @@ function roundRect(
   ctx.closePath();
 }
 
-export function buildScreenTexture(THREE: typeof THREE_TYPE): ScreenTextureHandles {
+export function buildScreenTexture(
+  THREE: typeof THREE_TYPE,
+): ScreenTextureHandles {
+  // Draw canvas: content is rendered here normally (correct orientation).
   const canvas = document.createElement('canvas');
   canvas.width = CANVAS_W;
   canvas.height = CANVAS_H;
   const ctx = canvas.getContext('2d')!;
+
+  // Texture canvas: receives a transformed copy of the draw canvas.
+  // The mac-draco GLB screen UV orientation requires a vertical flip here
+  // so the final on-screen text appears the right way round.
+  const texCanvas = document.createElement('canvas');
+  texCanvas.width = CANVAS_W;
+  texCanvas.height = CANVAS_H;
+  const texCtx = texCanvas.getContext('2d')!;
 
   const hitRects: Record<NonNullable<SectionId>, HitRect> = {
     about: { x: 0, y: 0, w: 0, h: 0 },
@@ -43,7 +54,7 @@ export function buildScreenTexture(THREE: typeof THREE_TYPE): ScreenTextureHandl
     contact: { x: 0, y: 0, w: 0, h: 0 },
   };
 
-  const texture = new THREE.CanvasTexture(canvas);
+  const texture = new THREE.CanvasTexture(texCanvas);
 
   function redraw(hoveredItem: SectionId) {
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
@@ -184,6 +195,14 @@ export function buildScreenTexture(THREE: typeof THREE_TYPE): ScreenTextureHandl
       ctx.stroke();
     }
 
+    // The model UVs introduce a horizontal reversal after a 180deg rotation.
+    // Compensate with the equivalent transform (vertical flip) so text reads correctly.
+    texCtx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+    texCtx.save();
+    texCtx.translate(0, CANVAS_H);
+    texCtx.scale(1, -1);
+    texCtx.drawImage(canvas, 0, 0);
+    texCtx.restore();
     texture.needsUpdate = true;
   }
 
