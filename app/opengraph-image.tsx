@@ -98,18 +98,6 @@ export default function OGImage() {
         >
           {cvData.name}
         </div>
-
-        {/* Tagline */}
-        <div
-          style={{
-            display: 'flex',
-            fontSize: 26,
-            fontWeight: 400,
-            color: '#8b9abf',
-          }}
-        >
-          {cvData.tagline}
-        </div>
       </div>
     ),
     { ...size }
