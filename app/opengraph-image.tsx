@@ -17,39 +17,83 @@ export default function OGImage() {
           justifyContent: 'center',
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, #1c1917 0%, #292524 60%, #1c1917 100%)',
-          fontFamily: 'sans-serif',
-          color: '#fafaf9',
+          background: '#1e2433',
+          fontFamily: 'monospace, sans-serif',
         }}
       >
-        {/* Initials badge */}
+        {/* Terminal icon */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'column',
             justifyContent: 'center',
-            width: 160,
-            height: 160,
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
-            marginBottom: 40,
-            fontSize: 72,
-            fontWeight: 700,
-            letterSpacing: '-2px',
-            color: '#fff',
+            width: 260,
+            height: 220,
+            borderRadius: 40,
+            background: '#2d3650',
+            padding: '36px 40px',
+            marginBottom: 48,
+            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
           }}
         >
-          IFM
+          {/* Prompt row: > IFM */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginBottom: 28,
+            }}
+          >
+            {/* Chevron */}
+            <div
+              style={{
+                display: 'flex',
+                color: '#ffffff',
+                fontSize: 64,
+                fontWeight: 700,
+                lineHeight: 1,
+                marginRight: 18,
+              }}
+            >
+              {'>'}
+            </div>
+            {/* IFM text */}
+            <div
+              style={{
+                display: 'flex',
+                color: '#ffffff',
+                fontSize: 64,
+                fontWeight: 700,
+                lineHeight: 1,
+                letterSpacing: '-1px',
+              }}
+            >
+              IFM
+            </div>
+          </div>
+
+          {/* Cursor line */}
+          <div
+            style={{
+              display: 'flex',
+              width: 80,
+              height: 10,
+              borderRadius: 5,
+              background: '#ffffff',
+            }}
+          />
         </div>
 
         {/* Full name */}
         <div
           style={{
-            fontSize: 56,
+            display: 'flex',
+            fontSize: 52,
             fontWeight: 700,
-            letterSpacing: '-1px',
-            color: '#fafaf9',
-            marginBottom: 16,
+            color: '#ffffff',
+            letterSpacing: '-0.5px',
+            marginBottom: 14,
           }}
         >
           {cvData.name}
@@ -58,10 +102,10 @@ export default function OGImage() {
         {/* Tagline */}
         <div
           style={{
-            fontSize: 28,
+            display: 'flex',
+            fontSize: 26,
             fontWeight: 400,
-            color: '#a8a29e',
-            letterSpacing: '0.5px',
+            color: '#8b9abf',
           }}
         >
           {cvData.tagline}
