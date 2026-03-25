@@ -4,32 +4,20 @@ import type { SectionId, ScreenTextureHandles, HitRect } from './types';
 const CANVAS_W = 1024;
 const CANVAS_H = 600;
 
+// Emerald accent matching the site's --highlight: oklch(0.72 0.18 162)
+const ACCENT = '#34d399';
+const ACCENT_DIM = 'rgba(52,211,153,0.5)';
+const ACCENT_GLOW = 'rgba(52,211,153,0.25)';
+const ACCENT_SUBTLE = 'rgba(52,211,153,0.12)';
+const BORDER = 'rgba(255,255,255,0.08)';
+const DIM = 'rgba(255,255,255,0.35)';
+const MUTED = 'rgba(255,255,255,0.55)';
+
 const ITEMS: { label: string; id: NonNullable<SectionId>; icon: string }[] = [
   { label: 'About Me', id: 'about', icon: '>' },
   { label: 'Projects', id: 'projects', icon: '#' },
   { label: 'Contact', id: 'contact', icon: '@' },
 ];
-
-function roundRect(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  w: number,
-  h: number,
-  r: number,
-) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
-}
 
 export function buildScreenTexture(
   THREE: typeof THREE_TYPE,
@@ -59,54 +47,63 @@ export function buildScreenTexture(
   function redraw(hoveredItem: SectionId) {
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
-    // ── Background: pure black ───────────────────────────────────────────────
-    ctx.fillStyle = '#000000';
+    // ── Background: near black ──────────────────────────────────────────────
+    ctx.fillStyle = '#0a0a0a';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    // Subtle scan lines for CRT feel
-    ctx.fillStyle = 'rgba(255,255,255,0.018)';
-    for (let y = 0; y < CANVAS_H; y += 3) {
-      ctx.fillRect(0, y, CANVAS_W, 1);
+    // Subtle grid texture
+    ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < CANVAS_W; x += 64) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, CANVAS_H);
+      ctx.stroke();
+    }
+    for (let y = 0; y < CANVAS_H; y += 64) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(CANVAS_W, y);
+      ctx.stroke();
     }
 
-    // ── Neon top bar ────────────────────────────────────────────────────────
+    // ── Top accent line ─────────────────────────────────────────────────────
     const barGrad = ctx.createLinearGradient(100, 0, CANVAS_W - 100, 0);
-    barGrad.addColorStop(0, 'rgba(0,220,255,0)');
-    barGrad.addColorStop(0.3, 'rgba(0,220,255,1)');
-    barGrad.addColorStop(0.7, 'rgba(100,140,255,1)');
-    barGrad.addColorStop(1, 'rgba(150,80,255,0)');
-    ctx.shadowColor = '#00ddff';
-    ctx.shadowBlur = 18;
+    barGrad.addColorStop(0, 'rgba(52,211,153,0)');
+    barGrad.addColorStop(0.3, ACCENT);
+    barGrad.addColorStop(0.7, ACCENT);
+    barGrad.addColorStop(1, 'rgba(52,211,153,0)');
+    ctx.shadowColor = ACCENT;
+    ctx.shadowBlur = 12;
     ctx.fillStyle = barGrad;
-    roundRect(ctx, 80, 28, CANVAS_W - 160, 5, 3);
-    ctx.fill();
+    ctx.fillRect(80, 28, CANVAS_W - 160, 2);
     ctx.shadowBlur = 0;
 
     // ── Header text ─────────────────────────────────────────────────────────
-    ctx.shadowColor = '#00ccff';
-    ctx.shadowBlur = 8;
-    ctx.font = 'bold 18px monospace';
-    ctx.fillStyle = '#00ddff';
+    ctx.shadowColor = ACCENT;
+    ctx.shadowBlur = 6;
+    ctx.font = 'bold 16px monospace';
+    ctx.fillStyle = ACCENT;
     ctx.textAlign = 'left';
-    ctx.fillText('ismael@dev:~$', 46, 74);
+    ctx.fillText('ismael@dev:~$', 46, 68);
     ctx.shadowBlur = 0;
-    ctx.fillStyle = '#ccddff';
-    ctx.fillText(' portfolio --interactive', 224, 74);
+    ctx.fillStyle = MUTED;
+    ctx.fillText(' portfolio --interactive', 210, 68);
 
     // ── Divider ─────────────────────────────────────────────────────────────
-    ctx.strokeStyle = 'rgba(0,200,255,0.2)';
+    ctx.strokeStyle = BORDER;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(46, 92);
-    ctx.lineTo(CANVAS_W - 46, 92);
+    ctx.moveTo(46, 86);
+    ctx.lineTo(CANVAS_W - 46, 86);
     ctx.stroke();
 
     // ── Nav items ───────────────────────────────────────────────────────────
     const pillW = 380;
-    const pillH = 68;
+    const pillH = 64;
     const pillX = (CANVAS_W - pillW) / 2;
-    const startY = 130;
-    const gap = 100;
+    const startY = 120;
+    const gap = 96;
 
     ITEMS.forEach(({ label, id, icon }, i) => {
       const py = startY + i * gap;
@@ -114,73 +111,66 @@ export function buildScreenTexture(
 
       hitRects[id] = { x: pillX, y: py, w: pillW, h: pillH };
 
-      // Pill background — visible fill even when not hovered
-      roundRect(ctx, pillX, py, pillW, pillH, 14);
-      ctx.fillStyle = isHovered
-        ? 'rgba(0,180,255,0.15)'
-        : 'rgba(255,255,255,0.06)';
-      ctx.fill();
+      // Item background
+      ctx.fillStyle = isHovered ? ACCENT_SUBTLE : 'rgba(255,255,255,0.03)';
+      ctx.fillRect(pillX, py, pillW, pillH);
 
-      // Pill border — bright on black
-      roundRect(ctx, pillX, py, pillW, pillH, 14);
-      ctx.shadowColor = isHovered ? '#00ccff' : '#4488ff';
-      ctx.shadowBlur = isHovered ? 20 : 6;
-      ctx.strokeStyle = isHovered ? '#00ddff' : 'rgba(80,160,255,0.7)';
-      ctx.lineWidth = isHovered ? 2 : 1.5;
-      ctx.stroke();
+      // Item border
+      ctx.strokeStyle = isHovered ? ACCENT_DIM : BORDER;
+      ctx.lineWidth = 1;
+      if (isHovered) {
+        ctx.shadowColor = ACCENT;
+        ctx.shadowBlur = 12;
+      }
+      ctx.strokeRect(pillX, py, pillW, pillH);
       ctx.shadowBlur = 0;
 
       // Left accent bar (hovered)
       if (isHovered) {
-        ctx.shadowColor = '#00eeff';
-        ctx.shadowBlur = 12;
-        ctx.fillStyle = '#00eeff';
-        roundRect(ctx, pillX + 3, py + 16, 4, pillH - 32, 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        ctx.fillStyle = ACCENT;
+        ctx.fillRect(pillX, py, 3, pillH);
       }
 
       // Icon
-      ctx.font = 'bold 21px monospace';
-      ctx.fillStyle = isHovered ? '#00ddff' : 'rgba(80,180,255,0.8)';
+      ctx.font = 'bold 18px monospace';
+      ctx.fillStyle = isHovered ? ACCENT : DIM;
       ctx.textAlign = 'left';
-      ctx.fillText(icon, pillX + 24, py + pillH / 2 + 8);
+      ctx.fillText(icon, pillX + 24, py + pillH / 2 + 6);
 
-      // Label — pure white on hover, bright grey otherwise
-      ctx.font = `${isHovered ? '700' : '500'} 26px -apple-system, BlinkMacSystemFont, sans-serif`;
-      ctx.fillStyle = isHovered ? '#ffffff' : '#ddeeff';
+      // Label
+      ctx.font = `${isHovered ? '600' : '400'} 22px monospace`;
+      ctx.fillStyle = isHovered ? '#f5f5f5' : MUTED;
       if (isHovered) {
-        ctx.shadowColor = '#ffffff';
-        ctx.shadowBlur = 6;
+        ctx.shadowColor = 'rgba(255,255,255,0.15)';
+        ctx.shadowBlur = 4;
       }
       ctx.textAlign = 'center';
-      ctx.fillText(label, pillX + pillW / 2, py + pillH / 2 + 9);
+      ctx.fillText(label.toUpperCase(), pillX + pillW / 2, py + pillH / 2 + 7);
       ctx.shadowBlur = 0;
 
       // Arrow (hovered)
       if (isHovered) {
-        ctx.font = '22px monospace';
-        ctx.fillStyle = '#00ccff';
+        ctx.font = '18px monospace';
+        ctx.fillStyle = ACCENT;
         ctx.textAlign = 'right';
-        ctx.fillText('→', pillX + pillW - 18, py + pillH / 2 + 8);
+        ctx.fillText('→', pillX + pillW - 18, py + pillH / 2 + 6);
       }
 
       ctx.textAlign = 'left';
     });
 
     // ── Footer ──────────────────────────────────────────────────────────────
-    ctx.font = '13px monospace';
-    ctx.fillStyle = 'rgba(0,200,255,0.5)';
+    ctx.font = '12px monospace';
+    ctx.fillStyle = DIM;
     ctx.textAlign = 'center';
     ctx.fillText('[ click to select ]', CANVAS_W / 2, CANVAS_H - 22);
     ctx.textAlign = 'left';
 
-    // ── Corner decorations ──────────────────────────────────────────────────
-    const cColor = 'rgba(0,200,255,0.35)';
-    const cSize = 20;
+    // ── Corner brackets ─────────────────────────────────────────────────────
+    const cSize = 16;
     const cPad = 14;
-    ctx.strokeStyle = cColor;
-    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = ACCENT_GLOW;
+    ctx.lineWidth = 1;
     const corners = [
       [cPad, cPad, 1, 1],
       [CANVAS_W - cPad, cPad, -1, 1],

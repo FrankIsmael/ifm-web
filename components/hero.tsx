@@ -104,6 +104,15 @@ export function Hero() {
             See my work
           </a>
         </div>
+
+        {/* 3D View link */}
+        <a
+          href="/3d-view"
+          className="mt-6 inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+        >
+          or explore the 3D desk
+          <span aria-hidden="true">&rarr;</span>
+        </a>
       </div>
     </section>
   );

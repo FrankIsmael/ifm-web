@@ -80,11 +80,12 @@ function SceneContent({ screenHandles, controlsRef, onHover, onSelect, onReady }
         enableDamping
       />
 
-      {/* Lighting */}
-      <ambientLight color={0x9aaabb} intensity={1.0} />
+      {/* Lighting — deep indigo + magenta neon palette */}
+      <ambientLight color={0x2a2244} intensity={0.8} />
       <directionalLight
         position={[3, 5, 3]}
-        intensity={3.2}
+        intensity={2.4}
+        color={0x8888cc}
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
@@ -94,13 +95,19 @@ function SceneContent({ screenHandles, controlsRef, onHover, onSelect, onReady }
         shadow-camera-bottom={-2}
         shadow-bias={-0.0005}
       />
-      <directionalLight position={[-3, 4, 2]} color={0xddeeff} intensity={1.8} />
-      <directionalLight position={[-4, 2, 4]} color={0x88aacc} intensity={0.8} />
-      <directionalLight position={[-2, 3, -4]} color={0x8844cc} intensity={1.2} />
-      <pointLight position={[0, 1.0, -0.2]} color={0x4499ff} intensity={3.0} distance={4} />
-      <pointLight position={[-1.2, 0.5, -0.5]} color={0x8844ff} intensity={2.0} distance={3} />
-      <pointLight position={[-1.3, 0.6, 0.5]} color={0xff8844} intensity={1.0} distance={3} />
-      <hemisphereLight color={0x111122} groundColor={0x080810} intensity={0.5} />
+      {/* Soft indigo fill from above-left */}
+      <directionalLight position={[-3, 4, 2]} color={0x6666bb} intensity={1.6} />
+      {/* Deep blue side fill */}
+      <directionalLight position={[-4, 2, 4]} color={0x3344aa} intensity={0.6} />
+      {/* Magenta/pink back light — the neon glow */}
+      <directionalLight position={[-2, 3, -4]} color={0x7733cc} intensity={1.8} />
+      {/* Pink neon glow on the desk from above */}
+      <pointLight position={[0, 2.0, -1.0]} color={0xff3388} intensity={4.0} distance={5} />
+      {/* Deep purple accent from the side */}
+      <pointLight position={[-1.2, 0.5, -0.5]} color={0x7733cc} intensity={2.5} distance={3} />
+      {/* Cool blue accent from the other side */}
+      <pointLight position={[1.3, 0.6, 0.5]} color={0x4466dd} intensity={1.5} distance={3} />
+      <hemisphereLight color={0x1a1433} groundColor={0x0c0a18} intensity={0.6} />
 
       {/* Desk platform */}
       <DeskPlatform />
@@ -214,7 +221,7 @@ export default function DeskScene() {
         {!isLoaded && (
           <motion.div
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="absolute inset-0 z-20 flex items-center justify-center bg-[#08080f] pointer-events-none"
+            className="absolute inset-0 z-20 flex items-center justify-center bg-[#0c0a18] pointer-events-none"
           >
             <p className="text-neutral-600 text-xs tracking-[0.3em] animate-pulse">
               loading scene...

@@ -12,19 +12,19 @@ interface Props {
 function AboutContent() {
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">About Me</h2>
-      <div className="space-y-3 text-sm leading-relaxed text-neutral-300">
+      <h2 className="text-2xl font-bold tracking-tight text-foreground">About Me</h2>
+      <div className="mt-4 text-sm leading-relaxed text-muted-foreground">
         <p>{cvData.summary}</p>
       </div>
-      <div className="mt-6">
-        <p className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">
+      <div className="mt-8">
+        <p className="mb-3 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
           Tech Stack
         </p>
         <div className="flex flex-wrap gap-2">
           {cvData.skills.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-white/10 px-3 py-1 text-xs text-neutral-300"
+              className="rounded border border-border px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
             >
               {s}
             </span>
@@ -38,26 +38,40 @@ function AboutContent() {
 function ProjectsContent() {
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Projects</h2>
-      <div className="space-y-4">
+      <h2 className="text-2xl font-bold tracking-tight text-foreground">Projects</h2>
+      <div className="mt-4 flex flex-col gap-px border border-border bg-border">
         {cvData.projects.map((p) => (
           <a
             key={p.name}
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block rounded-xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition"
+            className="group bg-card p-5 transition-colors hover:bg-[var(--surface-hover)]"
           >
-            <div className="flex items-center gap-2 mb-1">
-              <span>{p.icon}</span>
-              <span className="font-semibold text-white">{p.name}</span>
+            <div className="flex items-center gap-3">
+              <span
+                className="rounded border px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase"
+                style={{
+                  borderColor: 'oklch(0.72 0.18 162 / 0.3)',
+                  color: 'oklch(0.72 0.18 162)',
+                }}
+              >
+                {p.tag}
+              </span>
+              <span className="ml-auto flex items-center gap-1.5 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
+                {p.url.replace('https://', '')}
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </div>
-            <p className="text-sm text-neutral-400 mt-1">{p.description}</p>
+            <h3 className="mt-2 text-sm font-bold text-foreground">{p.name}</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{p.description}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {p.tech.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-neutral-500"
+                  className="rounded border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
                 >
                   {t}
                 </span>
@@ -73,41 +87,76 @@ function ProjectsContent() {
 function ContactContent() {
   return (
     <>
-      <h2 className="text-2xl font-bold mb-2">Contact</h2>
-      <p className="text-neutral-400 text-sm mb-6">Open to new opportunities and collaborations.</p>
-      <div className="flex flex-col gap-3">
+      <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        {cvData.ctaHeadline}
+      </h2>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+        {cvData.ctaSubtext}
+      </p>
+
+      <a
+        href={`mailto:${cvData.email}`}
+        className="mt-6 inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+        style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Send a message
+      </a>
+
+      <div className="mt-8 grid divide-y divide-border border-t border-border">
         <a
           href={`mailto:${cvData.email}`}
-          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-neutral-300 hover:bg-white/10 hover:text-white transition"
+          className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
         >
-          <span className="text-neutral-500">✉</span>
-          {cvData.email}
+          <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+            Email
+          </span>
+          <span className="font-mono text-[11px] text-muted-foreground">{cvData.email}</span>
         </a>
         <a
           href={cvData.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-neutral-300 hover:bg-white/10 hover:text-blue-400 transition"
+          className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
         >
-          <span className="text-neutral-500">in</span>
-          LinkedIn
+          <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+            LinkedIn
+          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[11px] text-muted-foreground">ismaelfcom</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-muted-foreground">
+              <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </a>
         <a
           href={cvData.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-neutral-300 hover:bg-white/10 hover:text-white transition"
+          className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
         >
-          <span className="text-neutral-500">gh</span>
-          GitHub
+          <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+            GitHub
+          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-[11px] text-muted-foreground">FrankIsmael</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-muted-foreground">
+              <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
         </a>
         <a
           href="/CV-IsmaelFranciscoMoreno2026.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm font-medium text-white hover:bg-white/20 transition"
+          className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
         >
-          ↓ Download CV
+          <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+            CV
+          </span>
+          <span className="font-mono text-[11px] text-muted-foreground">Download PDF</span>
         </a>
       </div>
     </>
@@ -133,15 +182,15 @@ export default function SceneOverlay({ activeSection, onBack }: Props) {
               exit={{ opacity: 0, y: -12, scale: 0.97 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
               className="pointer-events-auto relative max-h-[72vh] w-full max-w-lg overflow-y-auto
-                         rounded-2xl border border-white/10 bg-neutral-900/90 backdrop-blur-md
-                         p-8 text-neutral-100 shadow-2xl mx-4"
+                         rounded border border-border bg-card backdrop-blur-md
+                         p-8 text-foreground shadow-2xl mx-4"
             >
               <button
                 onClick={onBack}
-                className="absolute top-4 right-4 text-xs text-neutral-500 hover:text-neutral-200
-                           transition tracking-widest flex items-center gap-1"
+                className="absolute top-4 right-4 font-mono text-[10px] font-medium tracking-widest text-muted-foreground uppercase
+                           transition-colors hover:text-foreground flex items-center gap-1"
               >
-                ← back
+                &larr; back
               </button>
 
               {activeSection === 'about' && <AboutContent />}
