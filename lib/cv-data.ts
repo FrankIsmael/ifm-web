@@ -142,7 +142,7 @@ export const cvData = {
       result:
         'Live platform serving real users, handling sensitive transactions reliably.',
       tech: ['Next.js', 'TypeScript', 'Nest(Node.js)', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'AWS'],
-      url: 'https://repose.io',
+      url: '',
     },
     {
       name: 'Scene Hunters',

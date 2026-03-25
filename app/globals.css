@@ -18,7 +18,7 @@
   --secondary: oklch(0.14 0 0);         /* subtle surface */
   --secondary-foreground: oklch(0.96 0 0);
   --muted: oklch(0.14 0 0);
-  --muted-foreground: oklch(0.5 0 0);   /* zinc-ish dim */
+  --muted-foreground: oklch(0.7 0 0);   /* zinc-ish dim */
   --accent: oklch(0.72 0.18 162);       /* emerald/teal accent */
   --accent-foreground: oklch(0.06 0 0);
   --destructive: oklch(0.577 0.245 27.325);
