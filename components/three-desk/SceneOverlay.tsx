@@ -15,7 +15,6 @@ function AboutContent() {
       <h2 className="text-2xl font-bold mb-4">About Me</h2>
       <div className="space-y-3 text-sm leading-relaxed text-neutral-300">
         <p>{cvData.summary}</p>
-        <p className="text-neutral-400">{cvData.summaryExtra}</p>
       </div>
       <div className="mt-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">

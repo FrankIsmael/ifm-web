@@ -7,19 +7,55 @@ export const cvData = {
   linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
   github: 'https://github.com/FrankIsmael',
 
-  summary:
-    "I'm a Full Stack Developer at ZirconTech, where I build end-to-end web applications — from React and TypeScript interfaces to Node.js APIs and PostgreSQL databases. I enjoy owning features across the full stack, collaborating with distributed teams, and moving fast in Agile environments.",
+  headline:
+    'I help startups build and scale web apps with secure payments and cloud infrastructure.',
+  subheadline:
+    'Full stack engineer with 6+ years shipping production platforms \u2014 from React frontends to AWS-deployed APIs.',
 
-  summaryExtra:
-    "Holding a Bachelor's degree in Mechatronics from National Polytechnic Institute (Instituto Politécnico Nacional, IPN), I am committed to technological innovation and interdisciplinary collaboration. My academic foundation and diverse experience drive me to continuously enhance my technical skills and contribute to impactful projects.",
+  summary:
+    'I build end-to-end web applications \u2014 from React and TypeScript interfaces to Node.js APIs and cloud infrastructure. I enjoy owning features across the full stack, collaborating with distributed teams, and shipping fast.',
+
+  ctaHeadline: 'Have a project in mind? Let\u2019s talk.',
+  ctaSubtext:
+    'I\u2019m available for freelance projects and startup collaborations. Let\u2019s discuss how I can help.',
+
+  services: [
+    {
+      title: 'Production-Ready APIs',
+      description:
+        'Scalable backend services with Node.js and NestJS \u2014 authentication, background jobs, and third-party integrations built for real traffic.',
+      icon: '\u2699\uFE0F',
+    },
+    {
+      title: 'Payment & Marketplace Systems',
+      description:
+        'End-to-end payment flows, subscriptions, refunds, and webhook integrations that handle real money reliably.',
+      icon: '\uD83D\uDCB3',
+    },
+    {
+      title: 'Cloud Infrastructure & DevOps',
+      description:
+        'AWS deployments (ECS, EC2, RDS, S3) with CI/CD pipelines and multi-environment setups \u2014 from staging to production.',
+      icon: '\u2601\uFE0F',
+    },
+  ],
+
+  trustSignals: [
+    { value: '6+', label: 'Years of Experience' },
+    { value: '3', label: 'Companies' },
+    { value: 'IPN', label: 'Engineering Degree' },
+    { value: 'Ironhack', label: 'Certified' },
+  ],
 
   skills: [
     'React',
     'TypeScript',
     'Node.js',
+    'NestJS',
     'AWS',
     'Next.js',
     'NestJS',
+    'Stripe',
     'PostgreSQL',
     'MongoDB',
   ],
@@ -92,18 +128,38 @@ export const cvData = {
   projects: [
     {
       name: 'Repose Funeral Home Marketplace',
-      icon: '⚰️',
+      tag: 'Marketplace',
+      icon: '\u26B0\uFE0F',
       description:
         'A free resource for making arrangements with nearby funeral homes.',
-      tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS'],
+      problem:
+        'Repose needed a marketplace connecting families with funeral homes \u2014 reliable, sensitive, and scalable.',
+      solution: [
+        'Built full-stack platform with Next.js frontend and NestJS API',
+        'Integrated Stripe for payment processing, search, and arrangement flows',
+        'Deployed on AWS with CI/CD and multi-environment setup',
+      ],
+      result:
+        'Live platform serving real users, handling sensitive transactions reliably.',
+      tech: ['Next.js', 'TypeScript', 'Nest(Node.js)', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'AWS'],
       url: 'https://repose.io',
     },
     {
       name: 'Scene Hunters',
-      icon: '🎬',
+      tag: 'Entertainment',
+      icon: '\uD83C\uDFAC',
       description:
-        'The ultimate visual movie game for cinema lovers. 🎬',
-      tech: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'AWS'],
+        'A movie guessing game where players identify two films from a single AI-generated scene.',
+      problem:
+        'Needed a game platform with scoring, rankings, payments, and an admin panel for managing scenes and players.',
+      solution: [
+        'Built full-stack app with Next.js (including server-side API routes) and admin panel',
+        'Integrated Stripe for one-time purchases and implemented scoring algorithm with top-20 leaderboard',
+        'Set up AWS infrastructure, custom domain, PostgreSQL database, and mail service',
+      ],
+      result:
+        'Live game platform with paying users, ranked leaderboard, and admin tools for content management.',
+      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'AWS'],
       url: 'https://scenehunters.com',
     },
   ],

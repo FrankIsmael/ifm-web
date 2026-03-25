@@ -1,14 +1,23 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
-const siteTitle = 'Ismael Francisco Moreno | Full Stack Software Engineer';
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+})
+
+
+const siteTitle = 'Ismael Francisco | Full Stack Software Engineer';
 const siteDescription =
-  'Full Stack Software Engineer with 6+ years of experience. React, TypeScript, Node.js, AWS. Based in Mexico City.';
+  'Full stack engineer with 6+ years shipping production platforms. React, Node.js, AWS.';
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -47,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-EKCVNEVZSE"
@@ -62,7 +71,7 @@ export default function RootLayout({
           gtag('config', 'G-EKCVNEVZSE');`,
         }}
       />
-      <body className={inter.className}>
+      <body className="font-sans bg-background text-foreground">
         {children}
         <Analytics />
       </body>
