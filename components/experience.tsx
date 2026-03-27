@@ -47,9 +47,14 @@ export function Experience() {
                     {job.location}
                   </span>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {job.description}
-                </p>
+                <ul className="mt-3 space-y-1">
+                  {job.description.map((point, idx) => (
+                    <li key={idx} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                      <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

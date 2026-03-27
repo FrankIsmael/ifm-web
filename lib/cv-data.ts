@@ -68,24 +68,35 @@ export const cvData = {
       role: 'Full Stack Developer',
       location: 'Montevideo, Uruguay',
       period: '2021 – Present',
-      description:
-        'Delivered end-to-end features using Next.js, React, NestJS, and TypeScript across multiple client projects. Designed and deployed scalable backend services on AWS (ECS, EC2, RDS, S3), including CI/CD pipelines and environment configuration. Built and maintained REST APIs with authentication, background job processing, and third-party integrations. Modeled and optimized relational and non-relational databases (PostgreSQL, MongoDB). Contributed to infrastructure setup and production monitoring for multi-environment deployments (UAT / Production). Participated in technical discussions, peer code reviews, and feature planning with distributed teams.',
+      description: [
+        'Delivered end-to-end features using Next.js, React, NestJS, and TypeScript across multiple client projects.',
+        'Designed and deployed scalable backend services on AWS (ECS, EC2, RDS, S3), including CI/CD pipelines and environment configuration.',
+        'Built and maintained REST APIs with authentication, background job processing, and third-party integrations.',
+        'Modeled and optimized relational and non-relational databases (PostgreSQL, MongoDB).',
+        'Contributed to infrastructure setup and production monitoring for multi-environment deployments (UAT / Production).',
+        'Participated in technical discussions, peer code reviews, and feature planning with distributed teams.',
+      ],
     },
     {
       company: 'iVoy',
       role: 'Frontend Developer',
       location: 'Mexico City, Mexico',
       period: '2019 – 2021',
-      description:
-        'Developed production web interfaces using React and TypeScript. Integrated frontend applications with backend APIs and optimized UI performance. Collaborated in agile teams delivering continuous product improvements.',
+      description: [
+        'Developed production web interfaces using React and TypeScript.',
+        'Integrated frontend applications with backend APIs and optimized UI performance.',
+        'Collaborated in agile teams delivering continuous product improvements.',
+      ],
     },
     {
       company: 'Accenture México',
       role: 'Backend Developer',
       location: 'Mexico City, Mexico',
       period: '2018',
-      description:
-        'Developed backend services using Java and Spring Framework. Participated in enterprise-level system integrations and service development.',
+      description: [
+        'Developed backend services using Java and Spring Framework.',
+        'Participated in enterprise-level system integrations and service development.',
+      ],
     },
   ],
 
