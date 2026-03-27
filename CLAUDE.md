@@ -65,3 +65,48 @@ A separate immersive route built with **Three.js** (raw, no react-three-fiber) a
 - Raycaster uses UV coordinates on the monitor screen mesh to hit-test against `hitRects` from the canvas texture
 - GSAP camera tweens use `onUpdate: () => camera.lookAt(...)` on every tick — critical for orientation
 - `next.config.js` has `transpilePackages: ['three']` required for Three.js ESM
+
+---
+
+## Security
+
+### `ignore-scripts` — when to use it
+
+`ignore-scripts` prevents yarn from running `preinstall`, `install`, and `postinstall` scripts inside packages. This is a supply-chain attack mitigation, but it **cannot be enabled globally in this repo** because `next`, `three`, `@react-three/fiber`, and `@react-three/drei` all rely on postinstall scripts to compile native binaries.
+
+| Situation | Use it? |
+|---|---|
+| CI audit step (dependency scan, no build needed) | Yes |
+| Inspecting an unfamiliar/new package before trusting it | Yes |
+| Fresh install in a sandboxed/security-review environment | Yes |
+| Normal `yarn install` for development or production build | **No** |
+| Any package with native bindings (`next`, `three`, `sharp`, `esbuild`, …) | **No** |
+
+### How to enable temporarily (no config file changes)
+
+```bash
+# One-off install with scripts disabled
+yarn install --ignore-scripts
+
+# Audit a single package in isolation
+mkdir /tmp/audit && cd /tmp/audit && yarn add <package> --ignore-scripts
+```
+
+### How to safely audit a suspicious package
+
+1. `yarn add <package> --ignore-scripts` — install without running its scripts
+2. Open `node_modules/<package>/package.json` and read the `scripts.preinstall`, `scripts.install`, and `scripts.postinstall` fields
+3. Read the referenced script files manually
+4. If safe → re-run `yarn install` (without the flag) to let scripts execute normally
+5. If unsafe → `yarn remove <package>` immediately
+
+### Yarn Classic v1 config reference
+
+To enable globally (only appropriate for audit-only environments with no native deps):
+
+```
+# .yarnrc
+ignore-scripts true
+```
+
+> Do NOT commit this for this repo — it will break the build.
