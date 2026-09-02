@@ -1,8 +1,10 @@
 import { ImageResponse } from 'next/server';
-import { cvData } from '../lib/cv-data';
+import { getContent } from '../lib/content';
+
+const c = getContent();
 
 export const runtime = 'edge';
-export const alt = `${cvData.name} | ${cvData.tagline}`;
+export const alt = `${c.name} | ${c.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -96,7 +98,7 @@ export default function OGImage() {
             marginBottom: 14,
           }}
         >
-          {cvData.name}
+          {c.name}
         </div>
       </div>
     ),

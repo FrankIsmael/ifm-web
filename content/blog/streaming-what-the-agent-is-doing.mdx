@@ -1,0 +1,20 @@
+---
+title: 'Streaming what the agent is doing'
+description: 'Session 02 notes — why a progress spinner is the wrong UI for an agent, and what it takes to stream tool calls to a browser in real time.'
+date: '2026-09-03'
+tags: ['agents', 'ui']
+draft: true
+---
+
+> Draft — I'll fill this in after the session.
+
+A spinner tells the user that something is happening. For an agent, that is
+almost useless: the interesting question is not *whether* it is working but
+*what it just decided to do*.
+
+Things I want to answer here:
+
+- Why a request/response API is the wrong shape for an agent, and what a
+  persistent connection changes.
+- What a tool call looks like on the wire, and how much of it belongs on screen.
+- Where to draw the line between "useful transparency" and "firehose".

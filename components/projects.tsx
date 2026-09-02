@@ -1,38 +1,31 @@
 'use client';
 
-import { cvData } from '@/lib/cv-data';
+import { getContent } from '@/lib/content';
+
+const c = getContent();
 
 export function Projects() {
   return (
     <section id="work" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex items-center gap-4">
-          <span
-            className="h-px flex-1 max-w-8"
-            style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
-          />
+          <span className="h-px max-w-8 flex-1 bg-highlight" />
           <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
             Selected Work
           </span>
         </div>
 
         <div className="flex flex-col gap-px border border-border bg-border">
-          {cvData.projects.map((project) => (
+          {c.projects.map((project) => (
             <div
               key={project.name}
-              className="group bg-card p-8 transition-colors hover:bg-[var(--surface-hover)] md:p-10"
+              className="group bg-card p-8 transition-colors hover:bg-surface-hover md:p-10"
             >
               <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
                 {/* Left: meta */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span
-                      className="rounded border px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase"
-                      style={{
-                        borderColor: 'oklch(0.72 0.18 162 / 0.3)',
-                        color: 'oklch(0.72 0.18 162)',
-                      }}
-                    >
+                    <span className="rounded border border-highlight-faint px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest text-highlight uppercase">
                       {project.tag}
                     </span>
                     {project.url ? (
@@ -78,10 +71,7 @@ export function Projects() {
                         key={item}
                         className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
                       >
-                        <span
-                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
-                          style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
-                        />
+                        <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-highlight" />
                         {item}
                       </li>
                     ))}
@@ -91,10 +81,7 @@ export function Projects() {
                   <p className="mb-2 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
                     Result
                   </p>
-                  <p
-                    className="text-sm font-medium leading-relaxed"
-                    style={{ color: 'oklch(0.72 0.18 162)' }}
-                  >
+                  <p className="text-sm font-medium leading-relaxed text-highlight">
                     {project.result}
                   </p>
                 </div>

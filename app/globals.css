@@ -37,6 +37,10 @@
   --sidebar-ring: oklch(0.72 0.18 162);
   /* Custom semantic tokens */
   --highlight: oklch(0.72 0.18 162);    /* emerald accent */
+  /* Pre-mixed alpha variants — Tailwind 3.3 cannot apply /opacity to a bare var() color */
+  --highlight-soft: oklch(0.72 0.18 162 / 0.4);
+  --highlight-faint: oklch(0.72 0.18 162 / 0.3);
+  --highlight-glow: oklch(0.72 0.18 162 / 0.08);
   --surface: oklch(0.1 0 0);           /* card surface */
   --surface-hover: oklch(0.14 0 0);    /* card hover */
   --dim: oklch(0.45 0 0);             /* dimmed text */

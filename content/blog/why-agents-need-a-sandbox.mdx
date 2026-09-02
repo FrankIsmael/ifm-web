@@ -1,0 +1,52 @@
+---
+title: 'Why an agent needs its own box'
+description: 'Notes from session 01 of Diseño de Sistemas Agénticos — moving an agent off my laptop and into a remote sandbox, and why that single move changes what you can safely build.'
+date: '2026-09-02'
+tags: ['agents', 'infrastructure']
+draft: false
+---
+
+An agent running on your laptop is a demo. An agent running somewhere else,
+on demand, with a bounded blast radius, is a product. That gap is mostly
+infrastructure, and it is where this course starts.
+
+## The problem with the laptop
+
+Every agent tutorial starts the same way: a script, an API key, a loop that
+calls a model and executes whatever it decides to run. It works. It is also
+running with your shell, your filesystem, your credentials, and your uptime.
+
+Three things break the moment you want someone else to use it:
+
+- **Trust.** The agent executes generated commands. On your machine, "the agent
+  deleted something" is a real sentence.
+- **Availability.** It runs while your laptop is open. That is not a service.
+- **Cost.** A process that idles between requests bills you for idling.
+
+## What a sandbox actually buys you
+
+Moving execution to a remote sandbox is not just relocation. It changes the
+unit you reason about, from *a process* to *a run*:
+
+- The agent gets a clean, disposable environment per run.
+- Blast radius is whatever you put in the box, and nothing else.
+- Execution is on demand, so idle time costs nothing.
+- Two runs cannot interfere with each other.
+
+That last point is the one I underrated. Isolation is not only a safety
+property — it is what makes concurrency tractable later.
+
+## The tradeoff nobody mentions
+
+You pay for this in latency and in state. A fresh box every run means a cold
+start, and it means nothing survives unless you deliberately persist it. The
+agent that "remembered" things when it ran on your laptop now forgets
+everything the moment the run ends.
+
+Which is exactly the next problem — and, conveniently, the next session.
+
+---
+
+*This is the first in a series of notes from [Diseño de Sistemas
+Agénticos](https://www.fixtergeek.com/sistemas-agenticos). I'm writing one per
+session while it's fresh.*

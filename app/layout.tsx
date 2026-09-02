@@ -3,6 +3,10 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
+import { getContent } from '@/lib/content';
+import { SITE_URL } from '@/lib/site';
+
+const c = getContent();
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,13 +19,27 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 
-const siteTitle = 'Ismael Francisco | Full Stack Software Engineer';
+const siteTitle = 'Ismael Francisco | AI Agents & Full Stack Engineering';
 const siteDescription =
-  'Full stack engineer with 6+ years shipping production platforms. React, Node.js, AWS.';
+  'I build AI agents that run in production — deployed, observable, and safe to put to work. Full stack engineer with 6+ years in React, Node.js and AWS.';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: siteTitle,
   description: siteDescription,
+  alternates: { canonical: '/' },
+  authors: [{ name: c.name, url: SITE_URL }],
+  creator: c.name,
+  keywords: [
+    'AI agents',
+    'agentic systems',
+    'workflow automation',
+    'human in the loop',
+    'full stack engineer',
+    'Next.js',
+    'Node.js',
+    'AWS',
+  ],
   icons: {
     icon: '/icon.png?v=3',
     shortcut: '/favicon.ico?v=3',
@@ -29,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    url: 'https://ifm-web.vercel.app',
+    url: SITE_URL,
     siteName: 'Ismael Francisco Moreno',
     images: [
       {
@@ -48,6 +66,51 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: ['/opengraph-image'],
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: c.name,
+      url: SITE_URL,
+      jobTitle: c.tagline,
+      email: `mailto:${c.email}`,
+      telephone: c.phone,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Mexico City',
+        addressCountry: 'MX',
+      },
+      knowsLanguage: ['es', 'en'],
+      knowsAbout: c.skills,
+      sameAs: [c.linkedin, c.github],
+    },
+    {
+      '@type': 'ProfessionalService',
+      '@id': `${SITE_URL}/#service`,
+      name: `${c.name} — AI Agents & Automation`,
+      description: c.headline,
+      url: SITE_URL,
+      provider: { '@id': `${SITE_URL}/#person` },
+      areaServed: 'Worldwide',
+      availableLanguage: ['es', 'en'],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Services',
+        itemListElement: c.services.map((service) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: service.title,
+            description: service.description,
+          },
+        })),
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -72,6 +135,10 @@ export default function RootLayout({
         }}
       />
       <body className="font-sans bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <Analytics />
       </body>

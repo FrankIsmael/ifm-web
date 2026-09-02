@@ -1,8 +1,10 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { cvData } from '@/lib/cv-data';
+import { getContent } from '@/lib/content';
 import type { SectionId } from './types';
+
+const c = getContent();
 
 interface Props {
   activeSection: SectionId;
@@ -14,14 +16,14 @@ function AboutContent() {
     <>
       <h2 className="text-2xl font-bold tracking-tight text-foreground">About Me</h2>
       <div className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        <p>{cvData.summary}</p>
+        <p>{c.summary}</p>
       </div>
       <div className="mt-8">
         <p className="mb-3 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
           Tech Stack
         </p>
         <div className="flex flex-wrap gap-2">
-          {cvData.skills.map((s) => (
+          {c.skills.map((s) => (
             <span
               key={s}
               className="rounded border border-border px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
@@ -40,45 +42,45 @@ function ProjectsContent() {
     <>
       <h2 className="text-2xl font-bold tracking-tight text-foreground">Projects</h2>
       <div className="mt-4 flex flex-col gap-px border border-border bg-border">
-        {cvData.projects.map((p) => (
-          <a
-            key={p.name}
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group bg-card p-5 transition-colors hover:bg-[var(--surface-hover)]"
-          >
-            <div className="flex items-center gap-3">
-              <span
-                className="rounded border px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase"
-                style={{
-                  borderColor: 'oklch(0.72 0.18 162 / 0.3)',
-                  color: 'oklch(0.72 0.18 162)',
-                }}
-              >
-                {p.tag}
-              </span>
-              <span className="ml-auto flex items-center gap-1.5 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
-                {p.url.replace('https://', '')}
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </div>
-            <h3 className="mt-2 text-sm font-bold text-foreground">{p.name}</h3>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{p.description}</p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
-                >
-                  {t}
+        {c.projects.map((p) => {
+          const Wrapper = p.url ? 'a' : 'div';
+          const linkProps = p.url
+            ? { href: p.url, target: '_blank', rel: 'noopener noreferrer' }
+            : {};
+          return (
+            <Wrapper
+              key={p.name}
+              {...linkProps}
+              className="group bg-card p-5 transition-colors hover:bg-surface-hover"
+            >
+              <div className="flex items-center gap-3">
+                <span className="rounded border border-highlight-faint px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest text-highlight uppercase">
+                  {p.tag}
                 </span>
-              ))}
-            </div>
-          </a>
-        ))}
+                {p.url ? (
+                  <span className="ml-auto flex items-center gap-1.5 text-xs text-muted-foreground transition-colors group-hover:text-foreground">
+                    {p.url.replace('https://', '')}
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                ) : null}
+              </div>
+              <h3 className="mt-2 text-sm font-bold text-foreground">{p.name}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{p.description}</p>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {p.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </Wrapper>
+          );
+        })}
       </div>
     </>
   );
@@ -88,16 +90,16 @@ function ContactContent() {
   return (
     <>
       <h2 className="text-2xl font-bold tracking-tight text-foreground">
-        {cvData.ctaHeadline}
+        {c.ctaHeadline}
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        {cvData.ctaSubtext}
+        {c.ctaSubtext}
       </p>
 
       <a
-        href={`mailto:${cvData.email}`}
+        href={`mailto:${c.email}`}
         className="mt-6 inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
-        style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
+        style={{ backgroundColor: 'var(--highlight)' }}
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
@@ -107,16 +109,16 @@ function ContactContent() {
 
       <div className="mt-8 grid divide-y divide-border border-t border-border">
         <a
-          href={`mailto:${cvData.email}`}
+          href={`mailto:${c.email}`}
           className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
         >
           <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-foreground">
             Email
           </span>
-          <span className="font-mono text-[11px] text-muted-foreground">{cvData.email}</span>
+          <span className="font-mono text-[11px] text-muted-foreground">{c.email}</span>
         </a>
         <a
-          href={cvData.linkedin}
+          href={c.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"
@@ -132,7 +134,7 @@ function ContactContent() {
           </div>
         </a>
         <a
-          href={cvData.github}
+          href={c.github}
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center justify-between py-3 transition-colors hover:text-foreground"

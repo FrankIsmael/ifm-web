@@ -1,26 +1,25 @@
 'use client';
 
-import { cvData } from '@/lib/cv-data';
+import { getContent } from '@/lib/content';
+
+const c = getContent();
 
 export function Experience() {
   return (
     <section id="experience" className="px-6 py-24">
       <div className="mx-auto max-w-5xl">
         <div className="mb-12 flex items-center gap-4">
-          <span
-            className="h-px flex-1 max-w-8"
-            style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
-          />
+          <span className="h-px max-w-8 flex-1 bg-highlight" />
           <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
             Experience
           </span>
         </div>
 
         <div className="flex flex-col divide-y divide-border border border-border">
-          {cvData.experience.map((job, i) => (
+          {c.experience.map((job, i) => (
             <div
               key={job.company}
-              className="group flex flex-col gap-4 bg-card p-8 transition-colors hover:bg-[var(--surface-hover)] md:flex-row md:gap-8"
+              className="group flex flex-col gap-4 bg-card p-8 transition-colors hover:bg-surface-hover md:flex-row md:gap-8"
             >
               {/* Period */}
               <div className="flex-shrink-0 md:w-36">
@@ -36,10 +35,7 @@ export function Experience() {
                     <h3 className="text-sm font-semibold text-foreground">
                       {job.role}
                     </h3>
-                    <p
-                      className="mt-0.5 text-sm font-medium"
-                      style={{ color: 'oklch(0.72 0.18 162)' }}
-                    >
+                    <p className="mt-0.5 text-sm font-medium text-highlight">
                       {job.company}
                     </p>
                   </div>
@@ -60,19 +56,48 @@ export function Experience() {
           ))}
         </div>
 
+        {/* Selected impact */}
+        <div className="mt-12">
+          <div className="mb-8 flex items-center gap-4">
+            <span className="h-px max-w-8 flex-1 bg-highlight-soft" />
+            <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+              Selected Impact
+            </span>
+          </div>
+          <div className="grid gap-px border border-border bg-border md:grid-cols-3">
+            {c.achievements.map((achievement) => (
+              <div key={achievement.title} className="flex flex-col gap-3 bg-card p-6">
+                <h3 className="text-sm font-semibold leading-snug text-foreground">
+                  {achievement.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {achievement.impact}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+                  {achievement.stack.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Education */}
         <div className="mt-12">
           <div className="mb-8 flex items-center gap-4">
-            <span
-              className="h-px flex-1 max-w-8"
-              style={{ backgroundColor: 'oklch(0.72 0.18 162 / 0.4)' }}
-            />
+            <span className="h-px max-w-8 flex-1 bg-highlight-soft" />
             <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
               Education
             </span>
           </div>
           <div className="flex flex-col divide-y divide-border border border-border">
-            {cvData.education.map((edu) => (
+            {c.education.map((edu) => (
               <div
                 key={edu.school}
                 className="flex flex-col gap-1 bg-card px-8 py-6 md:flex-row md:items-center md:justify-between"

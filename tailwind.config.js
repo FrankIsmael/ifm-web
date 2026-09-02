@@ -20,7 +20,11 @@ module.exports = {
         border: 'var(--border)',
         input: 'var(--input)',
         ring: 'var(--ring)',
-        highlight: 'var(--highlight)',
+        highlight: {
+          DEFAULT: 'var(--highlight)',
+          soft: 'var(--highlight-soft)',
+          faint: 'var(--highlight-faint)',
+        },
         surface: { DEFAULT: 'var(--surface)', hover: 'var(--surface-hover)' },
         dim: 'var(--dim)',
         sidebar: {
@@ -34,6 +38,10 @@ module.exports = {
           ring: 'var(--sidebar-ring)',
         },
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-jetbrains)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       borderRadius: {
         sm: 'calc(var(--radius) - 4px)',
         md: 'calc(var(--radius) - 2px)',
@@ -42,5 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
