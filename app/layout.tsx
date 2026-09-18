@@ -24,13 +24,12 @@ export const metadata: Metadata = {
   description: siteDescription,
   icons: {
     icon: '/icon.png?v=3',
-    shortcut: '/favicon.ico?v=3',
   },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    url: 'https://ifm-web.vercel.app',
-    siteName: 'Ismael Francisco Moreno',
+    url: 'https://ismaelfrancisco.tech/',
+    siteName: 'Ismael Francisco',
     images: [
       {
         url: '/opengraph-image',

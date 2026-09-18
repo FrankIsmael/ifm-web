@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/server';
 import { cvData } from '../lib/cv-data';
+import { iconDataUri } from './og-icon-data';
 
 export const runtime = 'edge';
 export const alt = `${cvData.name} | ${cvData.tagline}`;
@@ -17,73 +18,22 @@ export default function OGImage() {
           justifyContent: 'center',
           width: '100%',
           height: '100%',
-          background: '#1e2433',
+          background: '#f5f5f4',
           fontFamily: 'monospace, sans-serif',
         }}
       >
-        {/* Terminal icon */}
-        <div
+        {/* Brand icon */}
+        <img
+          src={iconDataUri}
+          width={240}
+          height={232}
+          alt=""
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            width: 260,
-            height: 220,
-            borderRadius: 40,
-            background: '#2d3650',
-            padding: '36px 40px',
             marginBottom: 48,
-            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            borderRadius: 48,
+            boxShadow: '0 8px 40px rgba(0,0,0,0.25)',
           }}
-        >
-          {/* Prompt row: > IFM */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginBottom: 28,
-            }}
-          >
-            {/* Chevron */}
-            <div
-              style={{
-                display: 'flex',
-                color: '#ffffff',
-                fontSize: 64,
-                fontWeight: 700,
-                lineHeight: 1,
-                marginRight: 18,
-              }}
-            >
-              {'>'}
-            </div>
-            {/* IFM text */}
-            <div
-              style={{
-                display: 'flex',
-                color: '#ffffff',
-                fontSize: 64,
-                fontWeight: 700,
-                lineHeight: 1,
-                letterSpacing: '-1px',
-              }}
-            >
-              IFM
-            </div>
-          </div>
-
-          {/* Cursor line */}
-          <div
-            style={{
-              display: 'flex',
-              width: 80,
-              height: 10,
-              borderRadius: 5,
-              background: '#ffffff',
-            }}
-          />
-        </div>
+        />
 
         {/* Full name */}
         <div
@@ -91,7 +41,7 @@ export default function OGImage() {
             display: 'flex',
             fontSize: 52,
             fontWeight: 700,
-            color: '#ffffff',
+            color: 'rgb(0, 0, 0)',
             letterSpacing: '-0.5px',
             marginBottom: 14,
           }}
