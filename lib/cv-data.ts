@@ -7,6 +7,8 @@ export const cvData = {
   linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
   github: 'https://github.com/FrankIsmael',
   cvUrl: '/CV-IsmaelFranciscoMoreno2026.pdf',
+  // Override locally with NEXT_PUBLIC_AGENT_URL to point the chat widget at a dev server.
+  agentUrl: process.env.NEXT_PUBLIC_AGENT_URL ?? 'https://acp-agent.ismaelfrancisco.tech/',
   headline: 'Full stack engineer.',
   subheadline:
     'I turn ideas into working products — from the interface you interact with to the APIs and cloud infrastructure behind it.',

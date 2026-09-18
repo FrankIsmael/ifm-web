@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { cvData } from '@/lib/cv-data';
+import { ChatWidget } from '@/components/chat-widget';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -73,6 +74,7 @@ export default function RootLayout({
       />
       <body className="font-sans bg-background text-foreground">
         {children}
+        <ChatWidget />
         <Analytics />
       </body>
     </html>
