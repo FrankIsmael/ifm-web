@@ -1,56 +1,92 @@
 'use client';
 
-import { cvData } from '@/lib/cv-data';
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Arrow } from './ui';
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Work', href: '#work' },
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
+  const toggle = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: '-15% 0px -55% 0px' },
+    );
+    ['hero', 'about', 'experience', 'work', 'contact'].forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
-    <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-border bg-background/90 backdrop-blur-md'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <span className="font-mono text-xs font-semibold tracking-widest text-foreground uppercase">
-          {cvData.name.split(' ')[0]}
-          <span className="text-[var(--highlight)]">.</span>
-        </span>
-        <div className="hidden gap-8 md:flex">
-          {links.map((l) => (
+    <header className="site-header">
+      <nav className="nav-inner page-width" aria-label="Main navigation">
+        <a
+          className="wordmark"
+          href="#hero"
+          onClick={() => setOpen(false)}
+          aria-label="Ismael Francisco, home"
+        >
+          if<span className="wordmark-dot">.</span>
+          <span className="wordmark-name">Ismael Francisco</span>
+        </a>
+        <button
+          ref={toggle}
+          className="menu-toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="nav-links"
+          aria-label={open ? 'Close navigation' : 'Open navigation'}
+          onClick={() => setOpen(!open)}
+        >
+          <span>{open ? 'Close' : 'Menu'}</span>
+          <span aria-hidden="true">{open ? '−' : '+'}</span>
+        </button>
+        <div id="nav-links" className={`nav-links${open ? ' is-open' : ''}`}>
+          {links.map((link) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="text-xs font-medium tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground"
+              key={link.href}
+              href={link.href}
+              aria-current={active === link.href ? 'location' : undefined}
+              onClick={() => setOpen(false)}
             >
-              {l.label}
+              {link.label}
             </a>
           ))}
+          <a
+            className="nav-contact"
+            href="#contact"
+            aria-current={active === '#contact' ? 'location' : undefined}
+            onClick={() => setOpen(false)}
+          >
+            Let’s talk <Arrow diagonal />
+          </a>
         </div>
-        <a
-          href={`mailto:${cvData.email}`}
-          className="rounded-full px-4 py-2 text-xs font-semibold tracking-widest text-background uppercase shadow-[0_8px_24px_oklch(0.72_0.18_162_/_0.28)] transition-all hover:opacity-90 active:scale-[0.98] md:hidden"
-          style={{ backgroundColor: 'var(--highlight)' }}
-        >
-          Get in touch
-        </a>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

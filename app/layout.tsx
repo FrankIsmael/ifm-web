@@ -1,25 +1,26 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
+import { cvData } from '@/lib/cv-data';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-})
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
-})
+});
 
-
-const siteTitle = 'Ismael Francisco | Full Stack Software Engineer';
+const siteTitle = `${cvData.displayName} | ${cvData.tagline}`;
 const siteDescription =
-  'Full stack engineer with 6+ years shipping production platforms. React, Node.js, AWS.';
+  'Full stack engineer in Mexico City with 7+ years building web products. Explore my work with React, Next.js, Node.js, AWS, and AI agents.';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ismaelfrancisco.tech'),
   title: siteTitle,
   description: siteDescription,
   icons: {

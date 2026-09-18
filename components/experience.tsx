@@ -1,89 +1,84 @@
-'use client';
-
 import { cvData } from '@/lib/cv-data';
+import { Arrow, SectionHeading, Tags } from './ui';
 
 export function Experience() {
   return (
-    <section id="experience" className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-12 flex items-center gap-4">
-          <span
-            className="h-px flex-1 max-w-8"
-            style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
+    <section id="experience" className="experience-section section">
+      <div className="page-width">
+        <div className="section-topline">
+          <SectionHeading
+            number="02"
+            label="Experience"
+            title="Good work. Great teams."
           />
-          <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-            Experience
-          </span>
+          <a
+            className="text-link"
+            href={cvData.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The full story in my CV <Arrow diagonal />
+          </a>
         </div>
-
-        <div className="flex flex-col divide-y divide-border border border-border">
-          {cvData.experience.map((job, i) => (
-            <div
-              key={job.company}
-              className="group flex flex-col gap-4 bg-card p-8 transition-colors hover:bg-[var(--surface-hover)] md:flex-row md:gap-8"
-            >
-              {/* Period */}
-              <div className="flex-shrink-0 md:w-36">
-                <span className="font-mono text-xs text-muted-foreground">
-                  {job.period}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex-1">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">
-                      {job.role}
-                    </h3>
-                    <p
-                      className="mt-0.5 text-sm font-medium"
-                      style={{ color: 'oklch(0.72 0.18 162)' }}
-                    >
-                      {job.company}
-                    </p>
-                  </div>
-                  <span className="ml-4 font-mono text-[10px] text-muted-foreground">
-                    {job.location}
+        <div className="experience-list">
+          {cvData.experience.map((job) => (
+            <article key={job.company} className="experience-row">
+              <div className="job-meta">
+                <p className="eyebrow">{job.period}</p>
+                <p>{job.location}</p>
+                {job.current && (
+                  <span className="current-badge">
+                    <span className="status-dot" /> Currently here
                   </span>
+                )}
+              </div>
+              <div className="job-content">
+                <div className="job-heading">
+                  <span
+                    className={`company-mark company-${job.initials === 'Z' ? 'zircon' : job.initials === 'iv' ? 'ivoy' : 'accenture'}`}
+                    aria-hidden="true"
+                  >
+                    {job.initials}
+                  </span>
+                  <div>
+                    <h3>{job.company}</h3>
+                    <p>{job.role}</p>
+                  </div>
                 </div>
-                <ul className="mt-3 space-y-1">
-                  {job.description.map((point, idx) => (
-                    <li key={idx} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
-                      <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground" />
-                      {point}
-                    </li>
+                <h4>{job.summary}</h4>
+                <ul className="impact-list">
+                  {job.description.map((item) => (
+                    <li key={item}>{item}</li>
                   ))}
                 </ul>
+                <Tags items={job.tech} />
               </div>
-            </div>
+            </article>
           ))}
         </div>
-
-        {/* Education */}
-        <div className="mt-12">
-          <div className="mb-8 flex items-center gap-4">
-            <span
-              className="h-px flex-1 max-w-8"
-              style={{ backgroundColor: 'oklch(0.72 0.18 162 / 0.4)' }}
-            />
-            <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-              Education
-            </span>
+        <div className="credentials">
+          <div>
+            <p className="eyebrow">The foundation</p>
+            {cvData.education.map((item) => (
+              <div key={item.school}>
+                <h3>{item.school}</h3>
+                <p>{item.degree}</p>
+                <span className="credential-date">{item.period}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col divide-y divide-border border border-border">
-            {cvData.education.map((edu) => (
-              <div
-                key={edu.school}
-                className="flex flex-col gap-1 bg-card px-8 py-6 md:flex-row md:items-center md:justify-between"
-              >
+          <div>
+            <p className="eyebrow">Always learning</p>
+            {cvData.certifications.map((item) => (
+              <div className="certification" key={item.title}>
+                <span className="aws-mark" aria-hidden="true">
+                  aws
+                </span>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{edu.school}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{edu.degree}</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-mono text-xs text-muted-foreground">{edu.period}</p>
-                  <p className="mt-0.5 font-mono text-[10px] text-muted-foreground">{edu.location}</p>
+                  <h3>{item.title}</h3>
+                  <p>
+                    {item.issuer} · Issued {item.issued}
+                  </p>
                 </div>
               </div>
             ))}

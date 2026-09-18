@@ -1,119 +1,164 @@
-'use client';
-
 import { cvData } from '@/lib/cv-data';
+import { Arrow, CodeMark, SectionHeading, Tags } from './ui';
+
+function AgentIllustration() {
+  return (
+    <div
+      className="agent-illustration"
+      role="img"
+      aria-label="ACP Agent connects your browser to an agent in its own cloud workspace, with chat, tools, and artifacts."
+    >
+      <div className="diagram-topline">
+        <span>THE AGENT’S OWN LITTLE WORLD</span>
+        <span aria-hidden="true">↗</span>
+      </div>
+      <div className="agent-orbit orbit-one" />
+      <div className="agent-orbit orbit-two" />
+      <div className="agent-window">
+        <div className="window-toolbar">
+          <span />
+          <span />
+          <span />
+          <p>acp / workspace</p>
+        </div>
+        <div className="agent-symbol" aria-hidden="true">
+          <CodeMark />
+        </div>
+        <p>
+          A space to think.
+          <br />
+          The tools to build.
+        </p>
+        <div className="agent-capabilities">
+          <span>Chat</span>
+          <span>Tools</span>
+          <span>Artifacts</span>
+        </div>
+      </div>
+      <div className="diagram-connection">
+        <span className="connection-line" />
+        <span className="connection-label">ACP</span>
+        <span className="connection-line" />
+      </div>
+      <div className="browser-node">
+        <span aria-hidden="true">⌘</span> Your browser
+      </div>
+      <span className="diagram-caption">
+        Your ideas. An agent with its own workspace.
+      </span>
+    </div>
+  );
+}
 
 export function Projects() {
+  const [featured, ...projects] = cvData.projects;
   return (
-    <section id="work" className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-12 flex items-center gap-4">
-          <span
-            className="h-px flex-1 max-w-8"
-            style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
-          />
-          <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground uppercase">
-            Selected Work
-          </span>
+    <section id="work" className="section page-width">
+      <div className="section-topline">
+        <SectionHeading
+          number="03"
+          label="Selected work"
+          title="Things I’ve helped bring to life."
+        />
+        <p className="section-aside">
+          Client work, side projects,
+          <br />
+          and a little experimentation.
+        </p>
+      </div>
+      <article className="featured-project">
+        <div className="featured-copy">
+          <p className="eyebrow">
+            <span className="status-dot" /> Currently building{' '}
+            <span className="project-number">01 /</span>
+          </p>
+          <h3>
+            {featured.name}
+            <span className="serif-accent">{featured.description}</span>
+          </h3>
+          <p>{featured.detail}</p>
+          <ul className="impact-list">
+            {featured.solution.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <Tags items={featured.tech} />
+          <a
+            className="button button-dark"
+            href={featured.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Try the live demo <Arrow diagonal />
+          </a>
+          <p className="project-note">{featured.note}</p>
         </div>
-
-        <div className="flex flex-col gap-px border border-border bg-border">
-          {cvData.projects.map((project) => (
-            <div
-              key={project.name}
-              className="group bg-card p-8 transition-colors hover:bg-[var(--surface-hover)] md:p-10"
-            >
-              <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-                {/* Left: meta */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="rounded border px-2 py-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase"
-                      style={{
-                        borderColor: 'oklch(0.72 0.18 162 / 0.3)',
-                        color: 'oklch(0.72 0.18 162)',
-                      }}
-                    >
-                      {project.tag}
-                    </span>
-                    {project.url ? (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-auto flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {project.url.replace('https://', '')}
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M2 8L8 2M8 2H4M8 2v4" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
-                    ) : null}
+        <AgentIllustration />
+      </article>
+      <div className="project-grid">
+        {projects.map((project, index) => (
+          <article
+            key={project.id}
+            className={`project-card project-${project.id}`}
+          >
+            <div className="project-art" aria-hidden="true">
+              {project.id === 'repose' ? (
+                <>
+                  <div className="repose-mark">
+                    <CodeMark />
                   </div>
-                  <h3 className="mt-3 text-xl font-bold tracking-tight text-foreground">
-                    {project.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Problem / Solution / Result */}
-              <div className="mt-8 grid gap-6 border-t border-border pt-8 md:grid-cols-3">
-                <div>
-                  <p className="mb-2 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                    Problem
-                  </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {project.problem}
-                  </p>
-                </div>
-                <div>
-                  <p className="mb-2 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                    What I Did
-                  </p>
-                  <ul className="space-y-1.5">
-                    {project.solution.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground"
-                      >
-                        <span
-                          className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
-                          style={{ backgroundColor: 'oklch(0.72 0.18 162)' }}
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="mb-2 font-mono text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                    Result
-                  </p>
-                  <p
-                    className="text-sm font-medium leading-relaxed"
-                    style={{ color: 'oklch(0.72 0.18 162)' }}
-                  >
-                    {project.result}
-                  </p>
-                </div>
-              </div>
-
-              {/* Tech */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded border border-border px-2.5 py-1 font-mono text-[11px] text-muted-foreground"
-                  >
-                    {t}
+                  <span className="repose-name">
+                    repose<span>Care, when it matters most.</span>
                   </span>
-                ))}
-              </div>
+                </>
+              ) : (
+                <>
+                  <div className="film-perforations" />
+                  <span className="scene-name">
+                    SCENE
+                    <br />
+                    <span>HUNTERS</span>
+                  </span>
+                  <span className="scene-caption">FOR THE LOVE OF MOVIES.</span>
+                </>
+              )}
             </div>
-          ))}
-        </div>
+            <div className="project-card-body">
+              <p className="eyebrow">
+                {project.tag}
+                <span className="project-number">0{index + 2} /</span>
+              </p>
+              <h3>{project.name}</h3>
+              <p className="project-subtitle">{project.description}</p>
+              <p>{project.detail}</p>
+              <Tags items={project.tech} />
+              <details className="project-details">
+                <summary>
+                  My contribution <span aria-hidden="true">+</span>
+                </summary>
+                <ul className="impact-list">
+                  {project.solution.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </details>
+              {project.url ? (
+                <a
+                  className="text-link project-link"
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit project <Arrow diagonal />
+                </a>
+              ) : (
+                <span className="private-project">
+                  Client project · Overview only
+                </span>
+              )}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

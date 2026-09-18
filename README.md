@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ismael Francisco — Portfolio
 
-## Getting Started
+A personal portfolio built with Next.js, TypeScript, and Tailwind CSS. The main page uses a original near-black palette with off-white text and emerald accents (`oklch(0.72 0.18 162)`), with an introduction, background, engineering experience, selected projects, and contact links. A separate interactive desk lives at `/3d-view`.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
+```sh
+yarn install --frozen-lockfile
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+yarn lint                         # ESLint
+yarn tsc --noEmit --incremental false  # TypeScript
+yarn build                        # Production build
+yarn start                        # Serve the production build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Updating the portfolio
 
-## Learn More
+- `lib/cv-data.ts`: personal information, experience, education, certifications, and projects. Shared by the main page and the 3D desk.
+- `components/`: page sections, navigation, and small shared presentation components.
+- `app/globals.css`: portfolio styles and responsive layouts. The main page and the 3D desk share the original color tokens in `:root`.
+- `app/layout.tsx` and `app/opengraph-image.tsx`: search and social sharing metadata.
+- `public/ifm.png`: profile photo.
+- `public/CV-IsmaelFranciscoMoreno2026.pdf`: downloadable CV.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The first entry in `cvData.projects` is the featured project, currently ACP Agent. A project with an empty `url` displays an overview without a website link. Project artwork is rendered locally with CSS and SVG.

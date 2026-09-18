@@ -1,177 +1,151 @@
 export const cvData = {
   name: 'Ismael Francisco Moreno',
-  tagline: 'Full Stack Software Engineer (6+ years)',
+  displayName: 'Ismael Francisco',
+  tagline: 'Full Stack Software Engineer',
   location: 'Mexico City, Mexico',
   email: 'ismaelfcom93@gmail.com',
-  phone: '+52 233 129 3536',
   linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
   github: 'https://github.com/FrankIsmael',
-
-  headline:
-    'I help startups build and scale web apps with secure payments and cloud infrastructure.',
+  cvUrl: '/CV-IsmaelFranciscoMoreno2026.pdf',
+  headline: 'Full stack engineer.',
   subheadline:
-    'Full stack engineer with 6+ years shipping production platforms \u2014 from React frontends to AWS-deployed APIs.',
-
+    'I turn ideas into working products — from the interface you interact with to the APIs and cloud infrastructure behind it.',
   summary:
-    'I build end-to-end web applications \u2014 from React and TypeScript interfaces to Node.js APIs and cloud infrastructure. I enjoy owning features across the full stack, collaborating with distributed teams, and shipping fast.',
-
-  ctaHeadline: 'Have a project in mind? Let\u2019s talk.',
+    'I’m a full stack engineer at ZirconTech, working remotely with distributed teams. I build web applications with React, Next.js, NestJS, and PostgreSQL, and take them to production on AWS.',
+  aboutExtra:
+    'My path started in mechatronics at IPN. That curiosity about how things work still shapes how I build: understand the whole system, pay attention to the details, and make something useful.',
+  currentFocus:
+    'Lately, I’m exploring AI agents and bringing AI-assisted workflows into my everyday development with Claude Code and Cursor.',
+  ctaHeadline: 'Let’s build something that matters.',
   ctaSubtext:
-    'I\u2019m available for freelance projects and startup collaborations. Let\u2019s discuss how I can help.',
-
-  services: [
-    {
-      title: 'Production-Ready APIs',
-      description:
-        'Scalable backend services with Node.js and NestJS \u2014 authentication, background jobs, and third-party integrations built for real traffic.',
-      icon: '\u2699\uFE0F',
-    },
-    {
-      title: 'Payment & Marketplace Systems',
-      description:
-        'End-to-end payment flows, subscriptions, refunds, and webhook integrations that handle real money reliably.',
-      icon: '\uD83D\uDCB3',
-    },
-    {
-      title: 'Cloud Infrastructure & DevOps',
-      description:
-        'AWS deployments (ECS, EC2, RDS, S3) with CI/CD pipelines and multi-environment setups \u2014 from staging to production.',
-      icon: '\u2601\uFE0F',
-    },
-  ],
-
+    'I’m open to full stack, frontend, and backend roles, as well as interesting projects. If you’re building something useful, I’d love to hear about it.',
   trustSignals: [
-    { value: '6+', label: 'Years of Experience' },
-    { value: '3', label: 'Companies' },
-    { value: 'IPN', label: 'Engineering Degree' },
-    { value: 'Ironhack', label: 'Certified' },
+    { value: '7+', label: 'years in software' },
+    { value: '3', label: 'companies along the way' },
+    { value: '2', label: 'AWS certifications' },
   ],
-
   skills: [
-    'React',
     'TypeScript',
+    'React',
+    'Next.js',
     'Node.js',
     'NestJS',
-    'AWS',
-    'Next.js',
-    'NestJS',
-    'Stripe',
     'PostgreSQL',
-    'MongoDB',
+    'AWS',
+    'Prisma',
+    'Docker',
   ],
-
   languages: ['Spanish (native)', 'English (professional working)'],
-
   experience: [
     {
-      company: 'ZirconTech (Remote)',
+      company: 'ZirconTech',
+      initials: 'Z',
       role: 'Full Stack Developer',
-      location: 'Montevideo, Uruguay',
-      period: '2021 – Present',
+      location: 'Uruguay · Remote',
+      period: 'Nov 2021 — Present',
+      current: true,
+      summary: 'From the first API endpoint to the production deployment.',
       description: [
-        'Delivered end-to-end features using Next.js, React, NestJS, and TypeScript across multiple client projects.',
-        'Designed and deployed scalable backend services on AWS (ECS, EC2, RDS, S3), including CI/CD pipelines and environment configuration.',
-        'Built and maintained REST APIs with authentication, background job processing, and third-party integrations.',
-        'Modeled and optimized relational and non-relational databases (PostgreSQL, MongoDB).',
-        'Contributed to infrastructure setup and production monitoring for multi-environment deployments (UAT / Production).',
-        'Participated in technical discussions, peer code reviews, and feature planning with distributed teams.',
+        'Build features across public, provider, and admin experiences with Next.js, React, and TypeScript — including forms, dashboards, maps, and media uploads.',
+        'Develop NestJS APIs with Prisma, authentication, scheduled jobs, and PostgreSQL database modeling and migrations.',
+        'Led the AWS setup for my latest project, covering the database, API deployment configuration, and frontend hosting with Amplify.',
       ],
+      tech: ['Next.js', 'NestJS', 'PostgreSQL', 'AWS'],
     },
     {
       company: 'iVoy',
+      initials: 'iv',
       role: 'Frontend Developer',
-      location: 'Mexico City, Mexico',
-      period: '2019 – 2021',
+      location: 'Mexico City',
+      period: 'Sep 2019 — Aug 2021',
+      current: false,
+      summary: 'Helping people follow their delivery, every step of the way.',
       description: [
-        'Developed production web interfaces using React and TypeScript.',
-        'Integrated frontend applications with backend APIs and optimized UI performance.',
-        'Collaborated in agile teams delivering continuous product improvements.',
+        'Built React experiences for package tracking, identity confirmation, help, and address updates.',
+        'Connected GraphQL queries and subscriptions with Apollo for near real-time delivery status and location updates.',
+        'Developed interactive maps and address flows with Leaflet, plus reusable components and typed GraphQL operations.',
       ],
+      tech: ['React', 'TypeScript', 'GraphQL', 'Leaflet'],
     },
     {
       company: 'Accenture México',
+      initials: '>',
       role: 'Backend Developer',
-      location: 'Mexico City, Mexico',
-      period: '2018',
+      location: 'Mexico City',
+      period: 'Jun 2018 — Jan 2019',
+      current: false,
+      summary: 'A foundation in backend engineering and enterprise systems.',
       description: [
-        'Developed backend services using Java and Spring Framework.',
-        'Participated in enterprise-level system integrations and service development.',
+        'Developed backend services with Java and Spring Framework, contributing to enterprise system integrations and service development.',
       ],
+      tech: ['Java', 'Spring', 'SQL'],
     },
   ],
-
   education: [
     {
-      school: 'Instituto Politécnico Nacional (IPN)',
-      degree: "Bachelor's Degree in Mechatronics Engineering",
-      location: 'Mexico City, Mexico',
-      period: '2011 – 2017',
-    },
-    {
-      school: 'Ironhack',
-      degree: 'Full Stack Web Development Program',
-      location: 'Mexico City, Mexico',
-      period: '2019',
+      school: 'Instituto Politécnico Nacional',
+      degree: 'B.Eng. in Mechatronics · UPIITA',
+      period: '2011 — 2018',
     },
   ],
-
-  achievements: [
+  certifications: [
     {
-      title: 'Delivered end-to-end features in distributed teams',
-      impact:
-        'Owned frontend, backend, and cloud deployment work across multiple projects using Next.js, NestJS, and AWS.',
-      stack: ['Next.js', 'TypeScript', 'NestJS', 'AWS'],
+      title: 'Solutions Architect — Associate',
+      issuer: 'AWS',
+      issued: 'Mar 2025',
     },
-    {
-      title: 'Built scalable backend services and integrations',
-      impact:
-        'Implemented authenticated REST APIs, background jobs, and third-party integrations with reliable production behavior.',
-      stack: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB'],
-    },
-    {
-      title: 'Strengthened delivery quality and maintainability',
-      impact:
-        'Contributed to peer reviews, release readiness, and cross-team planning to keep quality high across environments.',
-      stack: ['CI/CD', 'Code Reviews', 'System Design'],
-    },
+    { title: 'Cloud Practitioner', issuer: 'AWS', issued: 'Jan 2025' },
   ],
-
   projects: [
     {
-      name: 'Repose Funeral Home Marketplace',
-      tag: 'Marketplace',
-      icon: '\u26B0\uFE0F',
-      description:
-        'A free resource for making arrangements with nearby funeral homes.',
-      problem:
-        'Repose needed a marketplace connecting families with funeral homes \u2014 reliable, sensitive, and scalable.',
+      id: 'acp-agent',
+      name: 'ACP Agent',
+      tag: 'AI / Personal project',
+      status: 'In development',
+      description: 'An AI agent with a workspace of its own.',
+      detail:
+        'A web interface for an agent running in a remote microVM. Follow its work as it happens, pick up conversations, and preview or edit the things it creates.',
       solution: [
-        'Built full-stack platform with Next.js frontend and NestJS API',
-        'Integrated Stripe for payment processing, search, and arrangement flows',
-        'Deployed on AWS with CI/CD and multi-environment setup',
+        'Streaming conversations with visible tool activity and model selection.',
+        'WhatsApp integration: link your account and interact with the agent in selected groups, sharing conversation context with the web chat.',
+        'An artifacts workspace to preview, edit, and download code, documents, and HTML apps.',
+        'English and Spanish interfaces, plus a public demo with guest usage limits.',
       ],
-      result:
-        'Live platform serving real users, handling sensitive transactions reliably.',
-      tech: ['Next.js', 'TypeScript', 'Nest(Node.js)', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'AWS'],
-      url: '',
+      tech: ['React Router', 'TypeScript', 'Node.js', 'ACP', 'WebSocket / SSE'],
+      url: 'https://acp-agent.ismaelfrancisco.tech/',
+      note: 'An ongoing project built on the Sistemas Agénticos workshop foundation, with goose as the AI agent.',
     },
     {
-      name: 'Scene Hunters',
-      tag: 'Entertainment',
-      icon: '\uD83C\uDFAC',
-      description:
-        'A movie guessing game where players identify two films from a single AI-generated scene.',
-      problem:
-        'Needed a game platform with scoring, rankings, payments, and an admin panel for managing scenes and players.',
+      id: 'repose',
+      name: 'Repose',
+      tag: 'Full stack / Marketplace',
+      status: 'Client work',
+      description: 'Making a difficult moment a little easier.',
+      detail:
+        'A marketplace that helps families find nearby funeral homes and make arrangements. Built across the frontend, backend, payments, and cloud deployment.',
       solution: [
-        'Built full-stack app with Next.js (including server-side API routes) and admin panel',
-        'Integrated Stripe for one-time purchases and implemented scoring algorithm with top-20 leaderboard',
-        'Set up AWS infrastructure, custom domain, PostgreSQL database, and mail service',
+        'Next.js interfaces and a NestJS API for search and arrangement flows.',
+        'Stripe payment integration and AWS deployment across environments.',
       ],
-      result:
-        'Live game platform with paying users, ranked leaderboard, and admin tools for content management.',
-      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Tailwind CSS', 'AWS'],
+      tech: ['Next.js', 'NestJS', 'PostgreSQL', 'Stripe', 'AWS'],
+      url: '',
+      note: '',
+    },
+    {
+      id: 'scene-hunters',
+      name: 'Scene Hunters',
+      tag: 'Full stack / Entertainment',
+      status: 'Client work',
+      description: 'One scene. Two movies. Can you name them?',
+      detail:
+        'A movie guessing game built around AI-generated scenes, with a scoring system, top-20 leaderboard, payments, and an admin workspace.',
+      solution: [
+        'Full stack Next.js application with game logic and content management.',
+        'Stripe purchases, PostgreSQL, email integration, and AWS infrastructure.',
+      ],
+      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'AWS'],
       url: 'https://scenehunters.com',
+      note: '',
     },
   ],
 };

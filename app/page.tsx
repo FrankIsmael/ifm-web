@@ -1,6 +1,6 @@
 import { Nav } from '@/components/nav';
 import { Hero } from '@/components/hero';
-import { Services } from '@/components/services';
+import { About } from '@/components/about';
 import { Projects } from '@/components/projects';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
@@ -8,23 +8,27 @@ import { cvData } from '@/lib/cv-data';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="portfolio">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
-        <Services />
-        <Projects />
+        <About />
         <Experience />
+        <Projects />
         <Contact />
       </main>
-      <footer className="border-t border-border px-6 py-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <span className="font-mono text-xs text-muted-foreground">
-            {cvData.name} &mdash; {new Date().getFullYear()}
+      <footer className="site-footer">
+        <div className="page-width">
+          <span>
+            © {new Date().getFullYear()} {cvData.displayName}
           </span>
-          <span className="font-mono text-xs text-muted-foreground">
-            {cvData.location}
-          </span>
+          <span>Made with care in Mexico City.</span>
+          <a href="#hero">
+            Back to top <span aria-hidden="true">↑</span>
+          </a>
         </div>
       </footer>
     </div>
