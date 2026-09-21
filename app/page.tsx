@@ -26,6 +26,7 @@ export default function Home() {
             © {new Date().getFullYear()} {cvData.displayName}
           </span>
           <span>Made with care in Mexico City.</span>
+          <a href="/llms.txt">Information for AI agents</a>
           <a href="#hero">
             Back to top <span aria-hidden="true">↑</span>
           </a>
