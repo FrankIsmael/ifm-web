@@ -106,11 +106,11 @@ export const cvData = {
       status: 'In development',
       description: 'An AI agent with a workspace of its own.',
       detail:
-        'A web interface for an agent running in a remote microVM. Follow its work as it happens, pick up conversations, and preview or edit the things it creates.',
+        'A web interface for an agent running in a remote microVM. Follow its work as it happens, pick up conversations, and preview or edit its generated artifacts in your browser.',
       solution: [
         'Streaming conversations with visible tool activity and model selection.',
         'WhatsApp integration: link your account and interact with the agent in selected groups, sharing conversation context with the web chat.',
-        'An artifacts workspace to preview, edit, and download code, documents, and HTML apps.',
+        'An artifacts workspace to edit and download code, documents, and HTML apps, with document and HTML previews and edits saved locally in your browser.',
         'English and Spanish interfaces, plus a public demo with guest usage limits.',
       ],
       tech: ['React Router', 'TypeScript', 'Node.js', 'ACP', 'WebSocket / SSE'],
