@@ -131,6 +131,28 @@ export function Projects() {
               <h3>{project.name}</h3>
               <p className="project-subtitle">{project.description}</p>
               <p>{project.detail}</p>
+              {'role' in project && (
+                <div className="project-ownership">
+                  <p>{project.role}</p>
+                  <p>{project.team}</p>
+                </div>
+              )}
+              {'impact' in project && project.impact && (
+                <div className="project-results">
+                  <h4 className="eyebrow">Measured improvements</h4>
+                  <ul className="project-metrics">
+                    {project.impact.map((metric) => (
+                      <li key={metric.label}>
+                        <strong>{metric.value}</strong>
+                        <span>{metric.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="measurement-context">
+                    {project.measurementContext}
+                  </p>
+                </div>
+              )}
               <Tags items={project.tech} />
               <details className="project-details">
                 <summary>
@@ -153,7 +175,7 @@ export function Projects() {
                 </a>
               ) : (
                 <span className="private-project">
-                  Client project · Overview only
+                  {project.note || project.status}
                 </span>
               )}
             </div>

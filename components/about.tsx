@@ -22,14 +22,6 @@ export function About() {
         </div>
       </div>
       <div className="about-bottom">
-        <div className="stats">
-          {cvData.trustSignals.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
-        </div>
         <div className="toolkit">
           <p className="eyebrow">My everyday toolkit</p>
           <p>{cvData.skills.join(' / ')}</p>

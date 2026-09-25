@@ -8,8 +8,11 @@ export const cvData = {
   github: 'https://github.com/FrankIsmael',
   cvUrl: '/CV-IsmaelFranciscoMoreno2026.pdf',
   // Override locally with NEXT_PUBLIC_AGENT_URL to point the chat widget at a dev server.
-  agentUrl: process.env.NEXT_PUBLIC_AGENT_URL ?? 'https://acp-agent.ismaelfrancisco.tech/',
+  agentUrl:
+    process.env.NEXT_PUBLIC_AGENT_URL ??
+    'https://acp-agent.ismaelfrancisco.tech/',
   headline: 'Full stack engineer.',
+  availability: 'Open to opportunities',
   subheadline:
     'I turn ideas into working products — from the interface you interact with to the APIs and cloud infrastructure behind it.',
   summary:
@@ -22,8 +25,8 @@ export const cvData = {
   ctaSubtext:
     'I’m open to full stack, frontend, and backend roles, as well as interesting projects. If you’re building something useful, I’d love to hear about it.',
   trustSignals: [
-    { value: '7+', label: 'years in software' },
-    { value: '3', label: 'companies along the way' },
+    { value: '6+', label: 'years in software' },
+    { value: '3', label: 'companies' },
     { value: '2', label: 'AWS certifications' },
   ],
   skills: [
@@ -50,7 +53,8 @@ export const cvData = {
       description: [
         'Build features across public, provider, and admin experiences with Next.js, React, and TypeScript — including forms, dashboards, maps, and media uploads.',
         'Develop NestJS APIs with Prisma, authentication, scheduled jobs, and PostgreSQL database modeling and migrations.',
-        'Led the AWS setup for my latest project, covering the database, API deployment configuration, and frontend hosting with Amplify.',
+        'Led AWS setup and ongoing infrastructure management for Repose and Scene Hunters while contributing across the full stack.',
+        'Reduced Repose search queries from 382 to 12 and response payload by about 55% in benchmarks.',
       ],
       tech: ['Next.js', 'NestJS', 'PostgreSQL', 'AWS'],
     },
@@ -124,10 +128,19 @@ export const cvData = {
       status: 'Client work',
       description: 'Making a difficult moment a little easier.',
       detail:
-        'A marketplace that helps families find nearby funeral homes and make arrangements. Built across the frontend, backend, payments, and cloud deployment.',
+        'A funeral-services marketplace with three Next.js apps for families, providers, and administrators, backed by a shared NestJS API and PostgreSQL database.',
+      role: 'Full stack engineer · Led AWS setup and management',
+      team: '5 engineers: 2 backend, 2 frontend, and me across the full stack.',
+      impact: [
+        { value: '~55% smaller', label: 'Search response payload' },
+        { value: '382 → 12', label: 'Database queries per search' },
+        { value: '58 → 4', label: 'React commits per ~2-second map drag' },
+      ],
       solution: [
-        'Next.js interfaces and a NestJS API for search and arrangement flows.',
-        'Stripe payment integration and AWS deployment across environments.',
+        'Worked across the three Next.js apps and NestJS API on provider search, arrangement flows, and Stripe payments.',
+        'Led AWS setup and management: Amplify for the frontends, Elastic Beanstalk for the API, RDS for PostgreSQL, and S3 for files.',
+        'Removed unused review and geocoding data from search responses and fixed N+1 database queries.',
+        'Reduced map-driven React updates and stabilized card props so surviving provider cards skipped re-renders during the measured drag.',
       ],
       tech: ['Next.js', 'NestJS', 'PostgreSQL', 'Stripe', 'AWS'],
       url: '',
@@ -141,9 +154,12 @@ export const cvData = {
       description: 'One scene. Two movies. Can you name them?',
       detail:
         'A movie guessing game built around AI-generated scenes, with a scoring system, top-20 leaderboard, payments, and an admin workspace.',
+      role: 'Full stack engineer · Led AWS setup and management',
+      team: '2 engineers: me across the full stack and 1 frontend engineer.',
       solution: [
-        'Full stack Next.js application with game logic and content management.',
-        'Stripe purchases, PostgreSQL, email integration, and AWS infrastructure.',
+        'Developed the Next.js application across game logic, scoring, the top-20 leaderboard, and admin content management.',
+        'Integrated Stripe purchases, PostgreSQL persistence, and transactional email.',
+        'Led AWS setup and ongoing infrastructure management alongside full stack development.',
       ],
       tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'AWS'],
       url: 'https://scenehunters.com',

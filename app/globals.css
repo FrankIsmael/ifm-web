@@ -242,17 +242,30 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
   column-gap: 60px;
-  padding-top: 116px;
+  padding-top: 88px;
 }
 .hero-intro {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin-bottom: 29px;
   color: var(--quiet);
 }
-.hero-intro .status-dot {
-  background: var(--accent-color);
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid oklch(0.72 0.18 162 / 0.4);
+  border-radius: 4px;
+  background: oklch(0.72 0.18 162 / 0.08);
+  color: var(--positive);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.availability-badge:hover {
+  background: oklch(0.72 0.18 162 / 0.16);
 }
 .hero h1 {
   font-size: clamp(44px, 5.05vw, 68px);
@@ -355,6 +368,21 @@ body {
   font-size: 10px;
   color: var(--quiet);
 }
+.agent-link {
+  width: fit-content;
+  margin-inline: auto;
+  min-height: 44px;
+  color: var(--accent-color);
+  font-size: 11px;
+}
+.agent-link > svg {
+  width: 16px;
+  height: 16px;
+}
+.agent-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .hero-bottom {
   grid-column: 1 / -1;
   display: flex;
@@ -439,21 +467,18 @@ body {
   letter-spacing: -0.02em;
 }
 .about-bottom {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 65px;
   margin-top: 55px;
   padding-top: 32px;
   border-top: 1px solid var(--line);
 }
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 .stats strong {
   display: block;
-  font-size: 42px;
+  font-size: 30px;
   letter-spacing: -0.06em;
   font-weight: 500;
   line-height: 1.2;
@@ -464,9 +489,14 @@ body {
   font-size: 10px;
   color: var(--quiet);
 }
+.hero-stats {
+  max-width: 440px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
 .toolkit {
-  padding-left: 35px;
-  border-left: 1px solid var(--line);
+  max-width: 720px;
 }
 .toolkit .eyebrow {
   margin-bottom: 13px;
@@ -936,6 +966,55 @@ body {
   font-size: 15px !important;
   margin-top: 7px !important;
 }
+.project-ownership {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.project-ownership > p:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+.project-ownership > p + p {
+  margin-top: 5px;
+  color: var(--quiet);
+}
+.project-results {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.project-results h4 {
+  color: var(--accent-color);
+}
+.project-metrics {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+.project-metrics li {
+  display: grid;
+  grid-template-columns: minmax(115px, 0.8fr) 1fr;
+  align-items: baseline;
+  gap: 12px;
+}
+.project-metrics strong {
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.project-metrics span {
+  color: var(--quiet);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.measurement-context {
+  color: var(--quiet);
+  font-size: 11px;
+  line-height: 1.8;
+  margin-top: 16px;
+}
 .project-details {
   border-top: 1px solid var(--line);
   margin-top: 25px;
@@ -1088,7 +1167,7 @@ body {
 }
 @media (min-width: 1500px) {
   .hero {
-    padding-top: 140px;
+    padding-top: 100px;
   }
   .hero-bottom {
     margin-top: 110px;
@@ -1116,9 +1195,6 @@ body {
   }
   .about-grid {
     gap: 45px;
-  }
-  .about-bottom {
-    gap: 30px;
   }
   .experience-row {
     grid-template-columns: 190px 1fr;
@@ -1213,7 +1289,7 @@ body {
     flex-wrap: wrap;
   }
   .portrait-wrap {
-    width: 270px;
+    width: min(270px, calc(100% - 24px));
     justify-self: center;
     margin-top: 74px;
   }
@@ -1247,24 +1323,13 @@ body {
     font-size: 18px;
   }
   .about-bottom {
-    grid-template-columns: 1fr;
-    gap: 30px;
     margin-top: 32px;
   }
   .stats {
     gap: 12px;
-    grid-template-columns: 1fr 1.2fr 1fr;
-  }
-  .stats strong {
-    font-size: 37px;
   }
   .stats span {
     font-size: 9px;
-  }
-  .toolkit {
-    padding: 25px 0 0;
-    border-left: 0;
-    border-top: 1px solid var(--line);
   }
   .section-topline {
     flex-direction: column;

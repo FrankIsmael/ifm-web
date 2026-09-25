@@ -6,11 +6,23 @@ export function Hero() {
   return (
     <section id="hero" className="hero page-width">
       <div className="hero-copy">
-        <p className="eyebrow hero-intro">
-          <span className="status-dot" /> Hello, I’m {cvData.displayName}
-        </p>
+        <div className="hero-intro">
+          <p className="eyebrow">Hello, I’m {cvData.displayName}</p>
+          <a className="availability-badge" href="#contact">
+            <span className="status-dot" aria-hidden="true" />
+            {cvData.availability}
+          </a>
+        </div>
         <h1>{cvData.headline}</h1>
         <p className="hero-description">{cvData.subheadline}</p>
+        <ul className="stats hero-stats" aria-label="Experience at a glance">
+          {cvData.trustSignals.map((stat) => (
+            <li key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </li>
+          ))}
+        </ul>
         <div className="hero-actions">
           <a className="button button-dark" href="#work">
             Explore my work <Arrow />
@@ -49,9 +61,9 @@ export function Hero() {
             <span aria-hidden="true">↗</span>
           </figcaption>
         </figure>
-        <div className="portrait-note">
-          <span className="status-dot" /> Open to new opportunities
-        </div>
+        <a className="portrait-note agent-link" href="/llms.txt">
+          <CodeMark /> Agent-readable · MCP <Arrow diagonal />
+        </a>
       </div>
       <div className="hero-bottom">
         <span className="eyebrow">From a good idea to a shipped product</span>

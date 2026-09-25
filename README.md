@@ -40,7 +40,7 @@ JSON responses and no authentication because all exposed content is public.
 - `resources/list` discovers `website://portfolio`; `resources/read` returns JSON.
 - Both return biography, skills, experience, projects, education, certifications,
   public contact information, and page/CV links sourced from `lib/cv-data.ts`.
-- `/llms.txt`, linked from the footer, describes the endpoint for visiting agents.
+- `/llms.txt`, linked from the hero and footer, describes the endpoint for visiting agents.
   This is a discovery aid, not automatic registration with every MCP client;
   configure the endpoint URL in your agent’s MCP settings.
 
