@@ -148,9 +148,6 @@ export function Projects() {
                       </li>
                     ))}
                   </ul>
-                  <p className="measurement-context">
-                    {project.measurementContext}
-                  </p>
                 </div>
               )}
               <Tags items={project.tech} />
