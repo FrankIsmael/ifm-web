@@ -8,7 +8,6 @@ export function GET() {
 ## Public information for agents
 
 - [Portfolio](${websiteUrl}/): Biography, skills, work experience, projects, and contact links.
-- [3D desk](${websiteUrl}/3d-view): Interactive portfolio.
 - [CV](${websiteInfo.contact.cv}): Downloadable résumé.
 
 ## MCP server

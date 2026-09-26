@@ -56,7 +56,6 @@ export function Projects() {
     <section id="work" className="section page-width">
       <div className="section-topline">
         <SectionHeading
-          number="03"
           label="Selected work"
           title="Things I’ve helped bring to life."
         />
@@ -69,8 +68,7 @@ export function Projects() {
       <article className="featured-project">
         <div className="featured-copy">
           <p className="eyebrow">
-            <span className="status-dot" /> Currently building{' '}
-            <span className="project-number">01 /</span>
+            <span className="status-dot" /> Currently building
           </p>
           <h3>
             {featured.name}
@@ -96,7 +94,7 @@ export function Projects() {
         <AgentIllustration />
       </article>
       <div className="project-grid">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <article
             key={project.id}
             className={`project-card project-${project.id}`}
@@ -124,10 +122,7 @@ export function Projects() {
               )}
             </div>
             <div className="project-card-body">
-              <p className="eyebrow">
-                {project.tag}
-                <span className="project-number">0{index + 2} /</span>
-              </p>
+              <p className="eyebrow">{project.tag}</p>
               <h3>{project.name}</h3>
               <p className="project-subtitle">{project.description}</p>
               <p>{project.detail}</p>

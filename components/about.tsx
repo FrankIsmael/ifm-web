@@ -1,5 +1,5 @@
 import { cvData } from '@/lib/cv-data';
-import { Arrow, SectionHeading } from './ui';
+import { SectionHeading } from './ui';
 
 export function About() {
   return (
@@ -7,13 +7,9 @@ export function About() {
       <div className="about-grid">
         <div>
           <SectionHeading
-            number="01"
             label="A little about me"
             title="Curiosity is the common thread."
           />
-          <a className="text-link about-desk" href="/3d-view">
-            Step into my 3D desk <Arrow diagonal />
-          </a>
         </div>
         <div className="about-copy">
           <p className="lead-copy">{cvData.summary}</p>

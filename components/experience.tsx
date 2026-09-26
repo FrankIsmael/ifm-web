@@ -7,7 +7,6 @@ export function Experience() {
       <div className="page-width">
         <div className="section-topline">
           <SectionHeading
-            number="02"
             label="Experience"
             title="Good work. Great teams."
           />

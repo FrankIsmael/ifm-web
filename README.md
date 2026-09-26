@@ -1,6 +1,6 @@
 # Ismael Francisco — Portfolio
 
-A personal portfolio built with Next.js, TypeScript, and Tailwind CSS. The main page uses a original near-black palette with off-white text and emerald accents (`oklch(0.72 0.18 162)`), with an introduction, background, engineering experience, selected projects, and contact links. A separate interactive desk lives at `/3d-view`.
+A personal portfolio built with Next.js, TypeScript, and Tailwind CSS. The main page uses a original near-black palette with off-white text and emerald accents (`oklch(0.72 0.18 162)`), with an introduction, background, engineering experience, selected projects, and contact links.
 
 ## Local development
 
@@ -20,9 +20,9 @@ yarn start                        # Serve the production build
 
 ## Updating the portfolio
 
-- `lib/cv-data.ts`: personal information, experience, education, certifications, and projects. Shared by the main page and the 3D desk.
+- `lib/cv-data.ts`: personal information, experience, education, certifications, and projects.
 - `components/`: page sections, navigation, and small shared presentation components.
-- `app/globals.css`: portfolio styles and responsive layouts. The main page and the 3D desk share the original color tokens in `:root`.
+- `app/globals.css`: portfolio styles and responsive layouts. Color tokens are defined in `:root`.
 - `app/layout.tsx` and `app/opengraph-image.tsx`: search and social sharing metadata.
 - `public/ifm.png`: profile photo.
 - `public/CV-IsmaelFranciscoMoreno2026.pdf`: downloadable CV.

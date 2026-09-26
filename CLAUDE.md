@@ -45,34 +45,11 @@ This is a single-page personal portfolio/CV website built with Next.js 13 App Ro
 
 ---
 
-## 3D View (`/3d-view`)
-
-A separate immersive route built with **Three.js** (raw, no react-three-fiber) and **GSAP**.
-
-**Files:**
-- `app/3d-view/page.tsx` — `'use client'` entry, mounts `DeskScene`
-- `app/3d-view/layout.tsx` — Server Component with page metadata
-- `components/three-desk/types.ts` — Shared TS interfaces (`SectionId`, `SceneRefs`, `DeskMeshes`, `ScreenTextureHandles`)
-- `components/three-desk/buildScreenTexture.ts` — Canvas 2D texture for the monitor screen; returns `hitRects` map for UV-based hit detection
-- `components/three-desk/buildDeskGeometry.ts` — Creates all Three.js meshes (desk, monitor, keyboard, mug, plant)
-- `components/three-desk/useSceneSetup.ts` — Bootstraps renderer, scene, lights, render loop; all Three.js imports are dynamic inside `useEffect` to avoid SSR
-- `components/three-desk/useGsapAnimations.ts` — GSAP timelines for camera fly-in, section focus, and back transitions
-- `components/three-desk/SceneOverlay.tsx` — Framer Motion overlay panels (About/Projects/Contact) over the canvas
-- `components/three-desk/DeskScene.tsx` — Top-level client component; wires all hooks + raycaster
-
-**Key patterns:**
-- All Three.js code uses `await import('three')` inside `useEffect` to ensure browser-only execution
-- Raycaster uses UV coordinates on the monitor screen mesh to hit-test against `hitRects` from the canvas texture
-- GSAP camera tweens use `onUpdate: () => camera.lookAt(...)` on every tick — critical for orientation
-- `next.config.js` has `transpilePackages: ['three']` required for Three.js ESM
-
----
-
 ## Security
 
 ### `ignore-scripts` — when to use it
 
-`ignore-scripts` prevents yarn from running `preinstall`, `install`, and `postinstall` scripts inside packages. This is a supply-chain attack mitigation, but it **cannot be enabled globally in this repo** because `next`, `three`, `@react-three/fiber`, and `@react-three/drei` all rely on postinstall scripts to compile native binaries.
+`ignore-scripts` prevents yarn from running `preinstall`, `install`, and `postinstall` scripts inside packages. This is a supply-chain attack mitigation, but it **cannot be enabled globally in this repo** because some dependencies may require install scripts to set up native binaries.
 
 | Situation | Use it? |
 |---|---|
@@ -80,7 +57,7 @@ A separate immersive route built with **Three.js** (raw, no react-three-fiber) a
 | Inspecting an unfamiliar/new package before trusting it | Yes |
 | Fresh install in a sandboxed/security-review environment | Yes |
 | Normal `yarn install` for development or production build | **No** |
-| Any package with native bindings (`next`, `three`, `sharp`, `esbuild`, …) | **No** |
+| Any package with native bindings (`next`, `sharp`, `esbuild`, …) | **No** |
 
 ### How to enable temporarily (no config file changes)
 

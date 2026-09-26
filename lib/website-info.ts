@@ -30,6 +30,5 @@ export const websiteInfo = {
   },
   pages: [
     { url: `${websiteUrl}/`, description: 'Portfolio, biography, experience, projects, and contact information.' },
-    { url: `${websiteUrl}/3d-view`, description: 'Interactive 3D desk version of the portfolio.' },
   ],
 };

@@ -52,7 +52,6 @@
   }
 }
 
-/* Share the original black, white, and emerald palette with the immersive desk. */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
@@ -410,10 +409,6 @@ body {
   color: var(--quiet);
   margin-bottom: 22px;
 }
-.section-heading .eyebrow > span {
-  color: var(--accent-color);
-  margin-right: 8px;
-}
 .section-heading h2 {
   font-size: clamp(30px, 3.2vw, 42px);
   line-height: 1.2;
@@ -444,10 +439,6 @@ body {
 }
 .about-grid .section-heading h2 {
   max-width: 340px;
-}
-.about-desk {
-  margin-top: 30px;
-  color: var(--accent-color);
 }
 .about-copy {
   padding-top: 37px;
@@ -692,10 +683,6 @@ body {
   gap: 8px;
   color: var(--positive);
   font-size: 9px;
-}
-.project-number {
-  margin-left: auto;
-  color: var(--quiet);
 }
 .featured-copy h3 {
   font-size: 32px;

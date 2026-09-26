@@ -6,7 +6,7 @@ export function Contact() {
     <section id="contact" className="contact-section">
       <div className="page-width contact-grid">
         <div>
-          <p className="eyebrow">04 / What’s next?</p>
+          <p className="eyebrow">What’s next?</p>
           <h2>
             Let’s build something
             <br />
