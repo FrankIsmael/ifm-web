@@ -9,7 +9,7 @@ function AgentIllustration() {
       aria-label="ACP Agent connects your browser to an agent in its own cloud workspace, with chat, tools, and artifacts."
     >
       <div className="diagram-topline">
-        <span>THE AGENT’S OWN LITTLE WORLD</span>
+        <span>REMOTE AGENT WORKSPACE</span>
         <span aria-hidden="true">↗</span>
       </div>
       <div className="agent-orbit orbit-one" />
@@ -25,9 +25,9 @@ function AgentIllustration() {
           <CodeMark />
         </div>
         <p>
-          A space to think.
+          Run tools.
           <br />
-          The tools to build.
+          Edit files.
         </p>
         <div className="agent-capabilities">
           <span>Chat</span>
@@ -57,7 +57,7 @@ export function Projects() {
       <div className="section-topline">
         <SectionHeading
           label="Selected work"
-          title="Things I’ve helped bring to life."
+          title="Projects I’ve worked on."
         />
         <p className="section-aside">
           Client work, side projects,

@@ -8,7 +8,7 @@ export function About() {
         <div>
           <SectionHeading
             label="A little about me"
-            title="Curiosity is the common thread."
+            title="I like figuring out how things work."
           />
         </div>
         <div className="about-copy">

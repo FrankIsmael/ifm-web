@@ -317,7 +317,7 @@ body {
 .portrait-card {
   position: relative;
   background: var(--secondary);
-  padding: 12px 12px 0;
+  padding: 12px;
   transform: rotate(4deg);
   box-shadow:
     0 3px 7px #00000026,
@@ -339,14 +339,6 @@ body {
 }
 .portrait-card:hover img {
   filter: grayscale(0);
-}
-.portrait-card figcaption {
-  padding: 17px 3px;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-jetbrains), monospace;
-  font-size: 8px;
-  letter-spacing: -0.025em;
 }
 .portrait-mark {
   position: absolute;
@@ -385,15 +377,12 @@ body {
 .hero-bottom {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 83px;
   padding-bottom: 27px;
   border-bottom: 1px solid var(--line);
   color: var(--quiet);
-}
-.hero-bottom .eyebrow {
-  font-size: 9px;
 }
 .hero-bottom a {
   display: flex;
@@ -1287,10 +1276,6 @@ body {
   .hero-bottom {
     margin-top: 40px;
     padding-bottom: 22px;
-  }
-  .hero-bottom .eyebrow {
-    max-width: 185px;
-    font-size: 8px;
   }
   .hero-bottom a {
     gap: 8px;

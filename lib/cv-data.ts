@@ -14,14 +14,14 @@ export const cvData = {
   headline: 'Full stack engineer.',
   availability: 'Open to opportunities',
   subheadline:
-    'I turn ideas into working products — from the interface you interact with to the APIs and cloud infrastructure behind it.',
+    'I build web applications, APIs, and AWS infrastructure. Currently at ZirconTech, working with distributed teams.',
   summary:
     'I’m a full stack engineer at ZirconTech, working remotely with distributed teams. I build web applications with React, Next.js, NestJS, and PostgreSQL, and take them to production on AWS.',
   aboutExtra:
     'My path started in mechatronics at IPN. That curiosity about how things work still shapes how I build: understand the whole system, pay attention to the details, and make something useful.',
   currentFocus:
     'Lately, I’m exploring AI agents and bringing AI-assisted workflows into my everyday development with Claude Code and Cursor.',
-  ctaHeadline: 'Let’s build something that matters.',
+  ctaHeadline: 'Interested in working together?',
   ctaSubtext:
     'I’m open to full stack, frontend, and backend roles, as well as interesting projects. If you’re building something useful, I’d love to hear about it.',
   trustSignals: [
@@ -126,7 +126,7 @@ export const cvData = {
       name: 'Repose',
       tag: 'Full stack / Marketplace',
       status: 'Client work',
-      description: 'Making a difficult moment a little easier.',
+      description: 'A marketplace for funeral services.',
       detail:
         'A funeral-services marketplace with three Next.js apps for families, providers, and administrators, backed by a shared NestJS API and PostgreSQL database.',
       role: 'Full stack engineer · Led AWS setup and management',

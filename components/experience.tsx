@@ -8,7 +8,7 @@ export function Experience() {
         <div className="section-topline">
           <SectionHeading
             label="Experience"
-            title="Good work. Great teams."
+            title="Where I’ve worked."
           />
           <a
             className="text-link"
@@ -16,7 +16,7 @@ export function Experience() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            The full story in my CV <Arrow diagonal />
+            Read my CV <Arrow diagonal />
           </a>
         </div>
         <div className="experience-list">
@@ -57,7 +57,7 @@ export function Experience() {
         </div>
         <div className="credentials">
           <div>
-            <p className="eyebrow">The foundation</p>
+            <p className="eyebrow">Education</p>
             {cvData.education.map((item) => (
               <div key={item.school}>
                 <h3>{item.school}</h3>
@@ -67,7 +67,7 @@ export function Experience() {
             ))}
           </div>
           <div>
-            <p className="eyebrow">Always learning</p>
+            <p className="eyebrow">Certifications</p>
             {cvData.certifications.map((item) => (
               <div className="certification" key={item.title}>
                 <span className="aws-mark" aria-hidden="true">

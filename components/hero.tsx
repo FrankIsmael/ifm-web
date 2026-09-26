@@ -56,17 +56,12 @@ export function Hero() {
               sizes="(max-width: 700px) 280px, 340px"
             />
           </div>
-          <figcaption>
-            <span>Engineer. Builder. Curious human.</span>
-            <span aria-hidden="true">↗</span>
-          </figcaption>
         </figure>
         <a className="portrait-note agent-link" href="/llms.txt">
           <CodeMark /> Agent-readable · MCP <Arrow diagonal />
         </a>
       </div>
       <div className="hero-bottom">
-        <span className="eyebrow">From a good idea to a shipped product</span>
         <a href="#about" aria-label="Scroll to about me">
           Scroll to explore <span aria-hidden="true">↓</span>
         </a>

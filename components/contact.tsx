@@ -8,9 +8,9 @@ export function Contact() {
         <div>
           <p className="eyebrow">What’s next?</p>
           <h2>
-            Let’s build something
+            Interested in
             <br />
-            <span className="serif-accent">that matters.</span>
+            <span className="serif-accent">working together?</span>
           </h2>
           <p className="contact-description">{cvData.ctaSubtext}</p>
           <a className="contact-email" href={`mailto:${cvData.email}`}>
