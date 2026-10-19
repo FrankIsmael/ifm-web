@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { requireAuth } from '@/lib/study/auth';
+import { AUTH_ENABLED, requireAuth } from '@/lib/study/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,9 +16,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             </span>
             Study
           </Link>
-          <form action="/study/api/logout" method="post">
-            <button className="text-sm text-muted-foreground transition-colors hover:text-foreground">Sign out</button>
-          </form>
+          {AUTH_ENABLED && (
+            <form action="/study/api/logout" method="post">
+              <button className="text-sm text-muted-foreground transition-colors hover:text-foreground">Sign out</button>
+            </form>
+          )}
         </div>
       </header>
       <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6">{children}</main>

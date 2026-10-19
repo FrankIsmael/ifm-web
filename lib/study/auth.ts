@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 
+// Auth is switched off for now: the study app is open to everyone. Set to true to require the password again.
+export const AUTH_ENABLED = false;
+
 export const SESSION_COOKIE = 'study_session';
 export const SESSION_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
@@ -35,6 +38,7 @@ export function createSessionToken() {
 }
 
 export function isAuthed() {
+  if (!AUTH_ENABLED) return true;
   const token = cookies().get(SESSION_COOKIE)?.value;
   if (!token) return false;
   const [expires, signature] = token.split('.');
