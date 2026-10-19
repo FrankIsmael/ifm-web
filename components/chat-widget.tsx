@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import { cvData } from '@/lib/cv-data';
 
 /**
@@ -13,6 +14,7 @@ import { cvData } from '@/lib/cv-data';
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (open) setMounted(true);
@@ -26,6 +28,9 @@ export function ChatWidget() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
+
+  // The study app has its own full-screen UI.
+  if (pathname?.startsWith('/study')) return null;
 
   return (
     <>

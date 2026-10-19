@@ -43,6 +43,12 @@ This is a single-page personal portfolio/CV website built with Next.js 13 App Ro
 
 **CV PDF:** Stored at `public/CV-IsmaelFranciscoMoreno2026.pdf` and served statically.
 
+**Study app (`/study`):** a private, password-protected flashcard app (Anki-style spaced repetition), separate from the portfolio UI.
+- Routes: `app/study/` (login + `(app)` group whose layout enforces auth); JSON API in `app/study/api/*`, every handler wrapped with `route()` from `lib/study/api.ts`.
+- Data: Postgres via `postgres` (`lib/study/db.ts`); tables `study_*` are created on first request and the sample deck is seeded once. Queries live in `lib/study/data.ts`.
+- Scheduling: pure SM-2 scheduler in `lib/study/srs.ts`, shared by the API and the review UI's button previews.
+- Env vars: `POSTGRES_URL`, `STUDY_PASSWORD`, `STUDY_SECRET` (HMAC key for the session cookie), optional `STUDY_TZ` (default `America/Mexico_City`).
+
 ---
 
 ## Security

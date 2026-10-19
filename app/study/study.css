@@ -1,0 +1,115 @@
+.study {
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+}
+.study ::selection {
+  background: var(--highlight);
+  color: var(--background);
+}
+.study .eyebrow {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 10px;
+  line-height: 1.7;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Card faces */
+.study-md {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.study-md > * + * {
+  margin-top: 0.85em;
+}
+.study-md h3,
+.study-md h4,
+.study-md h5 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+.study-md h3 {
+  font-size: 1.35em;
+}
+.study-md h4 {
+  font-size: 1.15em;
+}
+.study-md strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.study-md em {
+  font-style: italic;
+}
+.study-md a {
+  color: var(--highlight);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.study-md ul,
+.study-md ol {
+  padding-left: 1.25em;
+}
+.study-md ul {
+  list-style: disc;
+}
+.study-md ol {
+  list-style: decimal;
+}
+.study-md li + li {
+  margin-top: 0.3em;
+}
+.study-md li::marker {
+  color: var(--dim);
+}
+.study-md blockquote {
+  border-left: 2px solid var(--highlight);
+  padding-left: 1em;
+  color: var(--muted-foreground);
+}
+.study-md code {
+  font-family: var(--font-jetbrains), monospace;
+  font-variant-ligatures: none;
+  font-size: 0.85em;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+.study-md pre {
+  position: relative;
+  text-align: left;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9em 1.1em;
+  overflow-x: auto;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+.study-md pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+.study-md pre[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.5em;
+  right: 0.75em;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.study-md-compact {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.study-md-compact pre {
+  max-height: 9rem;
+  overflow: hidden;
+}
