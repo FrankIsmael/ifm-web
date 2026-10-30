@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { cvData } from '@/lib/cv-data';
 import { SectionHeading, Tags } from './ui';
 
@@ -22,7 +23,18 @@ export function Projects() {
             >
               <div className="project-copy">
                 <p className="section-label">{project.tag}</p>
-                <h3>{project.name}</h3>
+                <h3>
+                  {project.id === 'acp-agent' && (
+                    <Image
+                      src="/acp-agent-mark.png"
+                      alt=""
+                      width={44}
+                      height={44}
+                      className="project-mark"
+                    />
+                  )}
+                  {project.name}
+                </h3>
                 <p className="project-subtitle">{project.description}</p>
                 <p>{project.detail}</p>
                 {'role' in project && project.role && (

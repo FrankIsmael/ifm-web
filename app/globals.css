@@ -571,8 +571,17 @@ body:has(.portfolio) {
 }
 
 .project-copy h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   font-size: clamp(32px, 3.5vw, 40px);
   line-height: 1.1;
+}
+
+.project-mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
 }
 
 .project-subtitle {

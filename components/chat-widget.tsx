@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { cvData } from '@/lib/cv-data';
@@ -47,7 +48,13 @@ export function ChatWidget() {
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
             <div className="flex items-center gap-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-foreground" aria-hidden />
+              <Image
+                src="/acp-agent-icon.png"
+                alt=""
+                width={22}
+                height={22}
+                className="h-[22px] w-[22px] rounded-[5px]"
+              />
               <span className="font-medium">Ask my agent</span>
             </div>
             <div className="flex items-center gap-1">
@@ -89,10 +96,10 @@ export function ChatWidget() {
         aria-expanded={open}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`fixed bottom-6 right-6 z-50 h-14 w-14 items-center justify-center rounded-full bg-[#ff6b1a] text-[#111214] shadow-lg ${open ? 'hidden md:flex' : 'flex'}`}
+        className={`fixed bottom-6 right-6 z-50 h-14 w-14 items-center justify-center overflow-hidden rounded-2xl shadow-lg ${open ? 'hidden bg-[#ff6b1a] text-[#111214] md:flex' : 'flex'}`}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden>
-          {open ? (
+        {open ? (
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden>
             <path
               d="M6 6l12 12M18 6 6 18"
               fill="none"
@@ -100,15 +107,16 @@ export function ChatWidget() {
               strokeWidth="1.75"
               strokeLinecap="round"
             />
-          ) : (
-            <path
-              fill="currentColor"
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M6.5 3h11A3.5 3.5 0 0 1 21 6.5v7a3.5 3.5 0 0 1-3.5 3.5H11.2L7.4 20.4A1 1 0 0 1 5.75 19.6V17H6.5A3.5 3.5 0 0 1 3 13.5v-7A3.5 3.5 0 0 1 6.5 3ZM8.5 9.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm3.5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm3.5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"
-            />
-          )}
-        </svg>
+          </svg>
+        ) : (
+          <Image
+            src="/acp-agent-icon.png"
+            alt=""
+            width={56}
+            height={56}
+            className="h-full w-full object-cover"
+          />
+        )}
       </motion.button>
     </>
   );
