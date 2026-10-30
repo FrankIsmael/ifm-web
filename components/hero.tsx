@@ -7,13 +7,16 @@ export function Hero() {
     <section id="hero" className="hero page-width">
       <div className="hero-copy">
         <div className="hero-intro">
-          <p className="eyebrow">Hello, I’m {cvData.displayName}</p>
+          <p className="eyebrow">{cvData.tagline}</p>
           <a className="availability-badge" href="#contact">
             <span className="status-dot" aria-hidden="true" />
             {cvData.availability}
           </a>
         </div>
-        <h1>{cvData.headline}</h1>
+        <h1>
+          {cvData.headline}
+          <span className="serif-accent">{cvData.headlineAccent}</span>
+        </h1>
         <p className="hero-description">{cvData.subheadline}</p>
         <ul className="stats hero-stats" aria-label="Experience at a glance">
           {cvData.trustSignals.map((stat) => (
@@ -26,6 +29,9 @@ export function Hero() {
         <div className="hero-actions">
           <a className="button button-dark" href="#work">
             Explore my work <Arrow />
+          </a>
+          <a className="text-link" href="#contact">
+            Let’s talk <Arrow />
           </a>
           <a
             className="text-link"

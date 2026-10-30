@@ -1,4 +1,5 @@
 import { cvData } from '@/lib/cv-data';
+import { Reveal } from './reveal';
 import { Arrow, CodeMark, SectionHeading, Tags } from './ui';
 
 function AgentIllustration() {
@@ -50,76 +51,122 @@ function AgentIllustration() {
   );
 }
 
+function ProjectArt({ id }: { id: string }) {
+  if (id === 'repose') {
+    return (
+      <>
+        <div className="repose-mark">
+          <CodeMark />
+        </div>
+        <span className="repose-name">
+          repose<span>Care, when it matters most.</span>
+        </span>
+      </>
+    );
+  }
+
+  if (id === 'scene-hunters') {
+    return (
+      <>
+        <div className="film-perforations" />
+        <span className="scene-name">
+          SCENE
+          <br />
+          <span>HUNTERS</span>
+        </span>
+        <span className="scene-caption">FOR THE LOVE OF MOVIES.</span>
+      </>
+    );
+  }
+
+  return (
+    <div className="acp-card-art">
+      <span className="agent-symbol">
+        <CodeMark />
+      </span>
+      <p>Side project · AI</p>
+    </div>
+  );
+}
+
 export function Projects() {
   const [featured, ...projects] = cvData.projects;
+  const featuredImpact = 'impact' in featured ? featured.impact : undefined;
+
   return (
     <section id="work" className="section page-width">
-      <div className="section-topline">
-        <SectionHeading
-          label="Selected work"
-          title="Projects I’ve worked on."
-        />
-        <p className="section-aside">
-          Client work, side projects,
-          <br />
-          and a little experimentation.
-        </p>
-      </div>
+      <Reveal>
+        <div className="section-topline">
+          <SectionHeading
+            label="Selected work"
+            title="Projects I’ve worked on."
+          />
+          <p className="section-aside">{cvData.workAside}</p>
+        </div>
+      </Reveal>
+      <Reveal delay={0.06}>
       <article className="featured-project">
         <div className="featured-copy">
           <p className="eyebrow">
-            <span className="status-dot" /> Currently building
+            <span className="status-dot" /> {featured.tag}
           </p>
           <h3>
             {featured.name}
             <span className="serif-accent">{featured.description}</span>
           </h3>
           <p>{featured.detail}</p>
+          {'role' in featured && featured.role && (
+            <div className="project-ownership">
+              <p>{featured.role}</p>
+              <p>{featured.team}</p>
+            </div>
+          )}
           <ul className="impact-list">
             {featured.solution.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
           <Tags items={featured.tech} />
-          <a
-            className="button button-dark"
-            href={featured.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try the live demo <Arrow diagonal />
-          </a>
-          <p className="project-note">{featured.note}</p>
+          {featured.url ? (
+            <a
+              className="button button-dark"
+              href={featured.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit project <Arrow diagonal />
+            </a>
+          ) : (
+            <p className="project-note">
+              {featured.note || 'Private client product'}
+            </p>
+          )}
         </div>
-        <AgentIllustration />
+        {featured.id === 'acp-agent' ? (
+          <AgentIllustration />
+        ) : featuredImpact ? (
+          <div className="featured-metrics">
+            <p className="eyebrow">Measured improvements</p>
+            <ul>
+              {featuredImpact.map((metric) => (
+                <li key={metric.label}>
+                  <strong>{metric.value}</strong>
+                  <span>{metric.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <AgentIllustration />
+        )}
       </article>
+      </Reveal>
       <div className="project-grid">
-        {projects.map((project) => (
-          <article
-            key={project.id}
-            className={`project-card project-${project.id}`}
-          >
+        {projects.map((project, index) => (
+          <Reveal key={project.id} delay={index * 0.06}>
+          <article className={`project-card project-${project.id}`}>
             <div className="project-art" aria-hidden="true">
-              {project.id === 'repose' ? (
-                <>
-                  <div className="repose-mark">
-                    <CodeMark />
-                  </div>
-                  <span className="repose-name">
-                    repose<span>Care, when it matters most.</span>
-                  </span>
-                </>
-              ) : (
-                <>
-                  <div className="film-perforations" />
-                  <span className="scene-name">
-                    SCENE
-                    <br />
-                    <span>HUNTERS</span>
-                  </span>
-                  <span className="scene-caption">FOR THE LOVE OF MOVIES.</span>
-                </>
-              )}
+              <ProjectArt id={project.id} />
             </div>
             <div className="project-card-body">
               <p className="eyebrow">{project.tag}</p>
@@ -172,6 +219,7 @@ export function Projects() {
               )}
             </div>
           </article>
+          </Reveal>
         ))}
       </div>
     </section>

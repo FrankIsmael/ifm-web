@@ -49,7 +49,7 @@ export default function OGImage() {
           fontSize: 19,
         }}
       >
-        <span>Web products · Cloud · AI agents</span>
+        <span>Contract & full-time · Next.js · AWS</span>
         <span>{cvData.location}</span>
       </div>
     </div>,

@@ -7,7 +7,8 @@ export function GET() {
 
 ## Public information for agents
 
-- [Portfolio](${websiteUrl}/): Biography, skills, work experience, projects, and contact links.
+- [Portfolio](${websiteUrl}/): Biography, skills, services, work experience, projects, and contact links.
+- Availability: ${websiteInfo.profile.availability}. Open to contract projects and full-time roles.
 - [CV](${websiteInfo.contact.cv}): Downloadable résumé.
 
 ## MCP server

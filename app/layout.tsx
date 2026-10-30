@@ -16,9 +16,9 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
-const siteTitle = `${cvData.displayName} | Full Stack Engineer in Mexico City`;
+const siteTitle = `${cvData.displayName} | Full Stack Engineer · Contract & Full-time`;
 const siteDescription =
-  'Full stack engineer in Mexico City with 6+ years building web products. Explore my work with React, Next.js, Node.js, AWS, and AI agents.';
+  'Full stack engineer in Mexico City, open to contract projects and full-time roles. React, Next.js, NestJS, PostgreSQL, and AWS.';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ismaelfrancisco.tech'),

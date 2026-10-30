@@ -8,11 +8,23 @@ export function Contact() {
         <div>
           <p className="eyebrow">What’s next?</p>
           <h2>
-            Interested in
+            {cvData.ctaHeadline}
             <br />
-            <span className="serif-accent">working together?</span>
+            <span className="serif-accent">{cvData.ctaAccent}</span>
           </h2>
           <p className="contact-description">{cvData.ctaSubtext}</p>
+          <div className="contact-intents">
+            <a
+              href={`mailto:${cvData.email}?subject=${encodeURIComponent('Project inquiry')}`}
+            >
+              Project inquiry <Arrow diagonal />
+            </a>
+            <a
+              href={`mailto:${cvData.email}?subject=${encodeURIComponent('Role inquiry')}`}
+            >
+              Role inquiry <Arrow diagonal />
+            </a>
+          </div>
           <a className="contact-email" href={`mailto:${cvData.email}`}>
             {cvData.email}
             <Arrow diagonal />
@@ -23,7 +35,7 @@ export function Contact() {
             <CodeMark />
           </span>
           <p>
-            <span className="status-dot" /> Open to opportunities
+            <span className="status-dot" /> {cvData.availability}
           </p>
           <div className="contact-socials">
             <a href={cvData.linkedin} target="_blank" rel="noopener noreferrer">

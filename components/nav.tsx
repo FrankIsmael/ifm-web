@@ -5,6 +5,7 @@ import { Arrow } from './ui';
 
 const links = [
   { label: 'About', href: '#about' },
+  { label: 'Work with me', href: '#work-with-me' },
   { label: 'Experience', href: '#experience' },
   { label: 'Work', href: '#work' },
 ];
@@ -23,10 +24,12 @@ export function Nav() {
       },
       { rootMargin: '-15% 0px -55% 0px' },
     );
-    ['hero', 'about', 'experience', 'work', 'contact'].forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
+    ['hero', 'about', 'work-with-me', 'experience', 'work', 'contact'].forEach(
+      (id) => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+      },
+    );
     return () => observer.disconnect();
   }, []);
 

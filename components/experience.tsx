@@ -1,4 +1,5 @@
 import { cvData } from '@/lib/cv-data';
+import { Reveal } from './reveal';
 import { Arrow, SectionHeading, Tags } from './ui';
 
 export function Experience() {
@@ -6,10 +7,15 @@ export function Experience() {
     <section id="experience" className="experience-section section">
       <div className="page-width">
         <div className="section-topline">
-          <SectionHeading
-            label="Experience"
-            title="Where I’ve worked."
-          />
+          <div>
+            <SectionHeading
+              label="Experience"
+              title="Where I’ve worked."
+            />
+            <p className="section-aside experience-aside">
+              {cvData.experienceAside}
+            </p>
+          </div>
           <a
             className="text-link"
             href={cvData.cvUrl}
@@ -20,8 +26,9 @@ export function Experience() {
           </a>
         </div>
         <div className="experience-list">
-          {cvData.experience.map((job) => (
-            <article key={job.company} className="experience-row">
+          {cvData.experience.map((job, index) => (
+            <Reveal key={job.company} delay={index * 0.06}>
+            <article className="experience-row">
               <div className="job-meta">
                 <p className="eyebrow">{job.period}</p>
                 <p>{job.location}</p>
@@ -53,6 +60,7 @@ export function Experience() {
                 <Tags items={job.tech} />
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
         <div className="credentials">

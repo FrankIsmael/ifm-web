@@ -1,7 +1,7 @@
 export const cvData = {
   name: 'Ismael Francisco Moreno',
   displayName: 'Ismael Francisco',
-  tagline: 'Full Stack Software Engineer',
+  tagline: 'Full stack engineer · Contract & full-time',
   location: 'Mexico City, Mexico',
   email: 'ismaelfcom93@gmail.com',
   linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
@@ -11,19 +11,91 @@ export const cvData = {
   agentUrl:
     process.env.NEXT_PUBLIC_AGENT_URL ??
     'https://acp-agent.ismaelfrancisco.tech/',
-  headline: 'Full stack engineer.',
-  availability: 'Open to opportunities',
+  headline: 'I ship web products.',
+  headlineAccent: 'From the API to AWS.',
+  availability: 'Open to contract and full-time',
   subheadline:
-    'I build web applications, APIs, and AWS infrastructure. Currently at ZirconTech, working with distributed teams.',
+    'I build production web applications, APIs, and AWS infrastructure from Mexico City — for contract projects and full-time teams.',
   summary:
-    'I’m a full stack engineer at ZirconTech, working remotely with distributed teams. I build web applications with React, Next.js, NestJS, and PostgreSQL, and take them to production on AWS.',
+    'I take React, Next.js, and NestJS products to production on AWS: search, payments, maps, and the infrastructure that keeps them running. Recent work includes cutting a marketplace search from 382 database queries to 12.',
   aboutExtra:
     'My path started in mechatronics at IPN. That curiosity about how things work still shapes how I build: understand the whole system, pay attention to the details, and make something useful.',
   currentFocus:
     'Lately, I’m exploring AI agents and bringing AI-assisted workflows into my everyday development with Claude Code and Cursor.',
-  ctaHeadline: 'Interested in working together?',
+  ctaHeadline: 'Interested in',
+  ctaAccent: 'working together?',
   ctaSubtext:
-    'I’m open to full stack, frontend, and backend roles, as well as interesting projects. If you’re building something useful, I’d love to hear about it.',
+    'I’m open to contract projects and full-time roles. Tell me about a product you need shipped, or a role you’re hiring for.',
+  experienceAside: 'Open to contract projects and full-time roles.',
+  workAside:
+    'Contract delivery across marketplaces, payments, and AWS, plus selected side projects.',
+  workWithMe: {
+    label: 'Work with me',
+    title: 'Product work, end to end.',
+    aside: 'The same stack I use on client products today.',
+  },
+  services: [
+    {
+      title: 'Full-stack product delivery',
+      description:
+        'Public, provider, and admin experiences in Next.js and React — forms, dashboards, maps, and media uploads.',
+    },
+    {
+      title: 'APIs and data',
+      description:
+        'NestJS APIs with Prisma, authentication, scheduled jobs, and PostgreSQL modeling and migrations.',
+    },
+    {
+      title: 'AWS setup and operations',
+      description:
+        'Amplify, Elastic Beanstalk, RDS, and S3 for frontends, APIs, and files — setup and ongoing management.',
+    },
+    {
+      title: 'Payments',
+      description:
+        'Stripe purchases and arrangement flows wired into Next.js apps with PostgreSQL persistence.',
+    },
+  ],
+  engagements: [
+    {
+      title: 'Contract / freelance',
+      points: [
+        'Scoped product work across Next.js, NestJS, and PostgreSQL.',
+        'AWS setup and infrastructure for apps that need to ship.',
+        'Performance work on search, maps, and checkout flows.',
+      ],
+    },
+    {
+      title: 'Full-time roles',
+      points: [
+        'Full stack, frontend, or backend roles with distributed teams.',
+        'Hands-on delivery from the first endpoint through deployment.',
+        'Remote from Mexico City, in English and Spanish.',
+      ],
+    },
+  ],
+  processSteps: [
+    {
+      title: 'Discover',
+      description:
+        'We talk through the product, the users, and what done looks like.',
+    },
+    {
+      title: 'Scope',
+      description:
+        'I propose a clear slice of work, the stack, and how we’ll know it shipped.',
+    },
+    {
+      title: 'Build',
+      description:
+        'I implement across the app, API, and infrastructure, with progress you can follow.',
+    },
+    {
+      title: 'Ship',
+      description:
+        'We deploy, measure, and leave the system in a state your team can keep running.',
+    },
+  ],
   trustSignals: [
     { value: '6+', label: 'years in software' },
     { value: '3', label: 'companies' },
@@ -104,24 +176,6 @@ export const cvData = {
   ],
   projects: [
     {
-      id: 'acp-agent',
-      name: 'ACP Agent',
-      tag: 'AI / Personal project',
-      status: 'In development',
-      description: 'An AI agent with a workspace of its own.',
-      detail:
-        'A web interface for an agent running in a remote microVM. Follow its work as it happens, pick up conversations, and preview or edit its generated artifacts in your browser.',
-      solution: [
-        'Streaming conversations with visible tool activity and model selection.',
-        'WhatsApp integration: link your account and interact with the agent in selected groups, sharing conversation context with the web chat.',
-        'An artifacts workspace to edit and download code, documents, and HTML apps, with document and HTML previews and edits saved locally in your browser.',
-        'English and Spanish interfaces, plus a public demo with guest usage limits.',
-      ],
-      tech: ['React Router', 'TypeScript', 'Node.js', 'ACP', 'WebSocket / SSE'],
-      url: 'https://acp-agent.ismaelfrancisco.tech/',
-      note: 'An ongoing project built on the Sistemas Agénticos workshop foundation, with goose as the AI agent.',
-    },
-    {
       id: 'repose',
       name: 'Repose',
       tag: 'Full stack / Marketplace',
@@ -164,6 +218,24 @@ export const cvData = {
       tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'AWS'],
       url: 'https://scenehunters.com',
       note: '',
+    },
+    {
+      id: 'acp-agent',
+      name: 'ACP Agent',
+      tag: 'AI / Side project',
+      status: 'In development',
+      description: 'An AI agent with a workspace of its own.',
+      detail:
+        'A web interface for an agent running in a remote microVM. Follow its work as it happens, pick up conversations, and preview or edit its generated artifacts in your browser.',
+      solution: [
+        'Streaming conversations with visible tool activity and model selection.',
+        'WhatsApp integration: link your account and interact with the agent in selected groups, sharing conversation context with the web chat.',
+        'An artifacts workspace to edit and download code, documents, and HTML apps, with document and HTML previews and edits saved locally in your browser.',
+        'English and Spanish interfaces, plus a public demo with guest usage limits.',
+      ],
+      tech: ['React Router', 'TypeScript', 'Node.js', 'ACP', 'WebSocket / SSE'],
+      url: 'https://acp-agent.ismaelfrancisco.tech/',
+      note: 'An ongoing project built on the Sistemas Agénticos workshop foundation, with goose as the AI agent.',
     },
   ],
 };
