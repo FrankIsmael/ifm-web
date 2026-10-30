@@ -47,7 +47,7 @@ export function ChatWidget() {
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
             <div className="flex items-center gap-2 text-sm">
-              <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
+              <span className="h-2 w-2 rounded-full bg-foreground" aria-hidden />
               <span className="font-medium">Ask my agent</span>
             </div>
             <div className="flex items-center gap-1">
@@ -89,7 +89,7 @@ export function ChatWidget() {
         aria-expanded={open}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className={`fixed bottom-6 right-6 z-50 h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg ring-1 ring-border ${open ? 'hidden md:flex' : 'flex'}`}
+        className={`fixed bottom-6 right-6 z-50 h-14 w-14 items-center justify-center rounded-full bg-[#ff6b1a] text-[#111214] shadow-lg ${open ? 'hidden md:flex' : 'flex'}`}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden>
           {open ? (

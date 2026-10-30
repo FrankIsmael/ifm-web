@@ -1,6 +1,5 @@
 import { cvData } from '@/lib/cv-data';
-import { Reveal } from './reveal';
-import { Arrow, SectionHeading, Tags } from './ui';
+import { SectionHeading, Tags } from './ui';
 
 export function Experience() {
   return (
@@ -8,10 +7,7 @@ export function Experience() {
       <div className="page-width">
         <div className="section-topline">
           <div>
-            <SectionHeading
-              label="Experience"
-              title="Where I’ve worked."
-            />
+            <SectionHeading label="Experience" title="Where I’ve worked." />
             <p className="section-aside experience-aside">
               {cvData.experienceAside}
             </p>
@@ -22,37 +18,32 @@ export function Experience() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read my CV <Arrow diagonal />
+            Read my CV
           </a>
         </div>
+        <ul className="trust-row" aria-label="Experience at a glance">
+          {cvData.trustSignals.map((stat) => (
+            <li key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </li>
+          ))}
+        </ul>
         <div className="experience-list">
-          {cvData.experience.map((job, index) => (
-            <Reveal key={job.company} delay={index * 0.06}>
-            <article className="experience-row">
+          {cvData.experience.map((job) => (
+            <article className="experience-row" key={job.company}>
               <div className="job-meta">
-                <p className="eyebrow">{job.period}</p>
+                <p>{job.period}</p>
                 <p>{job.location}</p>
-                {job.current && (
-                  <span className="current-badge">
-                    <span className="status-dot" /> Currently here
-                  </span>
-                )}
+                {job.current && <p className="current-role">Currently here</p>}
               </div>
               <div className="job-content">
                 <div className="job-heading">
-                  <span
-                    className={`company-mark company-${job.initials === 'Z' ? 'zircon' : job.initials === 'iv' ? 'ivoy' : 'accenture'}`}
-                    aria-hidden="true"
-                  >
-                    {job.initials}
-                  </span>
-                  <div>
-                    <h3>{job.company}</h3>
-                    <p>{job.role}</p>
-                  </div>
+                  <h3>{job.company}</h3>
+                  <p>{job.role}</p>
                 </div>
                 <h4>{job.summary}</h4>
-                <ul className="impact-list">
+                <ul className="copy-list">
                   {job.description.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -60,12 +51,11 @@ export function Experience() {
                 <Tags items={job.tech} />
               </div>
             </article>
-            </Reveal>
           ))}
         </div>
         <div className="credentials">
           <div>
-            <p className="eyebrow">Education</p>
+            <p className="section-label">Education</p>
             {cvData.education.map((item) => (
               <div key={item.school}>
                 <h3>{item.school}</h3>
@@ -75,18 +65,13 @@ export function Experience() {
             ))}
           </div>
           <div>
-            <p className="eyebrow">Certifications</p>
+            <p className="section-label">Certifications</p>
             {cvData.certifications.map((item) => (
               <div className="certification" key={item.title}>
-                <span className="aws-mark" aria-hidden="true">
-                  aws
-                </span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>
-                    {item.issuer} · Issued {item.issued}
-                  </p>
-                </div>
+                <h3>{item.title}</h3>
+                <p>
+                  {item.issuer}, issued {item.issued}
+                </p>
               </div>
             ))}
           </div>

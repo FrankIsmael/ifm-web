@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Newsreader, Source_Sans_3 } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import { cvData } from '@/lib/cv-data';
@@ -14,6 +14,20 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-source',
+  display: 'swap',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-newsreader',
+  display: 'swap',
 });
 
 const siteTitle = `${cvData.displayName} | Full Stack Engineer · Contract & Full-time`;
@@ -57,7 +71,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable} ${sourceSans.variable} ${newsreader.variable}`}
+    >
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-EKCVNEVZSE"

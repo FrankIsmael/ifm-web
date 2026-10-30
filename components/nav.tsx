@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Arrow } from './ui';
+import { cvData } from '@/lib/cv-data';
 
 const links = [
   { label: 'About', href: '#about' },
@@ -54,8 +54,7 @@ export function Nav() {
           onClick={() => setOpen(false)}
           aria-label="Ismael Francisco, home"
         >
-          if<span className="wordmark-dot">.</span>
-          <span className="wordmark-name">Ismael Francisco</span>
+          {cvData.displayName}
         </a>
         <button
           ref={toggle}
@@ -67,7 +66,6 @@ export function Nav() {
           onClick={() => setOpen(!open)}
         >
           <span>{open ? 'Close' : 'Menu'}</span>
-          <span aria-hidden="true">{open ? '−' : '+'}</span>
         </button>
         <div id="nav-links" className={`nav-links${open ? ' is-open' : ''}`}>
           {links.map((link) => (
@@ -86,7 +84,7 @@ export function Nav() {
             aria-current={active === '#contact' ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
-            Let’s talk <Arrow diagonal />
+            Let’s talk
           </a>
         </div>
       </nav>

@@ -1,5 +1,4 @@
 import { cvData } from '@/lib/cv-data';
-import { Reveal } from './reveal';
 import { SectionHeading } from './ui';
 
 export function WorkWithMe() {
@@ -7,47 +6,38 @@ export function WorkWithMe() {
 
   return (
     <section id="work-with-me" className="section page-width">
-      <Reveal>
-        <div className="section-topline">
-          <SectionHeading label={workWithMe.label} title={workWithMe.title} />
-          <p className="section-aside">{workWithMe.aside}</p>
-        </div>
-      </Reveal>
-      <div className="services-grid">
-        {cvData.services.map((service, index) => (
-          <Reveal key={service.title} delay={index * 0.06}>
-            <article className="service-card">
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-            </article>
-          </Reveal>
+      <div className="section-topline">
+        <SectionHeading label={workWithMe.label} title={workWithMe.title} />
+        <p className="section-aside">{workWithMe.aside}</p>
+      </div>
+      <ul className="rule-list">
+        {cvData.services.map((service) => (
+          <li key={service.title}>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </li>
+        ))}
+      </ul>
+      <div className="engagement-list">
+        {cvData.engagements.map((engagement) => (
+          <article key={engagement.title}>
+            <h3>{engagement.title}</h3>
+            <ul className="copy-list">
+              {engagement.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </article>
         ))}
       </div>
-      <div className="engagement-cards">
-        {cvData.engagements.map((engagement, index) => (
-          <Reveal key={engagement.title} delay={0.08 + index * 0.06}>
-            <article className="engagement-card">
-              <h3>{engagement.title}</h3>
-              <ul className="impact-list">
-                {engagement.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </article>
-          </Reveal>
+      <ol className="process-line">
+        {cvData.processSteps.map((step) => (
+          <li key={step.title}>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </li>
         ))}
-      </div>
-      <div className="process-steps">
-        {cvData.processSteps.map((step, index) => (
-          <Reveal key={step.title} delay={index * 0.06}>
-            <article className="process-step">
-              <p className="eyebrow">{String(index + 1).padStart(2, '0')}</p>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-            </article>
-          </Reveal>
-        ))}
-      </div>
+      </ol>
     </section>
   );
 }

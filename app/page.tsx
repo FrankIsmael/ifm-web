@@ -29,9 +29,7 @@ export default function Home() {
           </span>
           <span>Mexico City.</span>
           <a href="/llms.txt">Information for AI agents</a>
-          <a href="#hero">
-            Back to top <span aria-hidden="true">↑</span>
-          </a>
+          <a href="#hero">Back to top</a>
         </div>
       </footer>
     </div>
