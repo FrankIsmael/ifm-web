@@ -51,6 +51,11 @@ export const cvData = {
         'Amplify, Elastic Beanstalk, RDS, and S3 for frontends, APIs, and files — setup and ongoing management.',
     },
     {
+      title: 'AI agents and WhatsApp automation',
+      description:
+        'AI assistants that answer customers on WhatsApp through the official WhatsApp Business Platform, and analyze business data for owners.',
+    },
+    {
       title: 'Payments',
       description:
         'Stripe purchases and arrangement flows wired into Next.js apps with PostgreSQL persistence.',
