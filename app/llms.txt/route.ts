@@ -10,7 +10,6 @@ export function GET() {
 - [Portfolio](${websiteUrl}/): Biography, skills, services, work experience, projects, and contact links.
 - Availability: ${websiteInfo.profile.availability}. Open to contract projects and full-time roles.
 - [CV](${websiteInfo.contact.cv}): Downloadable résumé.
-- [Robbie](${websiteUrl}/robbie): WhatsApp AI agent for stores.
 - [Privacy Policy](${websiteUrl}/privacy) and [Terms of Service](${websiteUrl}/terms).
 
 ## MCP server

@@ -21,7 +21,6 @@ export const cvData = {
       workWithMe: 'Work with me',
       experience: 'Experience',
       work: 'Work',
-      robbie: 'Robbie',
       contact: 'Let’s talk',
       menu: 'Menu',
       close: 'Close',
@@ -67,7 +66,6 @@ export const cvData = {
       downloadCv: 'Download CV',
     },
     footer: {
-      robbie: 'Robbie',
       privacy: 'Privacy',
       terms: 'Terms',
       agents: 'Information for AI agents',
@@ -122,8 +120,7 @@ export const cvData = {
     {
       title: 'AI agents and WhatsApp automation',
       description:
-        'AI agents that work through WhatsApp on the official WhatsApp Business Platform: customer replies, catalog updates, and questions about your data.',
-      href: '/robbie',
+        'Integrations with the official WhatsApp Business Platform and AI agents that help small businesses answer customers and manage their catalog.',
     },
     {
       title: 'Payments',
@@ -303,69 +300,16 @@ export const cvData = {
     },
   ],
   pages: {
-    learnMore: 'Learn more',
-    robbie: {
-      metaTitle: 'Robbie · WhatsApp AI agent for stores',
-      metaDescription:
-        'Robbie is a WhatsApp AI agent for small stores: it answers customers, keeps the product catalog up to date, and answers questions about sales data, on the official WhatsApp Business Platform.',
-      label: 'Product',
-      title: 'Robbie, a WhatsApp AI agent for stores.',
-      intro:
-        'Robbie works where your customers already are. It runs on the official WhatsApp Business Platform (Cloud API) and is built and operated by {legalName}, a software engineer in Mexico.',
-      capabilitiesTitle: 'What Robbie does',
-      capabilities: [
-        {
-          title: 'Answers your customers',
-          description:
-            'Replies to product, price, and availability questions on your WhatsApp number, using your catalog as the source of truth, and hands the conversation to you when a person is needed.',
-        },
-        {
-          title: 'Manages your catalog from a chat',
-          description:
-            'Add or update products by sending a message and a photo. The changes show up on your store or catalog site.',
-        },
-        {
-          title: 'Answers questions about your sales',
-          description:
-            'Ask in plain language — what sold best this month, which products are running low — and get an answer from your own data.',
-        },
-      ],
-      stepsTitle: 'How onboarding works',
-      steps: [
-        {
-          title: 'Connect',
-          description:
-            'You connect your WhatsApp Business account through Meta’s Embedded Signup. You keep ownership of your number, your account, and your data.',
-        },
-        {
-          title: 'Configure',
-          description:
-            'We load your catalog, business hours, and tone, and agree on what Robbie answers and when it hands off to you.',
-        },
-        {
-          title: 'Go live',
-          description:
-            'Robbie starts replying on your number. Message templates and conversation charges are managed in your own WhatsApp Business account.',
-        },
-      ],
-      builtTitle: 'How it’s built',
-      built:
-        'Robbie is a custom agent built on the open-source goose agent runtime, running in an isolated cloud sandbox. I built the web interface, the real-time streaming layer, and the WhatsApp gateway around it. Try the web version:',
-      dataNote: 'How customer data and WhatsApp messages are handled:',
-      ctaTitle: 'Want Robbie for your business?',
-      ctaText: 'Tell me about your store and how your customers reach you today.',
-      ctaSubject: 'Robbie for my business',
-    },
     privacy: {
       metaTitle: 'Privacy Policy',
       metaDescription:
-        'How Ismael Francisco Moreno collects, uses, and protects personal data on this website and in WhatsApp services such as Robbie.',
+        'How Ismael Francisco Moreno collects, uses, and protects personal data on this website and in WhatsApp services for businesses.',
       label: 'Legal',
       title: 'Privacy Policy',
       updatedLabel: 'Last updated',
       updated: 'November 13, 2026',
       intro:
-        'This policy explains how personal data is handled on ismaelfrancisco.tech and in the software services I provide, including Robbie, a WhatsApp AI agent for businesses. It is issued under Mexico’s Federal Law on the Protection of Personal Data Held by Private Parties (LFPDPPP).',
+        'This policy explains how personal data is handled on ismaelfrancisco.tech and in the software services I provide, including WhatsApp AI agent services for businesses. It is issued under Mexico’s Federal Law on the Protection of Personal Data Held by Private Parties (LFPDPPP).',
       sections: [
         {
           heading: '1. Who is responsible',
@@ -381,7 +325,7 @@ export const cvData = {
             {
               list: [
                 'Website visitors and prospective clients: I am the party responsible for the data described in section 3.',
-                'WhatsApp services for client businesses: when a business uses Robbie, that business is responsible for its customers’ data, and I process it only on its behalf and according to its instructions, as described in section 4.',
+                'WhatsApp services for client businesses: when a business uses my WhatsApp services, that business is responsible for its customers’ data, and I process it only on its behalf and according to its instructions, as described in section 4.',
               ],
             },
           ],
@@ -406,7 +350,7 @@ export const cvData = {
           heading: '4. WhatsApp data processed for client businesses',
           blocks: [
             {
-              p: 'When a business connects its WhatsApp Business account to Robbie through the WhatsApp Business Platform, the following data may be processed:',
+              p: 'When a business connects its WhatsApp Business account to my services through the WhatsApp Business Platform, the following data may be processed:',
             },
             {
               list: [
@@ -459,7 +403,7 @@ export const cvData = {
               p: 'You can request access to, rectification, cancellation of, or opposition to the processing of your personal data (ARCO rights), or revoke your consent, by emailing {email} with your name, the phone number or email involved, and your request. I will reply within 20 business days.',
             },
             {
-              p: 'If you are a customer of a business that uses Robbie, you can also contact that business directly. To delete WhatsApp conversation data, send the request to {email}; it will be deleted from active systems within 30 days (provider backups within 90 days) and you will receive a confirmation.',
+              p: 'If you are a customer of a business that uses these services, you can also contact that business directly. To delete WhatsApp conversation data, send the request to {email}; it will be deleted from active systems within 30 days (provider backups within 90 days) and you will receive a confirmation.',
             },
           ],
         },
@@ -474,19 +418,19 @@ export const cvData = {
     terms: {
       metaTitle: 'Terms of Service',
       metaDescription:
-        'Terms for software services and WhatsApp AI agent services (Robbie) provided by Ismael Francisco Moreno.',
+        'Terms for software services and WhatsApp AI agent services provided by Ismael Francisco Moreno.',
       label: 'Legal',
       title: 'Terms of Service',
       updatedLabel: 'Last updated',
       updated: 'November 13, 2026',
       intro:
-        'These terms apply to the software services provided by {legalName} (“I”, “me”) to businesses (“you”), including Robbie, a WhatsApp AI agent. A signed proposal or contract for a specific project takes precedence where it differs.',
+        'These terms apply to the software services provided by {legalName} (“I”, “me”) to businesses (“you”), including WhatsApp AI agent services. A signed proposal or contract for a specific project takes precedence where it differs.',
       sections: [
         {
           heading: '1. Services',
           blocks: [
             {
-              p: 'I provide software development, consulting, and AI agent services. Robbie connects to your WhatsApp Business account through the official WhatsApp Business Platform to answer your customers, manage catalog information, and report on your data, as agreed for your account.',
+              p: 'I provide software development, consulting, and AI agent services. The WhatsApp AI agent service connects to your WhatsApp Business account through the official WhatsApp Business Platform to answer your customers, manage catalog information, and report on your data, as agreed for your account.',
             },
           ],
         },
@@ -495,7 +439,7 @@ export const cvData = {
           blocks: [
             {
               list: [
-                'You connect your own WhatsApp Business account and phone number and keep ownership of them. You can disconnect Robbie at any time.',
+                'You connect your own WhatsApp Business account and phone number and keep ownership of them. You can disconnect the service at any time.',
                 'You must comply with the WhatsApp Business Terms of Service and the WhatsApp Business and Commerce Policies, including obtaining your customers’ opt-in before messaging them.',
                 'WhatsApp conversation and template charges are billed by Meta to the payment method on your WhatsApp Business account, separately from my fees.',
               ],
@@ -514,7 +458,7 @@ export const cvData = {
           heading: '4. AI-generated replies',
           blocks: [
             {
-              p: 'Robbie generates replies automatically from your information and can make mistakes. You are responsible for the business information you provide and for reviewing how the agent represents your business; sensitive topics should be handed off to a person.',
+              p: 'The AI agent generates replies automatically from your information and can make mistakes. You are responsible for the business information you provide and for reviewing how the agent represents your business; sensitive topics should be handed off to a person.',
             },
           ],
         },

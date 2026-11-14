@@ -15,7 +15,7 @@ export function localePath(locale: Locale): string {
   return locale === defaultLocale ? '/' : `/${locale}`;
 }
 
-/** Locale-aware URL for an internal page, e.g. localeHref('es', '/robbie') → '/es/robbie'. */
+/** Locale-aware URL for an internal page, e.g. localeHref('es', '/privacy') → '/es/privacy'. */
 export function localeHref(locale: Locale, path = '/'): string {
   if (locale === defaultLocale) return path;
   return path === '/' ? `/${locale}` : `/${locale}${path}`;

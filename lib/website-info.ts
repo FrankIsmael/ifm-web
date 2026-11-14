@@ -34,7 +34,6 @@ export const websiteInfo = {
   },
   pages: [
     { url: `${websiteUrl}/`, description: 'Portfolio, biography, experience, projects, and contact information.' },
-    { url: `${websiteUrl}/robbie`, description: 'Robbie, a WhatsApp AI agent for stores on the official WhatsApp Business Platform.' },
     { url: `${websiteUrl}/privacy`, description: 'Privacy Policy, including WhatsApp data handling and data deletion requests.' },
     { url: `${websiteUrl}/terms`, description: 'Terms of Service for software and WhatsApp AI agent services.' },
   ],
