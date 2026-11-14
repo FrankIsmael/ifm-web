@@ -447,7 +447,7 @@ export const cvData = {
           heading: '6. Retention and security',
           blocks: [
             {
-              p: 'Inquiry emails are kept as long as needed to handle the conversation and any resulting contract. WhatsApp data is kept while the business uses the service and is deleted within 30 days after the business disconnects or requests deletion, unless the law requires otherwise. Access is restricted, credentials are stored securely, and data travels over encrypted connections.',
+              p: 'Inquiry emails are kept as long as needed to handle the conversation and any resulting contract. WhatsApp data is kept while the business uses the service and is deleted from active systems within 30 days after the business disconnects or requests deletion, unless the law requires otherwise. Backup copies held by infrastructure providers may persist for up to 90 days before they are overwritten. Access is restricted, credentials are stored securely, and data travels over encrypted connections.',
             },
           ],
         },
@@ -459,7 +459,7 @@ export const cvData = {
               p: 'You can request access to, rectification, cancellation of, or opposition to the processing of your personal data (ARCO rights), or revoke your consent, by emailing {email} with your name, the phone number or email involved, and your request. I will reply within 20 business days.',
             },
             {
-              p: 'If you are a customer of a business that uses Robbie, you can also contact that business directly. To delete WhatsApp conversation data, send the request to {email}; it will be deleted within 30 days and you will receive a confirmation.',
+              p: 'If you are a customer of a business that uses Robbie, you can also contact that business directly. To delete WhatsApp conversation data, send the request to {email}; it will be deleted from active systems within 30 days (provider backups within 90 days) and you will receive a confirmation.',
             },
           ],
         },

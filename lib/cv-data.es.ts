@@ -451,7 +451,7 @@ export const cvDataEs: CvData = {
           heading: '6. Conservación y seguridad',
           blocks: [
             {
-              p: 'Los correos de consulta se conservan mientras sea necesario para atender la conversación y cualquier contrato que resulte. Los datos de WhatsApp se conservan mientras el negocio use el servicio y se eliminan dentro de los 30 días siguientes a que el negocio se desconecte o solicite su eliminación, salvo que la ley exija otra cosa. El acceso está restringido, las credenciales se guardan de forma segura y los datos viajan por conexiones cifradas.',
+              p: 'Los correos de consulta se conservan mientras sea necesario para atender la conversación y cualquier contrato que resulte. Los datos de WhatsApp se conservan mientras el negocio use el servicio y se eliminan de los sistemas activos dentro de los 30 días siguientes a que el negocio se desconecte o solicite su eliminación, salvo que la ley exija otra cosa. Las copias de respaldo de los proveedores de infraestructura pueden conservarse hasta 90 días antes de sobrescribirse. El acceso está restringido, las credenciales se guardan de forma segura y los datos viajan por conexiones cifradas.',
             },
           ],
         },
@@ -463,7 +463,7 @@ export const cvDataEs: CvData = {
               p: 'Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (derechos ARCO), o revocar tu consentimiento, escribiendo a {email} con tu nombre, el número de teléfono o correo involucrado y tu solicitud. Responderé dentro de 20 días hábiles.',
             },
             {
-              p: 'Si eres cliente de un negocio que usa Robbie, también puedes contactar directamente a ese negocio. Para eliminar datos de conversaciones de WhatsApp, envía la solicitud a {email}; se eliminarán dentro de 30 días y recibirás una confirmación.',
+              p: 'Si eres cliente de un negocio que usa Robbie, también puedes contactar directamente a ese negocio. Para eliminar datos de conversaciones de WhatsApp, envía la solicitud a {email}; se eliminarán de los sistemas activos dentro de 30 días (respaldos de proveedores dentro de 90 días) y recibirás una confirmación.',
             },
           ],
         },
