@@ -14,3 +14,9 @@ export function isLocale(value: string | undefined): value is Locale {
 export function localePath(locale: Locale): string {
   return locale === defaultLocale ? '/' : `/${locale}`;
 }
+
+/** Locale-aware URL for an internal page, e.g. localeHref('es', '/robbie') → '/es/robbie'. */
+export function localeHref(locale: Locale, path = '/'): string {
+  if (locale === defaultLocale) return path;
+  return path === '/' ? `/${locale}` : `/${locale}${path}`;
+}

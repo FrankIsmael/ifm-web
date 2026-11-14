@@ -2,22 +2,29 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { CvData } from '@/lib/cv-data';
-import { LOCALE_COOKIE, localePath, type Locale } from '@/lib/i18n';
+import { LOCALE_COOKIE, localeHref, localePath, type Locale } from '@/lib/i18n';
 
 export function Nav({
   lang,
   displayName,
   labels,
+  path = '/',
 }: {
   lang: Locale;
   displayName: string;
   labels: CvData['ui']['nav'];
+  /** Current page path without the locale prefix, e.g. '/robbie'. '/' is the portfolio. */
+  path?: string;
 }) {
+  const isHome = path === '/';
+  // Section anchors point back to the portfolio when rendered on another page.
+  const home = isHome ? '' : localePath(lang);
   const links = [
-    { label: labels.about, href: '#about' },
-    { label: labels.workWithMe, href: '#work-with-me' },
-    { label: labels.experience, href: '#experience' },
-    { label: labels.work, href: '#work' },
+    { label: labels.about, href: `${home}#about` },
+    { label: labels.workWithMe, href: `${home}#work-with-me` },
+    { label: labels.experience, href: `${home}#experience` },
+    { label: labels.work, href: `${home}#work` },
+    { label: labels.robbie, href: localeHref(lang, '/robbie') },
   ];
   const otherLang: Locale = lang === 'en' ? 'es' : 'en';
   const [open, setOpen] = useState(false);
@@ -28,7 +35,7 @@ export function Nav({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+          if (entry.isIntersecting) setActive(`${home}#${entry.target.id}`);
         });
       },
       { rootMargin: '-15% 0px -55% 0px' },
@@ -39,8 +46,9 @@ export function Nav({
         if (section) observer.observe(section);
       },
     );
+    if (!isHome) setActive(localeHref(lang, path));
     return () => observer.disconnect();
-  }, []);
+  }, [home, isHome, lang, path]);
 
   useEffect(() => {
     if (!open) return;
@@ -59,7 +67,7 @@ export function Nav({
       <nav className="nav-inner page-width" aria-label={labels.mainNav}>
         <a
           className="wordmark"
-          href="#hero"
+          href={`${home}#hero`}
           onClick={() => setOpen(false)}
           aria-label={labels.home}
         >
@@ -89,15 +97,15 @@ export function Nav({
           ))}
           <a
             className="nav-contact"
-            href="#contact"
-            aria-current={active === '#contact' ? 'location' : undefined}
+            href={`${home}#contact`}
+            aria-current={active === `${home}#contact` ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
             {labels.contact}
           </a>
           <a
             className="lang-switch"
-            href={localePath(otherLang)}
+            href={localeHref(otherLang, path)}
             hrefLang={otherLang}
             lang={otherLang}
             aria-label={labels.switchAria}
@@ -105,7 +113,7 @@ export function Nav({
               // Remember the choice so the middleware stops auto-redirecting.
               document.cookie = `${LOCALE_COOKIE}=${otherLang}; path=/; max-age=31536000; samesite=lax`;
               // Keep the visitor on the section they were reading.
-              event.currentTarget.hash = window.location.hash;
+              if (isHome) event.currentTarget.hash = window.location.hash;
             }}
           >
             {labels.switchLabel}

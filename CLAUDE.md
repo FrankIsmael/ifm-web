@@ -23,6 +23,7 @@ This is a single-page personal portfolio/CV website built with Next.js 13 App Ro
 - `lib/content.ts` — `getCvData(locale)`; `lib/i18n.ts` — locale list, cookie name, `localePath()`.
 - `app/[lang]/layout.tsx` — Root layout for the portfolio: `<html lang>`, localized metadata + hreflang alternates, chat widget, analytics. `app/study/layout.tsx` is a separate root layout (there is no `app/layout.tsx`).
 - `middleware.ts` — locale routing (see i18n below).
+- `app/[lang]/robbie`, `app/[lang]/privacy`, `app/[lang]/terms` — business pages (Robbie product page and legal pages used for Meta business verification / WhatsApp Tech Provider review). Copy lives under `pages.*` in both cv-data files; the legal name and fiscal address live in `cv-shared.ts` (`business`) and must match the SAT CSF. Shared shell: `components/doc-page.tsx`; site footer: `components/footer.tsx`. Use `localeHref(lang, path)` for internal links.
 - `app/globals.css` — Minimal global styles; Tailwind base + smooth scroll + CSS variables for light/dark colors.
 
 **Stack:**

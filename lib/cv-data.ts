@@ -5,11 +5,11 @@ import { shared } from './cv-shared';
 export const cvData = {
   ...shared,
   tagline: 'Full stack engineer · Contract & full-time',
-  location: 'Mexico City, Mexico',
+  location: 'Mexico',
   meta: {
     title: 'Full Stack Engineer · Contract & Full-time',
     description:
-      'Full stack engineer in Mexico City, open to contract projects and full-time roles. React, Next.js, NestJS, PostgreSQL, and AWS.',
+      'Full stack engineer in Mexico, open to contract projects and full-time roles. React, Next.js, NestJS, PostgreSQL, and AWS.',
     ogLocale: 'en_US',
     ogFooter: 'Contract & full-time · Next.js · AWS',
   },
@@ -21,6 +21,7 @@ export const cvData = {
       workWithMe: 'Work with me',
       experience: 'Experience',
       work: 'Work',
+      robbie: 'Robbie',
       contact: 'Let’s talk',
       menu: 'Menu',
       close: 'Close',
@@ -66,7 +67,9 @@ export const cvData = {
       downloadCv: 'Download CV',
     },
     footer: {
-      city: 'Mexico City.',
+      robbie: 'Robbie',
+      privacy: 'Privacy',
+      terms: 'Terms',
       agents: 'Information for AI agents',
       top: 'Back to top',
     },
@@ -81,7 +84,7 @@ export const cvData = {
   headlineAccent: 'From the API to AWS.',
   availability: 'Open to contract and full-time',
   subheadline:
-    'I build production web applications, APIs, and AWS infrastructure from Mexico City — for contract projects and full-time teams.',
+    'I build production web applications, APIs, and AWS infrastructure from Mexico — for contract projects and full-time teams.',
   summary:
     'I take React, Next.js, and NestJS products to production on AWS: search, payments, maps, and the infrastructure that keeps them running. Recent work includes cutting a marketplace search from 382 database queries to 12.',
   aboutExtra:
@@ -117,6 +120,12 @@ export const cvData = {
         'Amplify, Elastic Beanstalk, RDS, and S3 for frontends, APIs, and files — setup and ongoing management.',
     },
     {
+      title: 'AI agents and WhatsApp automation',
+      description:
+        'AI agents that work through WhatsApp on the official WhatsApp Business Platform: customer replies, catalog updates, and questions about your data.',
+      href: '/robbie',
+    },
+    {
       title: 'Payments',
       description:
         'Stripe purchases and arrangement flows wired into Next.js apps with PostgreSQL persistence.',
@@ -136,7 +145,7 @@ export const cvData = {
       points: [
         'Full stack, frontend, or backend roles with distributed teams.',
         'Hands-on delivery from the first endpoint through deployment.',
-        'Remote from Mexico City, in English and Spanish.',
+        'Remote from Mexico, in English and Spanish.',
       ],
     },
   ],
@@ -293,6 +302,255 @@ export const cvData = {
       note: 'An ongoing project built on the Sistemas Agénticos workshop foundation, with goose as the AI agent.',
     },
   ],
+  pages: {
+    learnMore: 'Learn more',
+    robbie: {
+      metaTitle: 'Robbie · WhatsApp AI agent for stores',
+      metaDescription:
+        'Robbie is a WhatsApp AI agent for small stores: it answers customers, keeps the product catalog up to date, and answers questions about sales data, on the official WhatsApp Business Platform.',
+      label: 'Product',
+      title: 'Robbie, a WhatsApp AI agent for stores.',
+      intro:
+        'Robbie works where your customers already are. It runs on the official WhatsApp Business Platform (Cloud API) and is built and operated by {legalName}, a software engineer in Mexico.',
+      capabilitiesTitle: 'What Robbie does',
+      capabilities: [
+        {
+          title: 'Answers your customers',
+          description:
+            'Replies to product, price, and availability questions on your WhatsApp number, using your catalog as the source of truth, and hands the conversation to you when a person is needed.',
+        },
+        {
+          title: 'Manages your catalog from a chat',
+          description:
+            'Add or update products by sending a message and a photo. The changes show up on your store or catalog site.',
+        },
+        {
+          title: 'Answers questions about your sales',
+          description:
+            'Ask in plain language — what sold best this month, which products are running low — and get an answer from your own data.',
+        },
+      ],
+      stepsTitle: 'How onboarding works',
+      steps: [
+        {
+          title: 'Connect',
+          description:
+            'You connect your WhatsApp Business account through Meta’s Embedded Signup. You keep ownership of your number, your account, and your data.',
+        },
+        {
+          title: 'Configure',
+          description:
+            'We load your catalog, business hours, and tone, and agree on what Robbie answers and when it hands off to you.',
+        },
+        {
+          title: 'Go live',
+          description:
+            'Robbie starts replying on your number. Message templates and conversation charges are managed in your own WhatsApp Business account.',
+        },
+      ],
+      builtTitle: 'How it’s built',
+      built:
+        'Robbie is a custom agent built on the open-source goose agent runtime, running in an isolated cloud sandbox. I built the web interface, the real-time streaming layer, and the WhatsApp gateway around it. Try the web version:',
+      dataNote: 'How customer data and WhatsApp messages are handled:',
+      ctaTitle: 'Want Robbie for your business?',
+      ctaText: 'Tell me about your store and how your customers reach you today.',
+      ctaSubject: 'Robbie for my business',
+    },
+    privacy: {
+      metaTitle: 'Privacy Policy',
+      metaDescription:
+        'How Ismael Francisco Moreno collects, uses, and protects personal data on this website and in WhatsApp services such as Robbie.',
+      label: 'Legal',
+      title: 'Privacy Policy',
+      updatedLabel: 'Last updated',
+      updated: 'November 13, 2026',
+      intro:
+        'This policy explains how personal data is handled on ismaelfrancisco.tech and in the software services I provide, including Robbie, a WhatsApp AI agent for businesses. It is issued under Mexico’s Federal Law on the Protection of Personal Data Held by Private Parties (LFPDPPP).',
+      sections: [
+        {
+          heading: '1. Who is responsible',
+          blocks: [
+            {
+              p: '{legalName}, an individual providing software consulting services in Mexico, with address at {address}. Contact: {email}.',
+            },
+          ],
+        },
+        {
+          heading: '2. Two roles',
+          blocks: [
+            {
+              list: [
+                'Website visitors and prospective clients: I am the party responsible for the data described in section 3.',
+                'WhatsApp services for client businesses: when a business uses Robbie, that business is responsible for its customers’ data, and I process it only on its behalf and according to its instructions, as described in section 4.',
+              ],
+            },
+          ],
+        },
+        {
+          heading: '3. Website and direct contact',
+          blocks: [
+            { p: 'Data collected:' },
+            {
+              list: [
+                'Information you send me by email: your name, email address, company, and the content of your message.',
+                'Usage data collected by Vercel Analytics and Google Analytics: pages visited, approximate location derived from your IP address, device and browser type.',
+                'Messages you send to the chat assistant on this website, used to answer you.',
+              ],
+            },
+            {
+              p: 'Purposes: replying to inquiries, preparing proposals and contracts, and understanding how the website is used. I do not sell personal data or use it for advertising.',
+            },
+          ],
+        },
+        {
+          heading: '4. WhatsApp data processed for client businesses',
+          blocks: [
+            {
+              p: 'When a business connects its WhatsApp Business account to Robbie through the WhatsApp Business Platform, the following data may be processed:',
+            },
+            {
+              list: [
+                'Phone numbers and WhatsApp profile names of the business’s customers.',
+                'Message content, including text, images, audio, and documents.',
+                'Message metadata such as timestamps and delivery status.',
+                'The business’s WhatsApp Business account identifiers, message templates, and catalog or product data.',
+              ],
+            },
+            {
+              p: 'This data is used only to provide the service the business requested: receiving and answering messages, managing catalog information, and producing reports for that business. It is not used to train AI models, sold, or shared with other clients.',
+            },
+            {
+              p: 'The business is responsible for obtaining its customers’ consent (opt-in) to receive WhatsApp messages and for informing them about this processing.',
+            },
+          ],
+        },
+        {
+          heading: '5. Service providers',
+          blocks: [
+            { p: 'Data is processed with these providers, only as needed to run the services:' },
+            {
+              list: [
+                'Meta Platforms (WhatsApp Business Platform): sending and receiving WhatsApp messages.',
+                'Anthropic (Claude Haiku, Sonnet, and Opus models): generating the agent’s replies for client WhatsApp conversations. Under Anthropic’s commercial terms, this data is not used to train its models.',
+                'InstaBox (instabox.sh): isolated cloud virtual machines (microVMs) where the agent runs.',
+                'EasyBits (easybits.cloud, Mexico): file storage and sandbox environments used by the agent.',
+                'Vercel and Google: website hosting and analytics.',
+                'DeepSeek (Hangzhou DeepSeek Artificial Intelligence Co., Ltd., China): may be used only for the public demo assistant on this website. Client WhatsApp data is never sent to DeepSeek.',
+              ],
+            },
+            {
+              p: 'Some of these providers are located outside Mexico. Transfers are made only to the extent necessary to provide the services.',
+            },
+          ],
+        },
+        {
+          heading: '6. Retention and security',
+          blocks: [
+            {
+              p: 'Inquiry emails are kept as long as needed to handle the conversation and any resulting contract. WhatsApp data is kept while the business uses the service and is deleted from active systems within 30 days after the business disconnects or requests deletion, unless the law requires otherwise. Backup copies held by infrastructure providers may persist for up to 90 days before they are overwritten. Access is restricted, credentials are stored securely, and data travels over encrypted connections.',
+            },
+          ],
+        },
+        {
+          id: 'data-deletion',
+          heading: '7. Your rights and data deletion',
+          blocks: [
+            {
+              p: 'You can request access to, rectification, cancellation of, or opposition to the processing of your personal data (ARCO rights), or revoke your consent, by emailing {email} with your name, the phone number or email involved, and your request. I will reply within 20 business days.',
+            },
+            {
+              p: 'If you are a customer of a business that uses Robbie, you can also contact that business directly. To delete WhatsApp conversation data, send the request to {email}; it will be deleted from active systems within 30 days (provider backups within 90 days) and you will receive a confirmation.',
+            },
+          ],
+        },
+        {
+          heading: '8. Changes',
+          blocks: [
+            { p: 'Changes to this policy are published on this page with a new “Last updated” date.' },
+          ],
+        },
+      ],
+    },
+    terms: {
+      metaTitle: 'Terms of Service',
+      metaDescription:
+        'Terms for software services and WhatsApp AI agent services (Robbie) provided by Ismael Francisco Moreno.',
+      label: 'Legal',
+      title: 'Terms of Service',
+      updatedLabel: 'Last updated',
+      updated: 'November 13, 2026',
+      intro:
+        'These terms apply to the software services provided by {legalName} (“I”, “me”) to businesses (“you”), including Robbie, a WhatsApp AI agent. A signed proposal or contract for a specific project takes precedence where it differs.',
+      sections: [
+        {
+          heading: '1. Services',
+          blocks: [
+            {
+              p: 'I provide software development, consulting, and AI agent services. Robbie connects to your WhatsApp Business account through the official WhatsApp Business Platform to answer your customers, manage catalog information, and report on your data, as agreed for your account.',
+            },
+          ],
+        },
+        {
+          heading: '2. Your WhatsApp account',
+          blocks: [
+            {
+              list: [
+                'You connect your own WhatsApp Business account and phone number and keep ownership of them. You can disconnect Robbie at any time.',
+                'You must comply with the WhatsApp Business Terms of Service and the WhatsApp Business and Commerce Policies, including obtaining your customers’ opt-in before messaging them.',
+                'WhatsApp conversation and template charges are billed by Meta to the payment method on your WhatsApp Business account, separately from my fees.',
+              ],
+            },
+          ],
+        },
+        {
+          heading: '3. Acceptable use',
+          blocks: [
+            {
+              p: 'You may not use the services to send spam, unlawful content, or messages to people who have not agreed to receive them, or to sell products prohibited by WhatsApp’s policies. I may suspend the service if it is used in breach of these terms or of Meta’s policies.',
+            },
+          ],
+        },
+        {
+          heading: '4. AI-generated replies',
+          blocks: [
+            {
+              p: 'Robbie generates replies automatically from your information and can make mistakes. You are responsible for the business information you provide and for reviewing how the agent represents your business; sensitive topics should be handed off to a person.',
+            },
+          ],
+        },
+        {
+          heading: '5. Fees',
+          blocks: [
+            {
+              p: 'Fees, scope, and payment terms are set out in the proposal or contract for each engagement. Invoices (CFDI) are issued according to Mexican tax rules.',
+            },
+          ],
+        },
+        {
+          heading: '6. Data',
+          blocks: [
+            {
+              p: 'Personal data is handled as described in the Privacy Policy. You own your data; on request or when the service ends, it is returned or deleted.',
+            },
+          ],
+        },
+        {
+          heading: '7. Liability',
+          blocks: [
+            {
+              p: 'The services are provided with reasonable care but without a guarantee of uninterrupted operation, including outages of WhatsApp or other third-party platforms. To the extent the law allows, my total liability is limited to the fees you paid in the three months before the claim.',
+            },
+          ],
+        },
+        {
+          heading: '8. Law and contact',
+          blocks: [
+            { p: 'These terms are governed by the laws of Mexico. Questions: {email}, {address}.' },
+          ],
+        },
+      ],
+    },
+  },
 };
 
 export type CvData = typeof cvData;

@@ -6,6 +6,7 @@ import { WorkWithMe } from '@/components/work-with-me';
 import { Projects } from '@/components/projects';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
+import { Footer } from '@/components/footer';
 import { getCvData } from '@/lib/content';
 import { isLocale } from '@/lib/i18n';
 
@@ -27,21 +28,12 @@ export default function Home({ params }: { params: { lang: string } }) {
       <main id="main">
         <Hero content={content} />
         <About content={content} />
-        <WorkWithMe content={content} />
+        <WorkWithMe content={content} lang={params.lang} />
         <Experience content={content} />
         <Projects content={content} />
         <Contact content={content} />
       </main>
-      <footer className="site-footer">
-        <div className="page-width">
-          <span>
-            © {new Date().getFullYear()} {content.displayName}
-          </span>
-          <span>{ui.footer.city}</span>
-          <a href="/llms.txt">{ui.footer.agents}</a>
-          <a href="#hero">{ui.footer.top}</a>
-        </div>
-      </footer>
+      <Footer content={content} lang={params.lang} />
     </div>
   );
 }
