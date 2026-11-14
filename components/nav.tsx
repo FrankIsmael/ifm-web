@@ -1,16 +1,25 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
+import { LOCALE_COOKIE, localePath, type Locale } from '@/lib/i18n';
 
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Work with me', href: '#work-with-me' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Work', href: '#work' },
-];
-
-export function Nav() {
+export function Nav({
+  lang,
+  displayName,
+  labels,
+}: {
+  lang: Locale;
+  displayName: string;
+  labels: CvData['ui']['nav'];
+}) {
+  const links = [
+    { label: labels.about, href: '#about' },
+    { label: labels.workWithMe, href: '#work-with-me' },
+    { label: labels.experience, href: '#experience' },
+    { label: labels.work, href: '#work' },
+  ];
+  const otherLang: Locale = lang === 'en' ? 'es' : 'en';
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const toggle = useRef<HTMLButtonElement>(null);
@@ -47,14 +56,14 @@ export function Nav() {
 
   return (
     <header className="site-header">
-      <nav className="nav-inner page-width" aria-label="Main navigation">
+      <nav className="nav-inner page-width" aria-label={labels.mainNav}>
         <a
           className="wordmark"
           href="#hero"
           onClick={() => setOpen(false)}
-          aria-label="Ismael Francisco, home"
+          aria-label={labels.home}
         >
-          {cvData.displayName}
+          {displayName}
         </a>
         <button
           ref={toggle}
@@ -62,10 +71,10 @@ export function Nav() {
           type="button"
           aria-expanded={open}
           aria-controls="nav-links"
-          aria-label={open ? 'Close navigation' : 'Open navigation'}
+          aria-label={open ? labels.closeNav : labels.openNav}
           onClick={() => setOpen(!open)}
         >
-          <span>{open ? 'Close' : 'Menu'}</span>
+          <span>{open ? labels.close : labels.menu}</span>
         </button>
         <div id="nav-links" className={`nav-links${open ? ' is-open' : ''}`}>
           {links.map((link) => (
@@ -84,7 +93,22 @@ export function Nav() {
             aria-current={active === '#contact' ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
-            Let’s talk
+            {labels.contact}
+          </a>
+          <a
+            className="lang-switch"
+            href={localePath(otherLang)}
+            hrefLang={otherLang}
+            lang={otherLang}
+            aria-label={labels.switchAria}
+            onClick={(event) => {
+              // Remember the choice so the middleware stops auto-redirecting.
+              document.cookie = `${LOCALE_COOKIE}=${otherLang}; path=/; max-age=31536000; samesite=lax`;
+              // Keep the visitor on the section they were reading.
+              event.currentTarget.hash = window.location.hash;
+            }}
+          >
+            {labels.switchLabel}
           </a>
         </div>
       </nav>

@@ -1,13 +1,18 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 import { SectionHeading, Tags } from './ui';
 
-export function Experience() {
+export function Experience({ content: cvData }: { content: CvData }) {
+  const { ui } = cvData;
+
   return (
     <section id="experience" className="experience-section section">
       <div className="page-width">
         <div className="section-topline">
           <div>
-            <SectionHeading label="Experience" title="Where I’ve worked." />
+            <SectionHeading
+              label={ui.experience.label}
+              title={ui.experience.title}
+            />
             <p className="section-aside experience-aside">
               {cvData.experienceAside}
             </p>
@@ -18,10 +23,10 @@ export function Experience() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read my CV
+            {ui.experience.readCv}
           </a>
         </div>
-        <ul className="trust-row" aria-label="Experience at a glance">
+        <ul className="trust-row" aria-label={ui.experience.glance}>
           {cvData.trustSignals.map((stat) => (
             <li key={stat.label}>
               <strong>{stat.value}</strong>
@@ -35,7 +40,7 @@ export function Experience() {
               <div className="job-meta">
                 <p>{job.period}</p>
                 <p>{job.location}</p>
-                {job.current && <p className="current-role">Currently here</p>}
+                {job.current && <p className="current-role">{ui.experience.current}</p>}
               </div>
               <div className="job-content">
                 <div className="job-heading">
@@ -48,14 +53,14 @@ export function Experience() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <Tags items={job.tech} />
+                <Tags items={job.tech} label={ui.technologies} />
               </div>
             </article>
           ))}
         </div>
         <div className="credentials">
           <div>
-            <p className="section-label">Education</p>
+            <p className="section-label">{ui.experience.education}</p>
             {cvData.education.map((item) => (
               <div key={item.school}>
                 <h3>{item.school}</h3>
@@ -65,12 +70,12 @@ export function Experience() {
             ))}
           </div>
           <div>
-            <p className="section-label">Certifications</p>
+            <p className="section-label">{ui.experience.certifications}</p>
             {cvData.certifications.map((item) => (
               <div className="certification" key={item.title}>
                 <h3>{item.title}</h3>
                 <p>
-                  {item.issuer}, issued {item.issued}
+                  {item.issuer}, {ui.experience.issued} {item.issued}
                 </p>
               </div>
             ))}

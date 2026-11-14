@@ -1,7 +1,7 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 import { SectionHeading } from './ui';
 
-export function WorkWithMe() {
+export function WorkWithMe({ content: cvData }: { content: CvData }) {
   const { workWithMe } = cvData;
 
   return (

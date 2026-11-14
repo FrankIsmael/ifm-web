@@ -257,6 +257,16 @@ body:has(.portfolio) {
   font-weight: 500;
 }
 
+.nav-links > a.lang-switch {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  opacity: 0.72;
+}
+
+.nav-links > a.lang-switch:hover {
+  opacity: 1;
+}
+
 .menu-toggle {
   display: none;
 }

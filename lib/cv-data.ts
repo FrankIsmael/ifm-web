@@ -1,16 +1,82 @@
+import { shared } from './cv-shared';
+
+// English content. The Spanish copy lives in cv-data.es.ts and must keep the
+// same shape (it is typed as CvData), so update both files together.
 export const cvData = {
-  name: 'Ismael Francisco Moreno',
-  displayName: 'Ismael Francisco',
+  ...shared,
   tagline: 'Full stack engineer · Contract & full-time',
   location: 'Mexico City, Mexico',
-  email: 'ismaelfcom93@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
-  github: 'https://github.com/FrankIsmael',
-  cvUrl: '/CV-IsmaelFranciscoMoreno2026.pdf',
-  // Override locally with NEXT_PUBLIC_AGENT_URL to point the chat widget at a dev server.
-  agentUrl:
-    process.env.NEXT_PUBLIC_AGENT_URL ??
-    'https://acp-agent.ismaelfrancisco.tech/',
+  meta: {
+    title: 'Full Stack Engineer · Contract & Full-time',
+    description:
+      'Full stack engineer in Mexico City, open to contract projects and full-time roles. React, Next.js, NestJS, PostgreSQL, and AWS.',
+    ogLocale: 'en_US',
+    ogFooter: 'Contract & full-time · Next.js · AWS',
+  },
+  ui: {
+    skipLink: 'Skip to content',
+    technologies: 'Technologies',
+    nav: {
+      about: 'About',
+      workWithMe: 'Work with me',
+      experience: 'Experience',
+      work: 'Work',
+      contact: 'Let’s talk',
+      menu: 'Menu',
+      close: 'Close',
+      openNav: 'Open navigation',
+      closeNav: 'Close navigation',
+      mainNav: 'Main navigation',
+      home: 'Ismael Francisco, home',
+      switchLabel: 'Español',
+      switchAria: 'Ver este sitio en español',
+    },
+    hero: {
+      cta: 'See the work',
+      portraitAlt: 'Ismael smiling at his laptop',
+    },
+    about: {
+      label: 'A little about me',
+      title: 'I like figuring out how things work.',
+      toolkit: 'My everyday toolkit',
+      languages: 'Languages',
+    },
+    experience: {
+      label: 'Experience',
+      title: 'Where I’ve worked.',
+      readCv: 'Read my CV',
+      glance: 'Experience at a glance',
+      current: 'Currently here',
+      education: 'Education',
+      certifications: 'Certifications',
+      issued: 'issued',
+    },
+    projects: {
+      label: 'Selected work',
+      title: 'Projects I’ve worked on.',
+      contribution: 'My contribution',
+      visit: 'Visit project',
+      privateNote: 'Private client product',
+      metrics: 'Measured improvements',
+    },
+    contact: {
+      label: 'What’s next?',
+      projectInquiry: 'Project inquiry',
+      roleInquiry: 'Role inquiry',
+      downloadCv: 'Download CV',
+    },
+    footer: {
+      city: 'Mexico City.',
+      agents: 'Information for AI agents',
+      top: 'Back to top',
+    },
+    chat: {
+      title: 'Ask my agent',
+      dialog: 'Chat with my agent',
+      openFull: 'Open full app',
+      close: 'Close chat',
+    },
+  },
   headline: 'I ship web products.',
   headlineAccent: 'From the API to AWS.',
   availability: 'Open to contract and full-time',
@@ -100,17 +166,6 @@ export const cvData = {
     { value: '6+', label: 'years in software' },
     { value: '3', label: 'companies' },
     { value: '2', label: 'AWS certifications' },
-  ],
-  skills: [
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'NestJS',
-    'PostgreSQL',
-    'AWS',
-    'Prisma',
-    'Docker',
   ],
   languages: ['Spanish (native)', 'English (professional working)'],
   experience: [
@@ -239,3 +294,5 @@ export const cvData = {
     },
   ],
 };
+
+export type CvData = typeof cvData;
