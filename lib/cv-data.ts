@@ -3,7 +3,15 @@ export const cvData = {
   displayName: 'Ismael Francisco',
   tagline: 'Full stack engineer · Contract & full-time',
   location: 'Mexico City, Mexico',
-  email: 'ismaelfcom93@gmail.com',
+  email: 'hello@ismaelfrancisco.tech',
+  // Legal/business identity: must match the SAT CSF exactly (used by Meta business verification).
+  business: {
+    legalName: 'Ismael Francisco Moreno',
+    shortLocation: 'Zoquiapan, Puebla, México',
+    address:
+      'Andador Carretera a Nauzontla No. Ext. 0, entre calles Francisco I. Madero, Zoquiapan, Puebla, C.P. 73540, México',
+    email: 'hello@ismaelfrancisco.tech',
+  },
   linkedin: 'https://www.linkedin.com/in/ismaelfcom/',
   github: 'https://github.com/FrankIsmael',
   cvUrl: '/CV-IsmaelFranciscoMoreno2026.pdf',
@@ -49,6 +57,12 @@ export const cvData = {
       title: 'AWS setup and operations',
       description:
         'Amplify, Elastic Beanstalk, RDS, and S3 for frontends, APIs, and files — setup and ongoing management.',
+    },
+    {
+      title: 'AI agents and WhatsApp automation',
+      description:
+        'AI agents that work through WhatsApp on the official WhatsApp Business Platform — customer replies, catalog updates, and data questions. See Robbie.',
+      href: '/robbie',
     },
     {
       title: 'Payments',

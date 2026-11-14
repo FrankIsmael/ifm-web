@@ -14,7 +14,17 @@ export function WorkWithMe() {
         {cvData.services.map((service) => (
           <li key={service.title}>
             <h3>{service.title}</h3>
-            <p>{service.description}</p>
+            <p>
+              {service.description}
+              {service.href ? (
+                <>
+                  {' '}
+                  <a className="text-link" href={service.href}>
+                    Learn more
+                  </a>
+                </>
+              ) : null}
+            </p>
           </li>
         ))}
       </ul>

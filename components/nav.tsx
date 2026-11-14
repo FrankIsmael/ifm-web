@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { cvData } from '@/lib/cv-data';
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Work with me', href: '#work-with-me' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Work', href: '#work' },
+  { label: 'About', href: '/#about' },
+  { label: 'Work with me', href: '/#work-with-me' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Robbie', href: '/robbie' },
 ];
 
 export function Nav() {
@@ -19,7 +20,7 @@ export function Nav() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+          if (entry.isIntersecting) setActive(`/#${entry.target.id}`);
         });
       },
       { rootMargin: '-15% 0px -55% 0px' },
@@ -30,6 +31,7 @@ export function Nav() {
         if (section) observer.observe(section);
       },
     );
+    if (window.location.pathname !== '/') setActive(window.location.pathname);
     return () => observer.disconnect();
   }, []);
 
@@ -50,7 +52,7 @@ export function Nav() {
       <nav className="nav-inner page-width" aria-label="Main navigation">
         <a
           className="wordmark"
-          href="#hero"
+          href="/#hero"
           onClick={() => setOpen(false)}
           aria-label="Ismael Francisco, home"
         >
@@ -80,8 +82,8 @@ export function Nav() {
           ))}
           <a
             className="nav-contact"
-            href="#contact"
-            aria-current={active === '#contact' ? 'location' : undefined}
+            href="/#contact"
+            aria-current={active === '/#contact' ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
             Let’s talk
