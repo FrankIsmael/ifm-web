@@ -1,14 +1,16 @@
 import Image from 'next/image';
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 import { SectionHeading, Tags } from './ui';
 
-export function Projects() {
+export function Projects({ content: cvData }: { content: CvData }) {
+  const { ui } = cvData;
+
   return (
     <section id="work" className="section page-width">
       <div className="section-topline">
         <SectionHeading
-          label="Selected work"
-          title="Projects I’ve worked on."
+          label={ui.projects.label}
+          title={ui.projects.title}
         />
         <p className="section-aside">{cvData.workAside}</p>
       </div>
@@ -52,7 +54,7 @@ export function Projects() {
                 ) : (
                   <details className="project-details">
                     <summary>
-                      My contribution <span aria-hidden="true">+</span>
+                      {ui.projects.contribution} <span aria-hidden="true">+</span>
                     </summary>
                     <ul className="copy-list">
                       {project.solution.map((item) => (
@@ -61,7 +63,7 @@ export function Projects() {
                     </ul>
                   </details>
                 )}
-                <Tags items={project.tech} />
+                <Tags items={project.tech} label={ui.technologies} />
                 {project.url ? (
                   <a
                     className="text-link project-link"
@@ -69,16 +71,16 @@ export function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visit project
+                    {ui.projects.visit}
                   </a>
                 ) : (
                   <p className="project-note">
-                    {project.note || 'Private client product'}
+                    {project.note || ui.projects.privateNote}
                   </p>
                 )}
               </div>
               {impact && (
-                <ul className="project-metrics" aria-label="Measured improvements">
+                <ul className="project-metrics" aria-label={ui.projects.metrics}>
                   {impact.map((metric) => (
                     <li key={metric.label}>
                       <strong>{metric.value}</strong>

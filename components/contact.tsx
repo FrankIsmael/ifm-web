@@ -1,25 +1,27 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 
-export function Contact() {
+export function Contact({ content: cvData }: { content: CvData }) {
+  const { ui } = cvData;
+
   return (
     <section id="contact" className="contact-section">
       <div className="page-width contact-grid">
         <div>
-          <p className="section-label">What’s next?</p>
+          <p className="section-label">{ui.contact.label}</p>
           <h2>
             {cvData.ctaHeadline} {cvData.ctaAccent}
           </h2>
           <p className="contact-description">{cvData.ctaSubtext}</p>
           <div className="contact-intents">
             <a
-              href={`mailto:${cvData.email}?subject=${encodeURIComponent('Project inquiry')}`}
+              href={`mailto:${cvData.email}?subject=${encodeURIComponent(ui.contact.projectInquiry)}`}
             >
-              Project inquiry
+              {ui.contact.projectInquiry}
             </a>
             <a
-              href={`mailto:${cvData.email}?subject=${encodeURIComponent('Role inquiry')}`}
+              href={`mailto:${cvData.email}?subject=${encodeURIComponent(ui.contact.roleInquiry)}`}
             >
-              Role inquiry
+              {ui.contact.roleInquiry}
             </a>
           </div>
           <a className="contact-email" href={`mailto:${cvData.email}`}>
@@ -36,7 +38,7 @@ export function Contact() {
               GitHub
             </a>
             <a href={cvData.cvUrl} target="_blank" rel="noopener noreferrer">
-              Download CV
+              {ui.contact.downloadCv}
             </a>
           </div>
         </div>

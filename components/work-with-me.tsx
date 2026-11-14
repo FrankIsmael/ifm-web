@@ -1,7 +1,14 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
+import { localeHref, type Locale } from '@/lib/i18n';
 import { SectionHeading } from './ui';
 
-export function WorkWithMe() {
+export function WorkWithMe({
+  content: cvData,
+  lang,
+}: {
+  content: CvData;
+  lang: Locale;
+}) {
   const { workWithMe } = cvData;
 
   return (
@@ -19,8 +26,8 @@ export function WorkWithMe() {
               {service.href ? (
                 <>
                   {' '}
-                  <a className="text-link" href={service.href}>
-                    Learn more
+                  <a className="text-link" href={localeHref(lang, service.href)}>
+                    {cvData.pages.learnMore}
                   </a>
                 </>
               ) : null}

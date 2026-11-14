@@ -1,7 +1,8 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
+import { localeHref, type Locale } from '@/lib/i18n';
 
-export function Footer() {
-  const { business } = cvData;
+export function Footer({ content, lang }: { content: CvData; lang: Locale }) {
+  const { business, email, ui } = content;
 
   return (
     <footer className="site-footer">
@@ -10,12 +11,12 @@ export function Footer() {
           © {new Date().getFullYear()} {business.legalName} ·{' '}
           {business.shortLocation}
         </span>
-        <a href={`mailto:${business.email}`}>{business.email}</a>
+        <a href={`mailto:${email}`}>{email}</a>
         <nav className="footer-links" aria-label="Footer">
-          <a href="/robbie">Robbie</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-          <a href="/llms.txt">For AI agents</a>
+          <a href={localeHref(lang, '/robbie')}>{ui.footer.robbie}</a>
+          <a href={localeHref(lang, '/privacy')}>{ui.footer.privacy}</a>
+          <a href={localeHref(lang, '/terms')}>{ui.footer.terms}</a>
+          <a href="/llms.txt">{ui.footer.agents}</a>
         </nav>
       </div>
     </footer>

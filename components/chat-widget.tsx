@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 
 /**
  * Floating chat bubble (bottom-right) that embeds the ACP agent in an iframe.
@@ -12,10 +11,15 @@ import { cvData } from '@/lib/cv-data';
  * the agent server) and stays mounted afterwards so closing the panel keeps
  * the conversation alive.
  */
-export function ChatWidget() {
+export function ChatWidget({
+  labels,
+  agentUrl,
+}: {
+  labels: CvData['ui']['chat'];
+  agentUrl: string;
+}) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     if (open) setMounted(true);
@@ -30,9 +34,6 @@ export function ChatWidget() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  // The study app has its own full-screen UI.
-  if (pathname?.startsWith('/study')) return null;
-
   return (
     <>
       {mounted && (
@@ -43,7 +44,7 @@ export function ChatWidget() {
           style={{ pointerEvents: open ? 'auto' : 'none' }}
           aria-hidden={!open}
           role="dialog"
-          aria-label="Chat with my agent"
+          aria-label={labels.dialog}
           className="fixed inset-0 z-50 flex flex-col overflow-hidden bg-card md:inset-auto md:bottom-24 md:right-6 md:h-[600px] md:max-h-[calc(100vh-7rem)] md:w-[400px] md:rounded-2xl md:border md:border-border md:shadow-2xl"
         >
           <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
@@ -55,21 +56,21 @@ export function ChatWidget() {
                 height={22}
                 className="h-[22px] w-[22px] rounded-[5px]"
               />
-              <span className="font-medium">Ask my agent</span>
+              <span className="font-medium">{labels.title}</span>
             </div>
             <div className="flex items-center gap-1">
               <a
-                href={cvData.agentUrl}
+                href={agentUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-secondary hover:text-foreground"
               >
-                Open full app
+                {labels.openFull}
               </a>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="Close chat"
+                aria-label={labels.close}
                 className="rounded-md p-1 text-muted-foreground hover:bg-secondary hover:text-foreground"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden>
@@ -79,8 +80,8 @@ export function ChatWidget() {
             </div>
           </div>
           <iframe
-            src={`${cvData.agentUrl}embed`}
-            title="Chat with my agent"
+            src={`${agentUrl}embed`}
+            title={labels.dialog}
             className="min-h-0 w-full flex-1 border-0 bg-card"
             allow="clipboard-write"
             referrerPolicy="strict-origin-when-cross-origin"
@@ -92,7 +93,7 @@ export function ChatWidget() {
       <motion.button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? 'Close chat' : 'Chat with my agent'}
+        aria-label={open ? labels.close : labels.dialog}
         aria-expanded={open}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}

@@ -1,13 +1,15 @@
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 import { SectionHeading } from './ui';
 
-export function About() {
+export function About({ content: cvData }: { content: CvData }) {
+  const { ui } = cvData;
+
   return (
     <section id="about" className="section page-width">
       <div className="about-grid">
         <SectionHeading
-          label="A little about me"
-          title="I like figuring out how things work."
+          label={ui.about.label}
+          title={ui.about.title}
         />
         <div className="about-copy">
           <p className="lead-copy">{cvData.summary}</p>
@@ -17,7 +19,7 @@ export function About() {
       </div>
       <div className="about-bottom">
         <div className="toolkit">
-          <p className="section-label">My everyday toolkit</p>
+          <p className="section-label">{ui.about.toolkit}</p>
           <ul className="skill-line">
             {cvData.skills.map((skill) => (
               <li key={skill}>{skill}</li>
@@ -25,7 +27,7 @@ export function About() {
           </ul>
         </div>
         <p className="languages-line">
-          <span className="section-label">Languages</span>
+          <span className="section-label">{ui.about.languages}</span>
           {cvData.languages.join(', ')}
         </p>
         <a className="text-link certs-line" href="#experience">

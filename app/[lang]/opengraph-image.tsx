@@ -1,12 +1,15 @@
 import { ImageResponse } from 'next/server';
-import { cvData } from '@/lib/cv-data';
+import { getCvData } from '@/lib/content';
+import { defaultLocale, isLocale } from '@/lib/i18n';
 
 export const runtime = 'edge';
-export const alt = `${cvData.displayName} | ${cvData.tagline}`;
+export const alt = 'Ismael Francisco';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default function OGImage() {
+export default function OGImage({ params }: { params: { lang: string } }) {
+  const cvData = getCvData(isLocale(params.lang) ? params.lang : defaultLocale);
+
   return new ImageResponse(
     <div
       style={{
@@ -49,7 +52,7 @@ export default function OGImage() {
           fontSize: 19,
         }}
       >
-        <span>Contract & full-time · Next.js · AWS</span>
+        <span>{cvData.meta.ogFooter}</span>
         <span>{cvData.location}</span>
       </div>
     </div>,

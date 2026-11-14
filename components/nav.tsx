@@ -1,17 +1,32 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
+import { LOCALE_COOKIE, localeHref, localePath, type Locale } from '@/lib/i18n';
 
-const links = [
-  { label: 'About', href: '/#about' },
-  { label: 'Work with me', href: '/#work-with-me' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Work', href: '/#work' },
-  { label: 'Robbie', href: '/robbie' },
-];
-
-export function Nav() {
+export function Nav({
+  lang,
+  displayName,
+  labels,
+  path = '/',
+}: {
+  lang: Locale;
+  displayName: string;
+  labels: CvData['ui']['nav'];
+  /** Current page path without the locale prefix, e.g. '/robbie'. '/' is the portfolio. */
+  path?: string;
+}) {
+  const isHome = path === '/';
+  // Section anchors point back to the portfolio when rendered on another page.
+  const home = isHome ? '' : localePath(lang);
+  const links = [
+    { label: labels.about, href: `${home}#about` },
+    { label: labels.workWithMe, href: `${home}#work-with-me` },
+    { label: labels.experience, href: `${home}#experience` },
+    { label: labels.work, href: `${home}#work` },
+    { label: labels.robbie, href: localeHref(lang, '/robbie') },
+  ];
+  const otherLang: Locale = lang === 'en' ? 'es' : 'en';
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const toggle = useRef<HTMLButtonElement>(null);
@@ -20,7 +35,7 @@ export function Nav() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`/#${entry.target.id}`);
+          if (entry.isIntersecting) setActive(`${home}#${entry.target.id}`);
         });
       },
       { rootMargin: '-15% 0px -55% 0px' },
@@ -31,9 +46,9 @@ export function Nav() {
         if (section) observer.observe(section);
       },
     );
-    if (window.location.pathname !== '/') setActive(window.location.pathname);
+    if (!isHome) setActive(localeHref(lang, path));
     return () => observer.disconnect();
-  }, []);
+  }, [home, isHome, lang, path]);
 
   useEffect(() => {
     if (!open) return;
@@ -49,14 +64,14 @@ export function Nav() {
 
   return (
     <header className="site-header">
-      <nav className="nav-inner page-width" aria-label="Main navigation">
+      <nav className="nav-inner page-width" aria-label={labels.mainNav}>
         <a
           className="wordmark"
-          href="/#hero"
+          href={`${home}#hero`}
           onClick={() => setOpen(false)}
-          aria-label="Ismael Francisco, home"
+          aria-label={labels.home}
         >
-          {cvData.displayName}
+          {displayName}
         </a>
         <button
           ref={toggle}
@@ -64,10 +79,10 @@ export function Nav() {
           type="button"
           aria-expanded={open}
           aria-controls="nav-links"
-          aria-label={open ? 'Close navigation' : 'Open navigation'}
+          aria-label={open ? labels.closeNav : labels.openNav}
           onClick={() => setOpen(!open)}
         >
-          <span>{open ? 'Close' : 'Menu'}</span>
+          <span>{open ? labels.close : labels.menu}</span>
         </button>
         <div id="nav-links" className={`nav-links${open ? ' is-open' : ''}`}>
           {links.map((link) => (
@@ -82,11 +97,26 @@ export function Nav() {
           ))}
           <a
             className="nav-contact"
-            href="/#contact"
-            aria-current={active === '/#contact' ? 'location' : undefined}
+            href={`${home}#contact`}
+            aria-current={active === `${home}#contact` ? 'location' : undefined}
             onClick={() => setOpen(false)}
           >
-            Let’s talk
+            {labels.contact}
+          </a>
+          <a
+            className="lang-switch"
+            href={localeHref(otherLang, path)}
+            hrefLang={otherLang}
+            lang={otherLang}
+            aria-label={labels.switchAria}
+            onClick={(event) => {
+              // Remember the choice so the middleware stops auto-redirecting.
+              document.cookie = `${LOCALE_COOKIE}=${otherLang}; path=/; max-age=31536000; samesite=lax`;
+              // Keep the visitor on the section they were reading.
+              if (isHome) event.currentTarget.hash = window.location.hash;
+            }}
+          >
+            {labels.switchLabel}
           </a>
         </div>
       </nav>

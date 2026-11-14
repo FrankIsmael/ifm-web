@@ -13,9 +13,9 @@ export function SectionHeading({
   );
 }
 
-export function Tags({ items }: { items: string[] }) {
+export function Tags({ items, label }: { items: string[]; label: string }) {
   return (
-    <ul className="tags" aria-label="Technologies">
+    <ul className="tags" aria-label={label}>
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}

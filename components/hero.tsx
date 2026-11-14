@@ -1,7 +1,9 @@
 import Image from 'next/image';
-import { cvData } from '@/lib/cv-data';
+import type { CvData } from '@/lib/cv-data';
 
-export function Hero() {
+export function Hero({ content: cvData }: { content: CvData }) {
+  const { ui } = cvData;
+
   return (
     <section id="hero" className="hero page-width">
       <div className="hero-copy">
@@ -11,7 +13,7 @@ export function Hero() {
         </p>
         <div className="hero-actions">
           <a className="button" href="#work">
-            See the work
+            {ui.hero.cta}
           </a>
         </div>
         <p className="hero-meta">
@@ -22,7 +24,7 @@ export function Hero() {
       <figure className="portrait">
         <Image
           src="/ifm.png"
-          alt="Ismael smiling at his laptop"
+          alt={ui.hero.portraitAlt}
           width={750}
           height={938}
           priority
