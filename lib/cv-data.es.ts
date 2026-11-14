@@ -436,7 +436,8 @@ export const cvDataEs: CvData = {
               list: [
                 'Meta Platforms (plataforma de WhatsApp Business): envío y recepción de mensajes de WhatsApp.',
                 'Anthropic (modelos Claude Haiku, Sonnet y Opus): generación de las respuestas del agente en conversaciones de WhatsApp de clientes. Conforme a los términos comerciales de Anthropic, estos datos no se usan para entrenar sus modelos.',
-                'InstaBox (instabox.sh) y EasyBits (easybits.cloud, México): entornos aislados en la nube donde corre el agente y se guardan sus archivos de trabajo.',
+                'InstaBox (instabox.sh): máquinas virtuales aisladas en la nube (microVMs) donde corre el agente.',
+                'EasyBits (easybits.cloud, México): almacenamiento de archivos y entornos sandbox que usa el agente.',
                 'Vercel y Google: alojamiento y analítica del sitio web.',
                 'DeepSeek (Hangzhou DeepSeek Artificial Intelligence Co., Ltd., China): puede usarse solo para el asistente de demostración pública de este sitio. Los datos de WhatsApp de clientes nunca se envían a DeepSeek.',
               ],

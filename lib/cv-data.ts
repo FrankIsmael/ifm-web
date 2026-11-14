@@ -432,7 +432,8 @@ export const cvData = {
               list: [
                 'Meta Platforms (WhatsApp Business Platform): sending and receiving WhatsApp messages.',
                 'Anthropic (Claude Haiku, Sonnet, and Opus models): generating the agent’s replies for client WhatsApp conversations. Under Anthropic’s commercial terms, this data is not used to train its models.',
-                'InstaBox (instabox.sh) and EasyBits (easybits.cloud, Mexico): isolated cloud environments that run the agent and store its working files.',
+                'InstaBox (instabox.sh): isolated cloud virtual machines (microVMs) where the agent runs.',
+                'EasyBits (easybits.cloud, Mexico): file storage and sandbox environments used by the agent.',
                 'Vercel and Google: website hosting and analytics.',
                 'DeepSeek (Hangzhou DeepSeek Artificial Intelligence Co., Ltd., China): may be used only for the public demo assistant on this website. Client WhatsApp data is never sent to DeepSeek.',
               ],
