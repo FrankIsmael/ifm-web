@@ -21,7 +21,6 @@ export const cvDataEs: CvData = {
       workWithMe: 'Trabaja conmigo',
       experience: 'Experiencia',
       work: 'Proyectos',
-      robbie: 'Robbie',
       contact: 'Hablemos',
       menu: 'Menú',
       close: 'Cerrar',
@@ -67,7 +66,6 @@ export const cvDataEs: CvData = {
       downloadCv: 'Descargar CV',
     },
     footer: {
-      robbie: 'Robbie',
       privacy: 'Privacidad',
       terms: 'Términos',
       agents: 'Información para agentes de IA',
@@ -123,8 +121,7 @@ export const cvDataEs: CvData = {
     {
       title: 'Agentes de IA y automatización con WhatsApp',
       description:
-        'Agentes de IA que trabajan por WhatsApp sobre la plataforma oficial de WhatsApp Business: respuestas a clientes, actualización de catálogo y preguntas sobre tus datos.',
-      href: '/robbie',
+        'Integraciones con la plataforma oficial de WhatsApp Business y agentes de IA que ayudan a pequeños negocios a atender clientes y administrar su catálogo.',
     },
     {
       title: 'Pagos',
@@ -307,69 +304,16 @@ export const cvDataEs: CvData = {
     },
   ],
   pages: {
-    learnMore: 'Ver más',
-    robbie: {
-      metaTitle: 'Robbie · Agente de IA en WhatsApp para tiendas',
-      metaDescription:
-        'Robbie es un agente de IA en WhatsApp para tiendas pequeñas: atiende a tus clientes, mantiene tu catálogo al día y responde preguntas sobre tus ventas, en la plataforma oficial de WhatsApp Business.',
-      label: 'Producto',
-      title: 'Robbie, un agente de IA en WhatsApp para tiendas.',
-      intro:
-        'Robbie trabaja donde ya están tus clientes. Funciona sobre la plataforma oficial de WhatsApp Business (Cloud API) y lo desarrolla y opera {legalName}, ingeniero de software en México.',
-      capabilitiesTitle: 'Qué hace Robbie',
-      capabilities: [
-        {
-          title: 'Atiende a tus clientes',
-          description:
-            'Responde preguntas de productos, precios y disponibilidad en tu número de WhatsApp, usando tu catálogo como fuente, y te pasa la conversación cuando hace falta una persona.',
-        },
-        {
-          title: 'Administra tu catálogo desde el chat',
-          description:
-            'Agrega o actualiza productos enviando un mensaje y una foto. Los cambios aparecen en tu tienda o sitio de catálogo.',
-        },
-        {
-          title: 'Responde preguntas sobre tus ventas',
-          description:
-            'Pregunta en lenguaje natural —qué se vendió más este mes, qué productos se están acabando— y obtén la respuesta a partir de tus propios datos.',
-        },
-      ],
-      stepsTitle: 'Cómo empezar',
-      steps: [
-        {
-          title: 'Conecta',
-          description:
-            'Conectas tu cuenta de WhatsApp Business con el registro integrado (Embedded Signup) de Meta. Tu número, tu cuenta y tus datos siguen siendo tuyos.',
-        },
-        {
-          title: 'Configura',
-          description:
-            'Cargamos tu catálogo, horarios y tono, y acordamos qué responde Robbie y cuándo te pasa la conversación.',
-        },
-        {
-          title: 'Arranca',
-          description:
-            'Robbie empieza a responder en tu número. Las plantillas de mensajes y los cargos por conversación se administran en tu propia cuenta de WhatsApp Business.',
-        },
-      ],
-      builtTitle: 'Cómo está hecho',
-      built:
-        'Robbie es un agente personalizado construido sobre goose, un runtime de agentes de código abierto, y corre en un entorno aislado en la nube. Yo desarrollé la interfaz web, la capa de streaming en tiempo real y la integración con WhatsApp. Prueba la versión web:',
-      dataNote: 'Cómo se manejan los datos de clientes y los mensajes de WhatsApp:',
-      ctaTitle: '¿Quieres a Robbie en tu negocio?',
-      ctaText: 'Cuéntame de tu tienda y de cómo te contactan tus clientes hoy.',
-      ctaSubject: 'Robbie para mi negocio',
-    },
     privacy: {
       metaTitle: 'Aviso de privacidad',
       metaDescription:
-        'Cómo Ismael Francisco Moreno recaba, usa y protege datos personales en este sitio y en servicios de WhatsApp como Robbie.',
+        'Cómo Ismael Francisco Moreno recaba, usa y protege datos personales en este sitio y en servicios de WhatsApp para negocios.',
       label: 'Legal',
       title: 'Aviso de privacidad',
       updatedLabel: 'Última actualización',
       updated: '13 de noviembre de 2026',
       intro:
-        'Este aviso explica cómo se tratan los datos personales en ismaelfrancisco.tech y en los servicios de software que presto, incluido Robbie, un agente de IA en WhatsApp para negocios. Se emite conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).',
+        'Este aviso explica cómo se tratan los datos personales en ismaelfrancisco.tech y en los servicios de software que presto, incluidos servicios de agentes de IA en WhatsApp para negocios. Se emite conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).',
       sections: [
         {
           heading: '1. Responsable',
@@ -385,7 +329,7 @@ export const cvDataEs: CvData = {
             {
               list: [
                 'Visitantes del sitio y posibles clientes: soy responsable de los datos descritos en la sección 3.',
-                'Servicios de WhatsApp para negocios: cuando un negocio usa Robbie, ese negocio es responsable de los datos de sus clientes y yo los trato solo por su cuenta y conforme a sus instrucciones, como se describe en la sección 4.',
+                'Servicios de WhatsApp para negocios: cuando un negocio usa mis servicios de WhatsApp, ese negocio es responsable de los datos de sus clientes y yo los trato solo por su cuenta y conforme a sus instrucciones, como se describe en la sección 4.',
               ],
             },
           ],
@@ -410,7 +354,7 @@ export const cvDataEs: CvData = {
           heading: '4. Datos de WhatsApp tratados para negocios clientes',
           blocks: [
             {
-              p: 'Cuando un negocio conecta su cuenta de WhatsApp Business a Robbie mediante la plataforma de WhatsApp Business, se pueden tratar los siguientes datos:',
+              p: 'Cuando un negocio conecta su cuenta de WhatsApp Business a mis servicios mediante la plataforma de WhatsApp Business, se pueden tratar los siguientes datos:',
             },
             {
               list: [
@@ -463,7 +407,7 @@ export const cvDataEs: CvData = {
               p: 'Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (derechos ARCO), o revocar tu consentimiento, escribiendo a {email} con tu nombre, el número de teléfono o correo involucrado y tu solicitud. Responderé dentro de 20 días hábiles.',
             },
             {
-              p: 'Si eres cliente de un negocio que usa Robbie, también puedes contactar directamente a ese negocio. Para eliminar datos de conversaciones de WhatsApp, envía la solicitud a {email}; se eliminarán de los sistemas activos dentro de 30 días (respaldos de proveedores dentro de 90 días) y recibirás una confirmación.',
+              p: 'Si eres cliente de un negocio que usa estos servicios, también puedes contactar directamente a ese negocio. Para eliminar datos de conversaciones de WhatsApp, envía la solicitud a {email}; se eliminarán de los sistemas activos dentro de 30 días (respaldos de proveedores dentro de 90 días) y recibirás una confirmación.',
             },
           ],
         },
@@ -478,19 +422,19 @@ export const cvDataEs: CvData = {
     terms: {
       metaTitle: 'Términos del servicio',
       metaDescription:
-        'Términos de los servicios de software y del agente de IA en WhatsApp (Robbie) que presta Ismael Francisco Moreno.',
+        'Términos de los servicios de software y del agente de IA en WhatsApp que presta Ismael Francisco Moreno.',
       label: 'Legal',
       title: 'Términos del servicio',
       updatedLabel: 'Última actualización',
       updated: '13 de noviembre de 2026',
       intro:
-        'Estos términos aplican a los servicios de software que {legalName} (“yo”) presta a negocios (“tú”), incluido Robbie, un agente de IA en WhatsApp. Una propuesta o contrato firmado para un proyecto específico prevalece en lo que difiera.',
+        'Estos términos aplican a los servicios de software que {legalName} (“yo”) presta a negocios (“tú”), incluidos servicios de agentes de IA en WhatsApp. Una propuesta o contrato firmado para un proyecto específico prevalece en lo que difiera.',
       sections: [
         {
           heading: '1. Servicios',
           blocks: [
             {
-              p: 'Presto servicios de desarrollo de software, consultoría y agentes de IA. Robbie se conecta a tu cuenta de WhatsApp Business mediante la plataforma oficial de WhatsApp Business para atender a tus clientes, administrar tu catálogo y darte reportes de tus datos, según lo acordado para tu cuenta.',
+              p: 'Presto servicios de desarrollo de software, consultoría y agentes de IA. El servicio de agente de IA en WhatsApp se conecta a tu cuenta de WhatsApp Business mediante la plataforma oficial de WhatsApp Business para atender a tus clientes, administrar tu catálogo y darte reportes de tus datos, según lo acordado para tu cuenta.',
             },
           ],
         },
@@ -499,7 +443,7 @@ export const cvDataEs: CvData = {
           blocks: [
             {
               list: [
-                'Conectas tu propia cuenta de WhatsApp Business y tu número, y siguen siendo tuyos. Puedes desconectar a Robbie en cualquier momento.',
+                'Conectas tu propia cuenta de WhatsApp Business y tu número, y siguen siendo tuyos. Puedes desconectar el servicio en cualquier momento.',
                 'Debes cumplir los Términos del servicio de WhatsApp Business y las Políticas de WhatsApp Business y Comercio, incluido obtener el consentimiento (opt-in) de tus clientes antes de enviarles mensajes.',
                 'Los cargos de conversaciones y plantillas de WhatsApp los cobra Meta al método de pago de tu cuenta de WhatsApp Business, por separado de mis honorarios.',
               ],
@@ -518,7 +462,7 @@ export const cvDataEs: CvData = {
           heading: '4. Respuestas generadas por IA',
           blocks: [
             {
-              p: 'Robbie genera respuestas automáticamente a partir de tu información y puede equivocarse. Eres responsable de la información de tu negocio que proporcionas y de revisar cómo el agente representa a tu negocio; los temas delicados deben pasarse a una persona.',
+              p: 'El agente de IA genera respuestas automáticamente a partir de tu información y puede equivocarse. Eres responsable de la información de tu negocio que proporcionas y de revisar cómo el agente representa a tu negocio; los temas delicados deben pasarse a una persona.',
             },
           ],
         },

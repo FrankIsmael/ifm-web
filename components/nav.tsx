@@ -13,7 +13,7 @@ export function Nav({
   lang: Locale;
   displayName: string;
   labels: CvData['ui']['nav'];
-  /** Current page path without the locale prefix, e.g. '/robbie'. '/' is the portfolio. */
+  /** Current page path without the locale prefix, e.g. '/privacy'. '/' is the portfolio. */
   path?: string;
 }) {
   const isHome = path === '/';
@@ -24,7 +24,6 @@ export function Nav({
     { label: labels.workWithMe, href: `${home}#work-with-me` },
     { label: labels.experience, href: `${home}#experience` },
     { label: labels.work, href: `${home}#work` },
-    { label: labels.robbie, href: localeHref(lang, '/robbie') },
   ];
   const otherLang: Locale = lang === 'en' ? 'es' : 'en';
   const [open, setOpen] = useState(false);

@@ -13,7 +13,6 @@ export function Footer({ content, lang }: { content: CvData; lang: Locale }) {
         </span>
         <a href={`mailto:${email}`}>{email}</a>
         <nav className="footer-links" aria-label="Footer">
-          <a href={localeHref(lang, '/robbie')}>{ui.footer.robbie}</a>
           <a href={localeHref(lang, '/privacy')}>{ui.footer.privacy}</a>
           <a href={localeHref(lang, '/terms')}>{ui.footer.terms}</a>
           <a href="/llms.txt">{ui.footer.agents}</a>
