@@ -1,14 +1,7 @@
 import type { CvData } from '@/lib/cv-data';
-import { localeHref, type Locale } from '@/lib/i18n';
 import { SectionHeading } from './ui';
 
-export function WorkWithMe({
-  content: cvData,
-  lang,
-}: {
-  content: CvData;
-  lang: Locale;
-}) {
+export function WorkWithMe({ content: cvData }: { content: CvData }) {
   const { workWithMe } = cvData;
 
   return (
@@ -21,17 +14,7 @@ export function WorkWithMe({
         {cvData.services.map((service) => (
           <li key={service.title}>
             <h3>{service.title}</h3>
-            <p>
-              {service.description}
-              {service.href ? (
-                <>
-                  {' '}
-                  <a className="text-link" href={localeHref(lang, service.href)}>
-                    {cvData.pages.learnMore}
-                  </a>
-                </>
-              ) : null}
-            </p>
+            <p>{service.description}</p>
           </li>
         ))}
       </ul>

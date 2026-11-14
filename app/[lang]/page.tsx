@@ -28,7 +28,7 @@ export default function Home({ params }: { params: { lang: string } }) {
       <main id="main">
         <Hero content={content} />
         <About content={content} />
-        <WorkWithMe content={content} lang={params.lang} />
+        <WorkWithMe content={content} />
         <Experience content={content} />
         <Projects content={content} />
         <Contact content={content} />
