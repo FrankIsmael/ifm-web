@@ -51,6 +51,10 @@ export function generateMetadata({ params }: Props): Metadata {
       title,
       description,
     },
+    // Meta Business domain verification (must stay in <head> of the home page).
+    other: {
+      'facebook-domain-verification': 'kluzsyvsieoyfkf6pwqage1tk383il',
+    },
   };
 }
 
